@@ -50,7 +50,7 @@ class InfoViewController: UIViewController {
         present(alertController, animated:true)
     }
     func action(alertAction: UIAlertAction){
-        print(alertAction.title)
+        print(alertAction.title as Any)
     }
 
 }

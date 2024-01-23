@@ -53,7 +53,9 @@ class FeedViewController: UIViewController {
         postViewController.postTitle = post.title
 
         self.navigationController?.pushViewController(postViewController, animated: true)
-    
+        
+        
+   
     }
     
 
