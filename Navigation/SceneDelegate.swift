@@ -34,6 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.selectedIndex = 0
         
         window.rootViewController = tabBarController
+        UITabBar.appearance().backgroundColor = .white
         window.makeKeyAndVisible()
         
         self.window = window
