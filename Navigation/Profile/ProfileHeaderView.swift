@@ -39,7 +39,7 @@ class ProfileHeaderView : UIView{
         return statusView
     }()
     
-    let button: UIButton = {
+    lazy var button: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 16, y: 230, width: 380, height: 50)
         button.setTitleColor(.white, for: .normal)
@@ -55,7 +55,7 @@ class ProfileHeaderView : UIView{
         return button
     }()
     
-    let textField:UITextField = {
+    lazy var textField:UITextField = {
         let textField = UITextField()
         textField.frame = CGRect(x: 132, y: 160, width: 200, height: 40)
         textField.layer.cornerRadius = 12
@@ -65,6 +65,7 @@ class ProfileHeaderView : UIView{
         textField.layer.borderWidth = 1
         textField.font = UIFont.boldSystemFont(ofSize: 15.0)
         textField.textColor = .black
+        textField.placeholder = "Введите статус"
         textField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
         return textField
     }()
