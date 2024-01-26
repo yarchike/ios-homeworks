@@ -19,23 +19,26 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         title = "Profile"
-    
         
-
-       
     }
     
     override func viewWillLayoutSubviews() {
-        let safeAreaGuide = view.safeAreaLayoutGuide
+        
         profileViewHeaderView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(profileViewHeaderView)
         view.addSubview(button)
         
+        setupContraints()
+        
+    }
+    
+    func setupContraints(){
+        let safeAreaGuide = view.safeAreaLayoutGuide
         let constraint = [
             profileViewHeaderView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 0),
             profileViewHeaderView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: 0),
@@ -46,10 +49,8 @@ class ProfileViewController: UIViewController {
             button.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: 0)
         ]
         NSLayoutConstraint.activate(constraint)
-        
-        
     }
-
-
-
+    
+    
+    
 }
