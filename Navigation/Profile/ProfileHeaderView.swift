@@ -44,7 +44,6 @@ class ProfileHeaderView : UIView{
         button.setTitleColor(.white, for: .normal)
         button.setTitle("Set status", for: .normal)
         button.layer.cornerRadius = 4
-        button.clipsToBounds = true
         button.backgroundColor  = UIColor.systemBlue
         button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
         button.layer.shadowOpacity = 0.7
