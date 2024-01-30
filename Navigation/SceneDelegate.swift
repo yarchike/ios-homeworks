@@ -20,14 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
         let feedViewController = FeedViewController()
-    
-        let profileViewController = ProfileViewController()
+
+        
+        let logInViewController = LogInViewController()
         
         
         feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "doc.richtext"), tag: 0)
-        profileViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
+        logInViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
         
-        let controllers = [feedViewController, profileViewController]
+        let controllers = [feedViewController, logInViewController]
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
         }
