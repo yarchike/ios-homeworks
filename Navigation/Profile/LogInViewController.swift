@@ -47,9 +47,10 @@ class LogInViewController: UIViewController {
         return uiView
     }()
     
-    lazy var loginView :UITextField = {
+    lazy var loginView :UITextField = { [unowned self] in
         let textField = UITextField()
         textField.clipsToBounds = true
+        textField.keyboardType = UIKeyboardType.default
         textField.backgroundColor  = UIColor.systemGray6
         textField.font = UIFont.boldSystemFont(ofSize: 16.0)
         textField.textColor = .black
@@ -57,6 +58,7 @@ class LogInViewController: UIViewController {
         textField.addTarget(self, action: #selector(loginTextChanged(_:)), for: .editingChanged)
         textField.placeholder = "Email of phone"
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
     
@@ -102,6 +104,7 @@ class LogInViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setupContentOfScrollView()
+      
     }
     
     private func setupView() {
@@ -197,7 +200,8 @@ class LogInViewController: UIViewController {
             loginButtonView.topAnchor.constraint(equalTo: loginAndPasswordView.bottomAnchor, constant: 16),
             loginButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            loginButtonView.heightAnchor.constraint(equalToConstant: 50)
+            loginButtonView.heightAnchor.constraint(equalToConstant: 50),
+            loginButtonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
         
@@ -226,5 +230,58 @@ class LogInViewController: UIViewController {
             passwordText =  text
         }
     }
+    @objc func willShowKeyboard(_ notification: NSNotification) {
+         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
+         scrollView.contentInset.bottom += keyboardHeight ?? 0.0
+     }
+     
+     @objc func willHideKeyboard(_ notification: NSNotification) {
+         scrollView.contentInset.bottom = 0.0
+     }
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          
+          setupKeyboardObservers()
+      }
+      
+      override func viewWillDisappear(_ animated: Bool) {
+          super.viewWillDisappear(animated)
+          
+          removeKeyboardObservers()
+      }
+    
+    private func setupKeyboardObservers() {
+           let notificationCenter = NotificationCenter.default
+           
+           notificationCenter.addObserver(
+               self,
+               selector: #selector(self.willShowKeyboard(_:)),
+               name: UIResponder.keyboardWillShowNotification,
+               object: nil
+           )
+           
+           notificationCenter.addObserver(
+               self,
+               selector: #selector(self.willHideKeyboard(_:)),
+               name: UIResponder.keyboardWillHideNotification,
+               object: nil
+           )
+       }
+       
+       private func removeKeyboardObservers() {
+           let notificationCenter = NotificationCenter.default
+           notificationCenter.removeObserver(self)
+       }
 
+}
+
+extension LogInViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(
+        _ textField: UITextField
+    ) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }
