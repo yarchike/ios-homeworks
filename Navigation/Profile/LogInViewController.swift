@@ -13,12 +13,12 @@ class LogInViewController: UIViewController {
     var passwordText = ""
     
     private lazy var scrollView: UIScrollView = {
-         let scrollView = UIScrollView()
-         scrollView.backgroundColor = .white
-         scrollView.translatesAutoresizingMaskIntoConstraints = false
-         
-         return scrollView
-     }()
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+    }()
     
     private lazy var contentView: UIView = {
         let contentView = UIView()
@@ -33,8 +33,8 @@ class LogInViewController: UIViewController {
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
-     }()
-
+    }()
+    
     
     lazy var loginAndPasswordView :UIView = {
         let uiView = UIView()
@@ -76,6 +76,7 @@ class LogInViewController: UIViewController {
         textField.backgroundColor  = UIColor.systemGray6
         textField.font = UIFont.boldSystemFont(ofSize: 16.0)
         textField.textColor = .black
+        textField.returnKeyType = UIReturnKeyType.done
         textField.autocapitalizationType = .none
         textField.placeholder = "Password"
         textField.isSecureTextEntry = true
@@ -95,8 +96,8 @@ class LogInViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,7 +105,7 @@ class LogInViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setupContentOfScrollView()
-      
+        
     }
     
     private func setupView() {
@@ -119,27 +120,27 @@ class LogInViewController: UIViewController {
     }
     
     private func setupConstraints() {
-          let safeAreaGuide = view.safeAreaLayoutGuide
-          
-          
-          NSLayoutConstraint.activate([
-              scrollView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-              scrollView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-              scrollView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
-              scrollView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor)
-          ])
-          
-          NSLayoutConstraint.activate([
-              contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-              contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-              contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-              contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-              contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-          ])
-      }
+        let safeAreaGuide = view.safeAreaLayoutGuide
+        
+        
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+        ])
+    }
     
     private func setupContentOfScrollView() {
-       
+        
         // logo
         contentView.addSubview(logoView)
         
@@ -206,14 +207,14 @@ class LogInViewController: UIViewController {
         
         
         
-       }
+    }
     
     
     @objc func buttonPressed(_ sender: UIButton) {
         if(!passwordText.isEmpty && !loginText.isEmpty){
             let profileViewController = ProfileViewController()
             
-
+            
             self.navigationController?.pushViewController(profileViewController, animated: true)
         }
         
@@ -231,48 +232,48 @@ class LogInViewController: UIViewController {
         }
     }
     @objc func willShowKeyboard(_ notification: NSNotification) {
-         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
-         scrollView.contentInset.bottom += keyboardHeight ?? 0.0
-     }
-     
-     @objc func willHideKeyboard(_ notification: NSNotification) {
-         scrollView.contentInset.bottom = 0.0
-     }
+        let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
+        scrollView.contentInset.bottom = keyboardHeight ?? 0.0
+    }
+    
+    @objc func willHideKeyboard(_ notification: NSNotification) {
+        scrollView.contentInset.bottom = 0.0
+    }
     override func viewWillAppear(_ animated: Bool) {
-          super.viewWillAppear(animated)
-          
-          setupKeyboardObservers()
-      }
-      
-      override func viewWillDisappear(_ animated: Bool) {
-          super.viewWillDisappear(animated)
-          
-          removeKeyboardObservers()
-      }
+        super.viewWillAppear(animated)
+        
+        setupKeyboardObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeKeyboardObservers()
+    }
     
     private func setupKeyboardObservers() {
-           let notificationCenter = NotificationCenter.default
-           
-           notificationCenter.addObserver(
-               self,
-               selector: #selector(self.willShowKeyboard(_:)),
-               name: UIResponder.keyboardWillShowNotification,
-               object: nil
-           )
-           
-           notificationCenter.addObserver(
-               self,
-               selector: #selector(self.willHideKeyboard(_:)),
-               name: UIResponder.keyboardWillHideNotification,
-               object: nil
-           )
-       }
-       
-       private func removeKeyboardObservers() {
-           let notificationCenter = NotificationCenter.default
-           notificationCenter.removeObserver(self)
-       }
-
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(self.willShowKeyboard(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(self.willHideKeyboard(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    private func removeKeyboardObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
+    }
+    
 }
 
 extension LogInViewController: UITextFieldDelegate {
