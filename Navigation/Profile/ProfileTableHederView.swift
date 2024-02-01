@@ -11,6 +11,13 @@ class ProfileHeaderView : UIView{
     
     private var statusText: String = ""
     
+    override var intrinsicContentSize: CGSize {
+        CGSize(
+            width: UIView.noIntrinsicMetric,
+            height: 230
+        )
+    }
+    
     let avatarImageView: UIImageView = {
         let avatarView = UIImageView(image: UIImage(named: "cat"))
         avatarView.layer.cornerRadius = 50

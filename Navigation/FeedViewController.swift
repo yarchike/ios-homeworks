@@ -9,7 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    var post = Post(title: "Какой то пост")
+    var post = Post.make()[0]
     
     private lazy var buttonOne: UIButton = {
         let button = UIButton()
@@ -36,20 +36,20 @@ class FeedViewController: UIViewController {
         
         stackView.axis = .vertical
         stackView.spacing = 10.0
-            
+        
         stackView.addArrangedSubview(self.buttonOne)
         stackView.addArrangedSubview(self.buttonTwo)
         
         return stackView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(stackView)
         setupContraints()
-    
-    
+        
+        
     }
     
     func setupContraints(){
@@ -64,12 +64,12 @@ class FeedViewController: UIViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         let postViewController = PostViewController()
         
-        postViewController.postTitle = post.title
-
+        postViewController.postTitle = post.author
+        
         self.navigationController?.pushViewController(postViewController, animated: true)
         
         
-   
+        
     }
-
+    
 }
