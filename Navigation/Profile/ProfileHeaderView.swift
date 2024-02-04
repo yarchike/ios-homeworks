@@ -54,7 +54,7 @@ class ProfileHeaderView : UIView{
         return button
     }()
     
-    lazy var statusTextField:UITextField = {
+    lazy var statusTextField: UITextField = {
         let textField = UITextField()
         textField.layer.cornerRadius = 12
         textField.clipsToBounds = true
@@ -63,7 +63,7 @@ class ProfileHeaderView : UIView{
         textField.layer.borderWidth = 1
         textField.font = UIFont.boldSystemFont(ofSize: 15.0)
         textField.textColor = .black
-        textField.placeholder = "Введите статус"
+        textField.placeholder = " Введите статус"
         textField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
