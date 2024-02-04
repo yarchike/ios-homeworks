@@ -16,13 +16,13 @@ class InfoViewController: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         view.addSubview(actionButton)
-
+        
         
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -52,5 +52,5 @@ class InfoViewController: UIViewController {
     func action(alertAction: UIAlertAction){
         print(alertAction.title as Any)
     }
-
+    
 }

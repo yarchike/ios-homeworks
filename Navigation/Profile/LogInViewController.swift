@@ -36,7 +36,7 @@ class LogInViewController: UIViewController {
     }()
     
     
-    lazy var loginAndPasswordView :UIView = {
+    lazy var loginAndPasswordView: UIView = {
         let uiView = UIView()
         uiView.layer.cornerRadius = 10
         uiView.clipsToBounds = true
@@ -47,7 +47,7 @@ class LogInViewController: UIViewController {
         return uiView
     }()
     
-    lazy var loginView :UITextField = { [unowned self] in
+    lazy var loginView: UITextField = {
         let textField = UITextField()
         textField.clipsToBounds = true
         textField.keyboardType = UIKeyboardType.default
@@ -62,7 +62,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    lazy var lineView :UIView = {
+    lazy var lineView: UIView = {
         let uiView = UIView()
         uiView.clipsToBounds = true
         uiView.backgroundColor  = UIColor.lightGray
@@ -70,7 +70,7 @@ class LogInViewController: UIViewController {
         return uiView
     }()
     
-    lazy var passwordView :UITextField = {
+    lazy var passwordView: UITextField = {
         let textField = UITextField()
         textField.clipsToBounds = true
         textField.backgroundColor  = UIColor.systemGray6
@@ -85,7 +85,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    lazy var loginButtonView :CustomButton = {
+    lazy var loginButtonView: CustomButton = {
         let button = CustomButton()
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
@@ -127,10 +127,8 @@ class LogInViewController: UIViewController {
             scrollView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
-            scrollView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
@@ -143,61 +141,39 @@ class LogInViewController: UIViewController {
         
         // logo
         contentView.addSubview(logoView)
+        contentView.addSubview(loginAndPasswordView)
+        contentView.addSubview(loginView)
+        contentView.addSubview(lineView)
+        loginAndPasswordView.addSubview(passwordView)
+        contentView.addSubview(loginButtonView)
+        
         
         NSLayoutConstraint.activate([
             logoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
             logoView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             logoView.widthAnchor.constraint(equalToConstant: 100),
-            logoView.heightAnchor.constraint(equalToConstant: 100)
-        ])
-        
-        //login and password
-        
-        contentView.addSubview(loginAndPasswordView)
-        
-        NSLayoutConstraint.activate([
+            logoView.heightAnchor.constraint(equalToConstant: 100),
+    
             loginAndPasswordView.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 120),
             loginAndPasswordView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginAndPasswordView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            loginAndPasswordView.heightAnchor.constraint(equalToConstant: 100)
-        ])
-        
-        //login
-        contentView.addSubview(loginView)
-        
-        NSLayoutConstraint.activate([
+            loginAndPasswordView.heightAnchor.constraint(equalToConstant: 100),
+  
             loginView.topAnchor.constraint(equalTo: loginAndPasswordView.topAnchor),
             loginView.leadingAnchor.constraint(equalTo: loginAndPasswordView.leadingAnchor, constant: 8),
             loginView.trailingAnchor.constraint(equalTo: loginAndPasswordView.trailingAnchor, constant: -8),
-            loginView.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        //line
-        contentView.addSubview(lineView)
-        
-        NSLayoutConstraint.activate([
+            loginView.heightAnchor.constraint(equalToConstant: 50),
+    
             lineView.topAnchor.constraint(equalTo: loginView.bottomAnchor),
             lineView.leadingAnchor.constraint(equalTo: loginAndPasswordView.leadingAnchor),
             lineView.trailingAnchor.constraint(equalTo: loginAndPasswordView.trailingAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 0.5)
-        ])
-        
-        //password
-        
-        loginAndPasswordView.addSubview(passwordView)
-        
-        NSLayoutConstraint.activate([
+            lineView.heightAnchor.constraint(equalToConstant: 0.5),
+   
             passwordView.topAnchor.constraint(equalTo: lineView.bottomAnchor),
             passwordView.leadingAnchor.constraint(equalTo: loginAndPasswordView.leadingAnchor, constant: 8),
             passwordView.trailingAnchor.constraint(equalTo: loginAndPasswordView.trailingAnchor, constant: -8),
-            passwordView.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        //button
-        
-        contentView.addSubview(loginButtonView)
-        
-        NSLayoutConstraint.activate([
+            passwordView.heightAnchor.constraint(equalToConstant: 50),
+
             loginButtonView.topAnchor.constraint(equalTo: loginAndPasswordView.bottomAnchor, constant: 16),
             loginButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
