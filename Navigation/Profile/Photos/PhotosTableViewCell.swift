@@ -86,13 +86,21 @@ class PhotosTableViewCell: UITableViewCell{
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             
             arrowButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            arrowButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            arrowButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            arrowButton.widthAnchor.constraint(equalToConstant: 50),
+            arrowButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            
+            
+                
             
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             collectionView.leadingAnchor.constraint(
                 equalTo: leadingAnchor, constant: 12
             ),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
+            collectionView.widthAnchor.constraint(equalTo: widthAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant:100)
         ])
     }
     
