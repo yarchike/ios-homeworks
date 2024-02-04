@@ -98,31 +98,20 @@ class PostTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             labelView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             labelView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            labelView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
+            labelView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             
-        ])
-        
-        NSLayoutConstraint.activate([
             contantImageView.topAnchor.constraint(equalTo: labelView.bottomAnchor,constant: 16),
             contantImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
             contantImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            
-        ])
-        NSLayoutConstraint.activate([
+         
             contantTextView.topAnchor.constraint(equalTo: contantImageView.bottomAnchor, constant: 16),
             contantTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            contantTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            contantTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
-        ])
-        
-        NSLayoutConstraint.activate([
             likesLableView.topAnchor.constraint(equalTo: contantTextView.bottomAnchor, constant: 16),
             likesLableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -16),
             likesLableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            
-        ])
-        
-        NSLayoutConstraint.activate([
+
             viewsLableView.topAnchor.constraint(equalTo: contantTextView.bottomAnchor, constant: 16),
             viewsLableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -16),
             viewsLableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)

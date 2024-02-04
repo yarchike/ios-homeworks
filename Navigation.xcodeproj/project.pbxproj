@@ -15,6 +15,8 @@
 		BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E8672B5367260079B703 /* FeedViewController.swift */; };
 		BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86B2B5367D00079B703 /* PostViewController.swift */; };
 		BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86F2B5376BA0079B703 /* InfoViewController.swift */; };
+		BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */; };
+		BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22242B6FB10000648FA3 /* CustomButton.swift */; };
 		BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */; };
 		BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */; };
 		BFFC6DD42B6B90250052A00E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC6DD32B6B90250052A00E /* Post.swift */; };
@@ -33,6 +35,8 @@
 		BF00E8672B5367260079B703 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BF00E86B2B5367D00079B703 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		BF00E86F2B5376BA0079B703 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		BF4C22242B6FB10000648FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BFFC6DD32B6B90250052A00E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BF4C22232B6FB0B500648FA3 /* UIView */,
 				BFFC6DD72B6C09920052A00E /* UITableView+Extensions.swift */,
 				BF00E8532B5365390079B703 /* AppDelegate.swift */,
 				BFFC6DD22B6B8FFA0052A00E /* model */,
@@ -87,11 +92,20 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		BF4C22232B6FB0B500648FA3 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				BF4C22242B6FB10000648FA3 /* CustomButton.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 		BFA3A9E82B5FD192008CC6FA /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */,
 				BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */,
+				BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -175,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */,
+				BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */,
 				BF00E8582B5365390079B703 /* ViewController.swift in Sources */,
 				BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */,
 				BF00E8542B5365390079B703 /* AppDelegate.swift in Sources */,
@@ -182,6 +197,7 @@
 				BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */,
 				BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */,
 				BFFC6DD82B6C09920052A00E /* UITableView+Extensions.swift in Sources */,
+				BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
 				BFFC6DD62B6BCCCF0052A00E /* PostTableViewCell.swift in Sources */,
 				BFFC6DD42B6B90250052A00E /* Post.swift in Sources */,
