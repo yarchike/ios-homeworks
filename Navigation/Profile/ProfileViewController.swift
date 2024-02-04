@@ -12,11 +12,13 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+
     
     
     private enum CellReuseID: String {
         case base = "BaseTableViewCell_ReuseID"
         case custom = "CustomTableViewCell_ReuseID"
+        case photo = "PhotoTableViewCell_ReuseID"
     }
     
     override func viewDidLoad() {
@@ -59,7 +61,6 @@ class ProfileViewController: UIViewController {
     
     private func tuneTableView() {
         let headerView = ProfileHeaderView()
-        //        let headerView = TableHeaderView(title: "Языки программирования")
         tableView.setAndLayout(headerView: headerView)
         tableView.tableFooterView = UIView()
         if #available(iOS 15.0, *) {
@@ -67,6 +68,8 @@ class ProfileViewController: UIViewController {
         }
         
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: CellReuseID.base.rawValue)
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: CellReuseID.photo.rawValue)
+        
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -77,10 +80,25 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        if(section == 0){
+            return 1
+        }
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if(indexPath.section == 0){
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellReuseID.photo.rawValue,
+                for: indexPath
+            ) as? PhotosTableViewCell else {
+                fatalError("could not dequeueReusableCell")
+            }
+            
+            cell.update()
+            
+            return cell
+        }
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: CellReuseID.base.rawValue,
             for: indexPath
@@ -93,12 +111,14 @@ extension ProfileViewController: UITableViewDataSource {
         return cell
     }
     
+    func numberOfSections(
+        in tableView: UITableView
+    ) -> Int {
+        2
+    }
+    
     
 }
 
-extension ProfileViewController: UITableViewDelegate {
-    
-    
-    
-}
+extension ProfileViewController: UITableViewDelegate {}
 

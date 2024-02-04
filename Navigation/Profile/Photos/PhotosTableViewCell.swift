@@ -1,59 +1,129 @@
 import UIKit
 
 
-class PhotosTableViewCell: UICollectionViewCell{
+class PhotosTableViewCell: UITableViewCell{
     
-    private enum Constants {
-        // Generic layout constants
-        static let verticalSpacing: CGFloat = 8.0
-        static let horizontalPadding: CGFloat = 16.0
-        static let profileDescriptionVerticalPadding: CGFloat = 8.0
-        
-        // contentView layout constants
-        static let contentViewCornerRadius: CGFloat = 4.0
-        
-        // profileImageView layout constants
-        static let imageHeight: CGFloat = 180.0
-    }
+    var buttonTapCallback: () -> () = {}
     
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 6
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        return imageView
+    fileprivate lazy var photos: [Photo] = Photo.make()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 24.0)
+        label.textColor = .black
+        label.text = "Photo"
+        return label
     }()
     
+    private lazy var arrowButton: UIButton = {
+        let button =  UIButton()
+        button.setImage(UIImage(systemName: "arrow.forward"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    private let collectionView: UICollectionView = {
+        let viewLayout = UICollectionViewFlowLayout()
+        
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: viewLayout
+        )
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.register(
+            PhotosCell.self,
+            forCellWithReuseIdentifier: PhotosCell.identifier
+        )
+        
+        return collectionView
+    }()
+    
+    
+    override init(
+        style: UITableViewCell.CellStyle,
+        reuseIdentifier: String?
+    ) {
+        super.init(
+            style: style,
+            reuseIdentifier: reuseIdentifier
+        )
+        print("cell")
+        
+        
+        tuneView()
+        addSubviews()
+        setupConstraints()
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        
-        setupView()
-        setupSubviews()
-        setupLayouts()
-    }
-    private func setupView() {
-        contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = Constants.contentViewCornerRadius
-        contentView.backgroundColor = .white
+    private func tuneView() {
+        selectionStyle = .none
+        backgroundColor = .white
     }
     
-    private func setupSubviews() {
-        contentView.addSubview(imageView)
+    private func addSubviews() {
+        addSubview(titleLabel)
+        addSubview(arrowButton)
+        addSubview(collectionView)
+        setupCollectionView()
     }
     
-    private func setupLayouts() {
+    private func setupCollectionView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: Constants.imageHeight),
+            titleLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor, constant: 12
+            ),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            
+            arrowButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            arrowButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+            collectionView.leadingAnchor.constraint(
+                equalTo: leadingAnchor, constant: 12
+            ),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
         ])
     }
     
+    @objc private func didTapButton(_ sender: UIResponder) {
+        print("Tap Tap")
+        buttonTapCallback()
+    }
+    
+    func update(){}
+}
+
+extension PhotosTableViewCell: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(section)
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: PhotosCell.identifier,
+            for: indexPath) as! PhotosCell
+        
+        let photo = photos[indexPath.row]
+        cell.setup(photo: photo)
+        
+        return cell
+    }
+}
+
+extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     
 }
+
