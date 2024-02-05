@@ -50,8 +50,6 @@ class PhotosTableViewCell: UITableViewCell{
             style: style,
             reuseIdentifier: reuseIdentifier
         )
-        print("cell")
-        
         
         tuneView()
         addSubviews()
@@ -67,9 +65,9 @@ class PhotosTableViewCell: UITableViewCell{
     }
     
     private func addSubviews() {
-        addSubview(titleLabel)
-        addSubview(arrowButton)
-        addSubview(collectionView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(arrowButton)
+        contentView.addSubview(collectionView)
         setupCollectionView()
     }
     
@@ -83,29 +81,32 @@ class PhotosTableViewCell: UITableViewCell{
             titleLabel.leadingAnchor.constraint(
                 equalTo: leadingAnchor, constant: 12
             ),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             
-            arrowButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            arrowButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             arrowButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             arrowButton.widthAnchor.constraint(equalToConstant: 50),
             arrowButton.heightAnchor.constraint(equalToConstant: 50),
             
             
             
-                
             
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+            
+            collectionView.topAnchor.constraint(equalTo: arrowButton.bottomAnchor, constant: 12),
             collectionView.leadingAnchor.constraint(
                 equalTo: leadingAnchor, constant: 12
             ),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
-            collectionView.widthAnchor.constraint(equalTo: widthAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant:100)
+            collectionView.trailingAnchor.constraint(
+                equalTo: trailingAnchor, constant: -4
+            ),
+            
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            
+            collectionView.heightAnchor.constraint(equalToConstant:60)
         ])
     }
     
     @objc private func didTapButton(_ sender: UIResponder) {
-        print("Tap Tap")
         buttonTapCallback()
     }
     
@@ -115,7 +116,6 @@ class PhotosTableViewCell: UITableViewCell{
 extension PhotosTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(section)
         return 4
     }
     
@@ -133,5 +133,55 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
 
 extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     
+    private enum LayoutConstant {
+        static let spacing: CGFloat = 8
+        static let itemHeight: CGFloat = 50
+    }
+    
+    private func itemWidth(
+        for width: CGFloat,
+        spacing: CGFloat
+    ) -> CGFloat {
+        let itemsInRow: CGFloat = 4
+        
+        let totalSpacing: CGFloat = 4 * spacing + (itemsInRow) * spacing
+        let finalWidth = (width - totalSpacing) / itemsInRow
+        
+        return floor(finalWidth)
+    }
+    
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let width = itemWidth(
+            for: contentView.frame.width,
+            spacing: LayoutConstant.spacing
+        )
+        
+        return CGSize(width: width, height: LayoutConstant.itemHeight)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        UIEdgeInsets(
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 8
+        )
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        buttonTapCallback()
+    }
 }
 

@@ -128,7 +128,7 @@ class LogInViewController: UIViewController {
             scrollView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
             scrollView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
-
+            
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
@@ -153,27 +153,27 @@ class LogInViewController: UIViewController {
             logoView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             logoView.widthAnchor.constraint(equalToConstant: 100),
             logoView.heightAnchor.constraint(equalToConstant: 100),
-    
+            
             loginAndPasswordView.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 120),
             loginAndPasswordView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginAndPasswordView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginAndPasswordView.heightAnchor.constraint(equalToConstant: 100),
-  
+            
             loginView.topAnchor.constraint(equalTo: loginAndPasswordView.topAnchor),
             loginView.leadingAnchor.constraint(equalTo: loginAndPasswordView.leadingAnchor, constant: 8),
             loginView.trailingAnchor.constraint(equalTo: loginAndPasswordView.trailingAnchor, constant: -8),
             loginView.heightAnchor.constraint(equalToConstant: 50),
-    
+            
             lineView.topAnchor.constraint(equalTo: loginView.bottomAnchor),
             lineView.leadingAnchor.constraint(equalTo: loginAndPasswordView.leadingAnchor),
             lineView.trailingAnchor.constraint(equalTo: loginAndPasswordView.trailingAnchor),
             lineView.heightAnchor.constraint(equalToConstant: 0.5),
-   
+            
             passwordView.topAnchor.constraint(equalTo: lineView.bottomAnchor),
             passwordView.leadingAnchor.constraint(equalTo: loginAndPasswordView.leadingAnchor, constant: 8),
             passwordView.trailingAnchor.constraint(equalTo: loginAndPasswordView.trailingAnchor, constant: -8),
             passwordView.heightAnchor.constraint(equalToConstant: 50),
-
+            
             loginButtonView.topAnchor.constraint(equalTo: loginAndPasswordView.bottomAnchor, constant: 16),
             loginButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
@@ -189,8 +189,6 @@ class LogInViewController: UIViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         if(!passwordText.isEmpty && !loginText.isEmpty){
             let profileViewController = ProfileViewController()
-            
-            
             self.navigationController?.pushViewController(profileViewController, animated: true)
         }
         

@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-
+    
     
     
     private enum CellReuseID: String {
@@ -94,7 +94,10 @@ extension ProfileViewController: UITableViewDataSource {
             ) as? PhotosTableViewCell else {
                 fatalError("could not dequeueReusableCell")
             }
-            
+            cell.buttonTapCallback = {
+                let photosViewController = PhotosViewController()
+                self.navigationController?.pushViewController(photosViewController, animated: true)
+            }
             cell.update()
             
             return cell

@@ -1,7 +1,14 @@
+//
+//  hotosCollectionViewCell.swift
+//  Navigation
+//
+//  Created by Ярослав  Мартынов on 05.02.2024.
+//
+
 import UIKit
 
 
-class PhotosCell: UICollectionViewCell{
+class PhotosCollectionViewCell: UICollectionViewCell{
     
     private enum Constants {
         // Generic layout constants
@@ -19,7 +26,6 @@ class PhotosCell: UICollectionViewCell{
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView
