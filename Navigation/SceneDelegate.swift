@@ -22,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let feedViewController = FeedViewController()
         
         let loginViewController = LogInViewController()
+        //let loginViewController = ProfileViewController()
+        
         
         
         feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "doc.richtext"), tag: 0)
@@ -32,6 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UINavigationController(rootViewController: $0)
         }
         tabBarController.selectedIndex = 0
+        //tabBarController.selectedIndex = 1
         
         window.rootViewController = tabBarController
         UITabBar.appearance().backgroundColor = .white
