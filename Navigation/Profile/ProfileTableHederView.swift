@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileHeaderView : UIView{
     
+    var buttonTapCallback: (_ avatarImage: UIImageView) -> () = {avatarImage in }
+    
     private var statusText: String = ""
     
     override var intrinsicContentSize: CGSize {
@@ -18,13 +20,20 @@ class ProfileHeaderView : UIView{
         )
     }
     
-    let avatarImageView: UIImageView = {
+    lazy var avatarImageView: UIImageView = {
         let avatarView = UIImageView(image: UIImage(named: "cat"))
         avatarView.layer.cornerRadius = 50
         avatarView.clipsToBounds = true
         avatarView.layer.borderColor = UIColor.white.cgColor
         avatarView.layer.borderWidth = 3
         avatarView.translatesAutoresizingMaskIntoConstraints = false
+        avatarView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTap)
+        )
+        avatarView.addGestureRecognizer(tap)
+        
         return avatarView
     }()
     
@@ -104,6 +113,7 @@ class ProfileHeaderView : UIView{
     
     
     func setupContraints(){
+    
         let safeAreaGuide = safeAreaLayoutGuide
         let constraint = [
             avatarImageView.heightAnchor.constraint(equalToConstant: 100.0),
@@ -136,5 +146,9 @@ class ProfileHeaderView : UIView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc private func didTap(gesture: UIGestureRecognizer) {
+        buttonTapCallback(gesture.view as! UIImageView)
+     }
     
 }

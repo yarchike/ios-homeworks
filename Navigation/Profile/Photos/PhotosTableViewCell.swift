@@ -177,7 +177,7 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
         )
     }
     
-    func collectionView(
+    func collectionView(    
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
