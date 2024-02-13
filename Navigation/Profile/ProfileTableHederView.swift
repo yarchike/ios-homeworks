@@ -102,11 +102,11 @@ class ProfileHeaderView : UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(avatarImageView)
         addSubview(fullNameLabel)
         addSubview(statusLabel)
         addSubview(setStatusButton)
         addSubview(statusTextField)
+        addSubview(avatarImageView)
         setupContraints()
         
     }
