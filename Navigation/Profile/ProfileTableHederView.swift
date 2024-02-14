@@ -30,7 +30,7 @@ class ProfileHeaderView : UIView{
         avatarView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(
             target: self,
-            action: #selector(didTap)
+            action: #selector(tapAvatar)
         )
         avatarView.addGestureRecognizer(tap)
         
@@ -85,6 +85,26 @@ class ProfileHeaderView : UIView{
         return textField
     }()
     
+    private lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray
+        view.alpha = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var closeImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "xmark"))
+        imageView.alpha = 0
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTap)
+        )
+        imageView.addGestureRecognizer(tap)
+        return imageView
+    }()
+    
     @objc func buttonPressed(_ sender: UIButton) {
         if !statusText.isEmpty{
             statusLabel.text = statusText
@@ -99,6 +119,15 @@ class ProfileHeaderView : UIView{
         }
     }
     
+    @objc private func didTap(gesture: UIGestureRecognizer) {
+        print("tap tap")
+        UIView.animate(withDuration: 1){
+            self.avatarImageView.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.backgroundView.alpha = 0
+            self.closeImage.alpha = 0
+        }
+     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -106,6 +135,8 @@ class ProfileHeaderView : UIView{
         addSubview(statusLabel)
         addSubview(setStatusButton)
         addSubview(statusTextField)
+        addSubview(backgroundView)
+        addSubview(closeImage)
         addSubview(avatarImageView)
         setupContraints()
         
@@ -137,7 +168,17 @@ class ProfileHeaderView : UIView{
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant:24),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50.0),
             setStatusButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16)
+            setStatusButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
+            
+            backgroundView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            
+            closeImage.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
+            closeImage.widthAnchor.constraint(equalToConstant: 30),
+            closeImage.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
+            closeImage.heightAnchor.constraint(equalToConstant: 30),
             
         ]
         NSLayoutConstraint.activate(constraint)
@@ -147,8 +188,25 @@ class ProfileHeaderView : UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func didTap(gesture: UIGestureRecognizer) {
-        buttonTapCallback(gesture.view as! UIImageView)
+    @objc private func tapAvatar(gesture: UIGestureRecognizer) {
+        animateAvatar(gesture.view as! UIImageView)
      }
+    
+    func animateAvatar(_ avatarImage: UIImageView){
+        let width = UIScreen.main.bounds.width
+        let translation = width / 2 - 60
+        let scale = width / 100
+        UIView.animate(withDuration: 1){
+            avatarImage.transform = CGAffineTransform(translationX: translation, y: translation + 100).scaledBy(x: scale, y: scale)
+            self.backgroundView.alpha = 0.5
+            avatarImage.layer.cornerRadius = 0
+        }
+        UIView.animate(withDuration: 1){
+            self.closeImage.alpha = 1
+    
+        }
+        
+    
+    }
     
 }
