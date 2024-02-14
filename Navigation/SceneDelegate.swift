@@ -21,8 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let feedViewController = FeedViewController()
         
-        //let loginViewController = LogInViewController()
-        let loginViewController = ProfileViewController()
+        let loginViewController = LogInViewController()
+        //let loginViewController = ProfileViewController()
         
         
         
@@ -33,8 +33,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
         }
-        //tabBarController.selectedIndex = 0
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 0
+        //tabBarController.selectedIndex = 1
         
         window.rootViewController = tabBarController
         UITabBar.appearance().backgroundColor = .white

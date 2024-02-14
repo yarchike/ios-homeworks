@@ -97,6 +97,7 @@ class ProfileHeaderView : UIView{
         let imageView = UIImageView(image: UIImage(systemName: "xmark"))
         imageView.alpha = 0
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(
             target: self,
             action: #selector(didTap)
@@ -120,9 +121,9 @@ class ProfileHeaderView : UIView{
     }
     
     @objc private func didTap(gesture: UIGestureRecognizer) {
-        print("tap tap")
-        UIView.animate(withDuration: 1){
+        UIView.animate(withDuration: 0.5){
             self.avatarImageView.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.avatarImageView.layer.cornerRadius = 50
             self.backgroundView.alpha = 0
             self.closeImage.alpha = 0
         }
@@ -146,6 +147,7 @@ class ProfileHeaderView : UIView{
     func setupContraints(){
     
         let safeAreaGuide = safeAreaLayoutGuide
+    
         let constraint = [
             avatarImageView.heightAnchor.constraint(equalToConstant: 100.0),
             avatarImageView.widthAnchor.constraint(equalToConstant: 100.0),
@@ -182,6 +184,7 @@ class ProfileHeaderView : UIView{
             
         ]
         NSLayoutConstraint.activate(constraint)
+
     }
     
     required init?(coder: NSCoder) {
@@ -194,14 +197,15 @@ class ProfileHeaderView : UIView{
     
     func animateAvatar(_ avatarImage: UIImageView){
         let width = UIScreen.main.bounds.width
-        let translation = width / 2 - 60
+        let translation = width / 2 - 65
         let scale = width / 100
-        UIView.animate(withDuration: 1){
+        UIView.animate(withDuration: 0.5){
             avatarImage.transform = CGAffineTransform(translationX: translation, y: translation + 100).scaledBy(x: scale, y: scale)
             self.backgroundView.alpha = 0.5
+            self.backgroundView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: 100, y: 100)
             avatarImage.layer.cornerRadius = 0
         }
-        UIView.animate(withDuration: 1){
+        UIView.animate(withDuration: 0.3){
             self.closeImage.alpha = 1
     
         }
