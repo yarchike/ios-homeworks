@@ -4,6 +4,8 @@ class ProfileViewController: UIViewController {
     
     fileprivate let data = Post.make()
     
+    private var avatarView: UIImageView?
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView.init(
             frame: .zero,
@@ -12,6 +14,8 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+
     
     
     
@@ -55,6 +59,7 @@ class ProfileViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            
         ])
         
     }
@@ -75,6 +80,8 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         
     }
+    
+    
 }
 
 extension ProfileViewController: UITableViewDataSource {

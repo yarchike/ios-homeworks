@@ -36,5 +36,53 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1383D55-15E2-4B1F-85CD-1EE124A77869"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Profile/ProfileTableHederView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "fullNameLabel"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "E1383D55-15E2-4B1F-85CD-1EE124A77869 - d8e674dd9e18fc96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UILabel in variable initialization expression of Navigation.ProfileHeaderView.fullNameLabel : __C.UILabel"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yarchik/Documents/ios-homeworks/Navigation/Profile/ProfileTableHederView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  uuid = "E1383D55-15E2-4B1F-85CD-1EE124A77869 - df9cf6df8e709189"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Navigation.ProfileHeaderView.fullNameLabel.getter : __C.UILabel"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yarchik/Documents/ios-homeworks/Navigation/Profile/ProfileTableHederView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
