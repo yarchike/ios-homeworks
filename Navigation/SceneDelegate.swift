@@ -21,8 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let feedViewController = FeedViewController()
         
-        let loginViewController = LogInViewController()
-        //let loginViewController = ProfileViewController()
+        //let loginViewController = LogInViewController()
+        let loginViewController = ProfileViewController()
         
         
         

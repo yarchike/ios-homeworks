@@ -1,4 +1,5 @@
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
     
@@ -42,7 +43,11 @@ class ProfileViewController: UIViewController {
     // MARK: - Private
     
     private func setupView() {
+        #if DEBUG
+        view.backgroundColor = .lightGray
+        #else
         view.backgroundColor = .white
+        #endif
         navigationItem.title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = false
     }
