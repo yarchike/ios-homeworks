@@ -34,38 +34,6 @@
             endingLineNumber = "11"
             landmarkName = "PhotosCollectionViewCell"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "B3072A4D-FCFF-4A02-BE6E-5C5FB74904FA - 9cc5aa9849a0130c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Navigation.PhotosCollectionViewCell.__deallocating_deinit"
-                  moduleName = "Navigation"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yarchik/Documents/ios-homeworks/Navigation/Profile/Photos/PhotosCollectionViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "B3072A4D-FCFF-4A02-BE6E-5C5FB74904FA - 9cc5aa9849a0130c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Navigation.PhotosCollectionViewCell.__deallocating_deinit"
-                  moduleName = "Navigation"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yarchik/Documents/ios-homeworks/Navigation/Profile/Photos/PhotosCollectionViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "8">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -78,8 +46,8 @@
             filePath = "Navigation/Profile/ProfileTableHederView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "fullNameLabel"
             landmarkType = "24">
             <Locations>
