@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileHeaderView : UIView{
     
@@ -146,44 +147,52 @@ class ProfileHeaderView : UIView{
     
     func setupContraints(){
     
-        let safeAreaGuide = safeAreaLayoutGuide
-    
-        let constraint = [
-            avatarImageView.heightAnchor.constraint(equalToConstant: 100.0),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 100.0),
-            avatarImageView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
-            avatarImageView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
-            
-            fullNameLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 27),
-            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            fullNameLabel.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
-            
-            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 24),
-            statusLabel.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
-            
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 8),
-            statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40.0),
-            statusTextField.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
-            
-            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant:24),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50.0),
-            setStatusButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
-            
-            backgroundView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            
-            closeImage.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
-            closeImage.widthAnchor.constraint(equalToConstant: 30),
-            closeImage.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -16),
-            closeImage.heightAnchor.constraint(equalToConstant: 30),
-            
-        ]
-        NSLayoutConstraint.activate(constraint)
+        avatarImageView.snp.makeConstraints{
+             $0.height.equalTo(100)
+             $0.width.equalTo(100)
+             $0.leading.equalToSuperview().offset(16)
+             $0.top.equalToSuperview().offset(16)
+         }
+
+         fullNameLabel.snp.makeConstraints{
+             $0.top.equalToSuperview().offset(27)
+             $0.leading.equalTo(avatarImageView.snp.trailing).offset(16)
+             $0.trailing.equalToSuperview().offset(-16)
+         }
+
+         statusLabel.snp.makeConstraints{
+             $0.leading.equalTo(avatarImageView.snp.trailing).offset(16)
+             $0.top.equalTo(fullNameLabel.snp.bottom).offset(24)
+             $0.trailing.equalToSuperview().offset(-16)
+         }
+
+         statusTextField.snp.makeConstraints{
+             $0.top.equalTo(statusLabel.snp.bottom).offset(8)
+             $0.leading.equalTo(avatarImageView.snp.trailing).offset(16)
+             $0.height.equalTo(40)
+             $0.trailing.equalToSuperview().offset(-16)
+         }
+
+         setStatusButton.snp.makeConstraints{
+             $0.top.equalTo(statusTextField.snp.bottom).offset(24)
+             $0.height.equalTo(50)
+             $0.leading.equalToSuperview().offset(16)
+             $0.trailing.equalToSuperview().offset(-16)
+         }
+
+         backgroundView.snp.makeConstraints{
+             $0.top.equalToSuperview()
+             $0.bottom.equalToSuperview()
+             $0.trailing.equalToSuperview()
+             $0.leading.equalToSuperview()
+         }
+
+         closeImage.snp.makeConstraints{
+             $0.top.equalToSuperview().offset(16)
+             $0.width.equalTo(30)
+             $0.trailing.equalToSuperview().offset(-16)
+             $0.height.equalTo(30)
+         }
 
     }
     

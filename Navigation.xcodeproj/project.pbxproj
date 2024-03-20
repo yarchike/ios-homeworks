@@ -17,6 +17,9 @@
 		BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86F2B5376BA0079B703 /* InfoViewController.swift */; };
 		BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */; };
 		BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22242B6FB10000648FA3 /* CustomButton.swift */; };
+		BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA12BAAE67000BF3FFD /* SnapKit */; };
+		BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */; };
+		BF8EDCA72BAAE68800BF3FFD /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA62BAAE68800BF3FFD /* iOSIntPackage */; };
 		BF939BC32B70F78200F54B62 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939BC22B70F78200F54B62 /* PhotosViewController.swift */; };
 		BF939BC52B7100B900F54B62 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939BC42B7100B900F54B62 /* PhotosCollectionViewCell.swift */; };
 		BF941CAD2BA347A0002AB495 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = BF941CAC2BA347A0002AB495 /* StorageService.docc */; };
@@ -94,6 +97,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF941CBE2BA347A0002AB495 /* StorageService.framework in Frameworks */,
+				BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */,
+				BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */,
+				BF8EDCA72BAAE68800BF3FFD /* iOSIntPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +247,11 @@
 				BF941CBD2BA347A0002AB495 /* PBXTargetDependency */,
 			);
 			name = Navigation;
+			packageProductDependencies = (
+				BF8EDCA12BAAE67000BF3FFD /* SnapKit */,
+				BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */,
+				BF8EDCA62BAAE68800BF3FFD /* iOSIntPackage */,
+			);
 			productName = Navigation;
 			productReference = BF00E8502B5365390079B703 /* Navigation.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +301,10 @@
 				Base,
 			);
 			mainGroup = BF00E8472B5365390079B703;
+			packageReferences = (
+				BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BF8EDCA52BAAE68800BF3FFD /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+			);
 			productRefGroup = BF00E8512B5365390079B703 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -658,6 +673,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		BF8EDCA52BAAE68800BF3FFD /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF8EDCA12BAAE67000BF3FFD /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		BF8EDCA62BAAE68800BF3FFD /* iOSIntPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8EDCA52BAAE68800BF3FFD /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			productName = iOSIntPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF00E8482B5365390079B703 /* Project object */;
 }
