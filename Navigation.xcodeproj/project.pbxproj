@@ -20,6 +20,11 @@
 		BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA12BAAE67000BF3FFD /* SnapKit */; };
 		BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */; };
 		BF8EDCA72BAAE68800BF3FFD /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA62BAAE68800BF3FFD /* iOSIntPackage */; };
+		BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCA82BAAEB0400BF3FFD /* User.swift */; };
+		BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCAC2BAAEB9600BF3FFD /* UserService.swift */; };
+		BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCAE2BAAEC3E00BF3FFD /* CurrentUserService.swift */; };
+		BF8EDCB52BAAF2BF00BF3FFD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCB42BAAF2BF00BF3FFD /* Toast */; };
+		BF8EDCB72BAAF68C00BF3FFD /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCB62BAAF68C00BF3FFD /* TestUserService.swift */; };
 		BF939BC32B70F78200F54B62 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939BC22B70F78200F54B62 /* PhotosViewController.swift */; };
 		BF939BC52B7100B900F54B62 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939BC42B7100B900F54B62 /* PhotosCollectionViewCell.swift */; };
 		BF941CAD2BA347A0002AB495 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = BF941CAC2BA347A0002AB495 /* StorageService.docc */; };
@@ -74,6 +79,10 @@
 		BF00E86F2B5376BA0079B703 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BF4C22242B6FB10000648FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		BF8EDCA82BAAEB0400BF3FFD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BF8EDCAC2BAAEB9600BF3FFD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		BF8EDCAE2BAAEC3E00BF3FFD /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
+		BF8EDCB62BAAF68C00BF3FFD /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
 		BF939BC22B70F78200F54B62 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		BF939BC42B7100B900F54B62 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF941CA92BA347A0002AB495 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +108,7 @@
 				BF941CBE2BA347A0002AB495 /* StorageService.framework in Frameworks */,
 				BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */,
 				BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */,
+				BF8EDCB52BAAF2BF00BF3FFD /* Toast in Frameworks */,
 				BF8EDCA72BAAE68800BF3FFD /* iOSIntPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +145,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BF8EDCAA2BAAEB6F00BF3FFD /* service */,
 				BF4C22232B6FB0B500648FA3 /* UIView */,
 				BFFC6DD72B6C09920052A00E /* UITableView+Extensions.swift */,
 				BF00E8532B5365390079B703 /* AppDelegate.swift */,
@@ -160,6 +171,16 @@
 				BF4C22242B6FB10000648FA3 /* CustomButton.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		BF8EDCAA2BAAEB6F00BF3FFD /* service */ = {
+			isa = PBXGroup;
+			children = (
+				BF8EDCAC2BAAEB9600BF3FFD /* UserService.swift */,
+				BF8EDCAE2BAAEC3E00BF3FFD /* CurrentUserService.swift */,
+				BF8EDCB62BAAF68C00BF3FFD /* TestUserService.swift */,
+			);
+			path = service;
 			sourceTree = "<group>";
 		};
 		BF941CAA2BA347A0002AB495 /* StorageService */ = {
@@ -214,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				BFBDEBF32B6FC6E20076A61F /* Photo.swift */,
+				BF8EDCA82BAAEB0400BF3FFD /* User.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -251,6 +273,7 @@
 				BF8EDCA12BAAE67000BF3FFD /* SnapKit */,
 				BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */,
 				BF8EDCA62BAAE68800BF3FFD /* iOSIntPackage */,
+				BF8EDCB42BAAF2BF00BF3FFD /* Toast */,
 			);
 			productName = Navigation;
 			productReference = BF00E8502B5365390079B703 /* Navigation.app */;
@@ -304,6 +327,7 @@
 			packageReferences = (
 				BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */,
 				BF8EDCA52BAAE68800BF3FFD /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				BF8EDCB32BAAF2BF00BF3FFD /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = BF00E8512B5365390079B703 /* Products */;
 			projectDirPath = "";
@@ -340,6 +364,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */,
+				BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */,
+				BF8EDCB72BAAF68C00BF3FFD /* TestUserService.swift in Sources */,
 				BFBDEC022B6FDF0D0076A61F /* ReusableView.swift in Sources */,
 				BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */,
 				BF00E8582B5365390079B703 /* ViewController.swift in Sources */,
@@ -355,8 +381,10 @@
 				BFBDEBF42B6FC6E20076A61F /* Photo.swift in Sources */,
 				BFFC6DD82B6C09920052A00E /* UITableView+Extensions.swift in Sources */,
 				BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */,
+				BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
 				BFFC6DD62B6BCCCF0052A00E /* PostTableViewCell.swift in Sources */,
+				BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +719,14 @@
 				minimumVersion = 2.2.0;
 			};
 		};
+		BF8EDCB32BAAF2BF00BF3FFD /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -708,6 +744,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF8EDCA52BAAE68800BF3FFD /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
+		};
+		BF8EDCB42BAAF2BF00BF3FFD /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8EDCB32BAAF2BF00BF3FFD /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
