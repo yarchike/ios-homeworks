@@ -4,8 +4,8 @@ import StorageService
 class ProfileViewController: UIViewController {
     
     fileprivate let data = Post.make()
-    
-    private var avatarView: UIImageView?
+
+    var user: User?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView.init(
@@ -71,6 +71,9 @@ class ProfileViewController: UIViewController {
     
     private func tuneTableView() {
         let headerView = ProfileHeaderView()
+        if let user = user{
+            headerView.setupProfile(user: user)
+        }
         tableView.setAndLayout(headerView: headerView)
         tableView.tableFooterView = UIView()
         if #available(iOS 15.0, *) {

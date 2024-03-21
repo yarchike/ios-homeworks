@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import Toast
 
 class LogInViewController: UIViewController {
     
     var loginText = ""
     var passwordText = ""
+    
+    
+    var userService: UserService?
+    
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -100,6 +105,11 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if DEBUG
+        userService = TestUserService()
+        #else
+        userService = CurrentUserService()
+        #endif
         
         setupView()
         addSubviews()
@@ -188,8 +198,15 @@ class LogInViewController: UIViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {
         if(!passwordText.isEmpty && !loginText.isEmpty){
-            let profileViewController = ProfileViewController()
-            self.navigationController?.pushViewController(profileViewController, animated: true)
+            if let user = userService?.getUser(login: loginText){
+                let profileViewController = ProfileViewController()
+                profileViewController.user = user
+                self.navigationController?.pushViewController(profileViewController, animated: true)
+            }else{
+                self.view.makeToast("No such user")
+            }
+            
+            
         }
         
     }
