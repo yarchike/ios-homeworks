@@ -9,16 +9,6 @@ import UIKit
 
 class CurrentUserService: UserService {
     
-    let user = User(login: "user", fullname: "Djeki Rassel", avatar: UIImage(named: "cat"), status: "Where")
-    
-    func getUserByLogin(login: String) -> User? {
-        if(user.login == login){
-            return user
-        }else{
-            return nil
-        }
-    }
-
-    
+   let user = User(login: "user", fullname: "Djeki Rassel", avatar: UIImage(named: "cat"), status: "Where")
     
 }

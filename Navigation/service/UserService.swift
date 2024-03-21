@@ -5,7 +5,13 @@
 //  Created by Ярослав  Мартынов on 20.03.2024.
 //
 
-
 protocol UserService {
-    func getUserByLogin(login: String) -> User?
+    var user: User { get }
+    func getUser(login: String) -> User?
+}
+
+extension UserService {
+    func getUser(login: String) -> User? {
+        return login == user.login ? user : nil
+    }
 }

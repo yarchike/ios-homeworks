@@ -198,7 +198,7 @@ class LogInViewController: UIViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {
         if(!passwordText.isEmpty && !loginText.isEmpty){
-            if let user = userService?.getUserByLogin(login: loginText){
+            if let user = userService?.getUser(login: loginText){
                 let profileViewController = ProfileViewController()
                 profileViewController.user = user
                 self.navigationController?.pushViewController(profileViewController, animated: true)

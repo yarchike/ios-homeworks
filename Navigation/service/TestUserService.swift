@@ -11,14 +11,4 @@ class TestUserService: UserService {
     
     let user = User(login: "test", fullname: "Test Testovich", avatar: UIImage(named: "witcher"), status: "Testing")
     
-    func getUserByLogin(login: String) -> User? {
-        if(user.login == login){
-            return user
-        }else{
-            return nil
-        }
-    }
-
-    
-    
 }
