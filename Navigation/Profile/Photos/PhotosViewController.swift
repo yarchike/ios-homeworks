@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 class PhotosViewController: UIViewController{
     
-    fileprivate lazy var photos: [Photo] = Photo.make()
+    var images: [UIImage] = []
+    
+    let imagePublisherFacade: ImagePublisherFacade = ImagePublisherFacade()
     
     private let collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
@@ -36,6 +39,16 @@ class PhotosViewController: UIViewController{
         setupView()
         addSubviews()
         setupConstraints()
+        subscribeProtocolObserver()
+        addImage()
+        
+        
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        imagePublisherFacade.removeSubscription(for: self)
         
     }
     
@@ -66,6 +79,16 @@ class PhotosViewController: UIViewController{
         ])
     }
     
+    func subscribeProtocolObserver() {
+        imagePublisherFacade.subscribe(self)
+    }
+    
+    func addImage(){
+        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 10, userImages: Photo.make().map{
+            UIImage(named: $0.image)!
+        })
+    }
+    
     
     
 }
@@ -73,7 +96,7 @@ class PhotosViewController: UIViewController{
 extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -81,8 +104,8 @@ extension PhotosViewController: UICollectionViewDataSource {
             withReuseIdentifier: PhotosCollectionViewCell.identifier,
             for: indexPath) as! PhotosCollectionViewCell
         
-        let photo = photos[indexPath.row]
-        cell.setup(photo: photo)
+        let image = images[indexPath.row]
+        cell.setup(image: image)
         
         return cell
     }
@@ -132,4 +155,11 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
         )
     }
     
+}
+
+extension PhotosViewController: ImageLibrarySubscriber{
+    func receive(images: [UIImage]){
+        self.images = images
+        collectionView.reloadData()
+    }
 }

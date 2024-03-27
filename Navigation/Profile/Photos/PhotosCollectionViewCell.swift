@@ -62,9 +62,9 @@ class PhotosCollectionViewCell: UICollectionViewCell{
         ])
     }
     func setup(
-        photo: Photo
+        image: UIImage
     ) {
-        imageView.image = UIImage(named: photo.image)
+        imageView.image = image
     }
     
     

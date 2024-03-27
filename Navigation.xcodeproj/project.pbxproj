@@ -24,11 +24,9 @@
 		BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A4032BB17DC00051C048 /* MyLoginFactory.swift */; };
 		BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA12BAAE67000BF3FFD /* SnapKit */; };
 		BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */; };
-		BF8EDCA72BAAE68800BF3FFD /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA62BAAE68800BF3FFD /* iOSIntPackage */; };
 		BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCA82BAAEB0400BF3FFD /* User.swift */; };
 		BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCAC2BAAEB9600BF3FFD /* UserService.swift */; };
 		BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCAE2BAAEC3E00BF3FFD /* CurrentUserService.swift */; };
-		BF8EDCB52BAAF2BF00BF3FFD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCB42BAAF2BF00BF3FFD /* Toast */; };
 		BF8EDCB72BAAF68C00BF3FFD /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCB62BAAF68C00BF3FFD /* TestUserService.swift */; };
 		BF939BC32B70F78200F54B62 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939BC22B70F78200F54B62 /* PhotosViewController.swift */; };
 		BF939BC52B7100B900F54B62 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939BC42B7100B900F54B62 /* PhotosCollectionViewCell.swift */; };
@@ -39,6 +37,7 @@
 		BF941CC72BA347C6002AB495 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC6DD32B6B90250052A00E /* Post.swift */; };
 		BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */; };
 		BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */; };
+		BFB94C8F2BB424B300ACD06F /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BFB94C8E2BB424B300ACD06F /* iOSIntPackage */; };
 		BFBDEBF22B6FC4D30076A61F /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBF12B6FC4D30076A61F /* PhotosTableViewCell.swift */; };
 		BFBDEBF42B6FC6E20076A61F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBF32B6FC6E20076A61F /* Photo.swift */; };
 		BFBDEBFF2B6FDE910076A61F /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */; };
@@ -118,8 +117,7 @@
 				BF941CBE2BA347A0002AB495 /* StorageService.framework in Frameworks */,
 				BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */,
 				BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */,
-				BF8EDCB52BAAF2BF00BF3FFD /* Toast in Frameworks */,
-				BF8EDCA72BAAE68800BF3FFD /* iOSIntPackage in Frameworks */,
+				BFB94C8F2BB424B300ACD06F /* iOSIntPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,8 +293,7 @@
 			packageProductDependencies = (
 				BF8EDCA12BAAE67000BF3FFD /* SnapKit */,
 				BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */,
-				BF8EDCA62BAAE68800BF3FFD /* iOSIntPackage */,
-				BF8EDCB42BAAF2BF00BF3FFD /* Toast */,
+				BFB94C8E2BB424B300ACD06F /* iOSIntPackage */,
 			);
 			productName = Navigation;
 			productReference = BF00E8502B5365390079B703 /* Navigation.app */;
@@ -349,8 +346,7 @@
 			mainGroup = BF00E8472B5365390079B703;
 			packageReferences = (
 				BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */,
-				BF8EDCA52BAAE68800BF3FFD /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
-				BF8EDCB32BAAF2BF00BF3FFD /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				BFB94C8D2BB424B300ACD06F /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 			);
 			productRefGroup = BF00E8512B5365390079B703 /* Products */;
 			projectDirPath = "";
@@ -739,20 +735,12 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		BF8EDCA52BAAE68800BF3FFD /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
+		BFB94C8D2BB424B300ACD06F /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
-		BF8EDCB32BAAF2BF00BF3FFD /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scalessec/Toast-Swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				branch = imagepublisher;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -768,15 +756,10 @@
 			package = BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
 		};
-		BF8EDCA62BAAE68800BF3FFD /* iOSIntPackage */ = {
+		BFB94C8E2BB424B300ACD06F /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BF8EDCA52BAAE68800BF3FFD /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			package = BFB94C8D2BB424B300ACD06F /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
-		};
-		BF8EDCB42BAAF2BF00BF3FFD /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF8EDCB32BAAF2BF00BF3FFD /* XCRemoteSwiftPackageReference "Toast-Swift" */;
-			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
