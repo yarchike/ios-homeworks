@@ -14,8 +14,18 @@ class LogInViewController: UIViewController {
     var passwordText = ""
     
     
-    var userService: UserService?
+    var userService: UserService
+    var loginDelegate: LoginViewControllerDelegate
     
+    init(userService: UserService, delegate: LoginViewControllerDelegate) {
+        self.userService = userService
+        self.loginDelegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -105,11 +115,11 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        #if DEBUG
+#if DEBUG
         userService = TestUserService()
-        #else
+#else
         userService = CurrentUserService()
-        #endif
+#endif
         
         setupView()
         addSubviews()
@@ -198,15 +208,20 @@ class LogInViewController: UIViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {
         if(!passwordText.isEmpty && !loginText.isEmpty){
-            if let user = userService?.getUser(login: loginText){
-                let profileViewController = ProfileViewController()
-                profileViewController.user = user
-                self.navigationController?.pushViewController(profileViewController, animated: true)
-            }else{
-                self.view.makeToast("No such user")
+            if let user = userService.getUser(login: loginText){
+                if(loginDelegate.check(login: loginText, password: passwordText)){
+                    let profileViewController = ProfileViewController()
+                    profileViewController.user = user
+                    self.navigationController?.pushViewController(profileViewController, animated: true)
+                }else{
+                    showErrorAlert(text: "Не верный логин или пароль")
+                }
             }
-            
-            
+            else{
+                showErrorAlert(text: "Нету такого пользователя")
+            }
+        }else{
+            showErrorAlert(text: "Не введен логин или пароль")
         }
         
     }
@@ -263,6 +278,14 @@ class LogInViewController: UIViewController {
     private func removeKeyboardObservers() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
+    }
+    
+    private func showErrorAlert(text: String){
+        let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ок", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
 }
