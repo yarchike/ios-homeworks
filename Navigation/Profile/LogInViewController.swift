@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Toast
 
 class LogInViewController: UIViewController {
     
