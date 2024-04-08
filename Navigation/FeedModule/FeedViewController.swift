@@ -12,6 +12,8 @@ class FeedViewController: UIViewController {
     
     var post = Post.make()[0]
     
+    let feedModel = FeedModel()
+    
     private lazy var buttonOne: CustomButton = {
         let button = CustomButton(title: "Открыть пост", titleColor: .systemBlue)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -30,16 +32,50 @@ class FeedViewController: UIViewController {
         return button
     }()
     
+    
+    private lazy var checkGuessTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .lightGray
+        return textField
+    }()
+    
+    private lazy var checkGuessButton: CustomButton = {
+        let button = CustomButton(title: "Check Guess", titleColor: .white)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .blue
+        button.setupTapButton{
+            if(self.checkGuessTextField.text != nil && self.feedModel.check(input: self.checkGuessTextField.text!)){
+                self.checkGuessLabel.textColor = .green
+                self.checkGuessLabel.text = "success"
+            }else{
+                self.checkGuessLabel.textColor = .red
+                self.checkGuessLabel.text = "failed"
+            }
+        }
+        return button
+    }()
+    
+    private lazy var checkGuessLabel: UILabel = {
+        let lable = UILabel()
+        lable.translatesAutoresizingMaskIntoConstraints = false
+        return lable
+    }()
+    
+    
+    
     private lazy var stackView: UIStackView = { [unowned self] in
         let stackView = UIStackView()
-        
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         stackView.axis = .vertical
         stackView.spacing = 10.0
-        
         stackView.addArrangedSubview(self.buttonOne)
         stackView.addArrangedSubview(self.buttonTwo)
+        
+        stackView.addArrangedSubview(self.checkGuessTextField)
+        stackView.addArrangedSubview(self.checkGuessButton)
+        stackView.addArrangedSubview(self.checkGuessLabel)
+    
         
         return stackView
     }()
