@@ -27,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         userService = TestUserService()
         #endif
         
-        let loginViewController = LogInViewController(userService: userService, delegate: MyLoginFactory.makeLoginInspector())
-        //let loginViewController = ProfileViewController()
+        //let loginViewController = LogInViewController(userService: userService, delegate: MyLoginFactory.makeLoginInspector())
+        let loginViewController = ProfileViewController()
         
         
         
