@@ -12,21 +12,21 @@ class FeedViewController: UIViewController {
     
     var post = Post.make()[0]
     
-    private lazy var buttonOne: UIButton = {
-        let button = UIButton()
+    private lazy var buttonOne: CustomButton = {
+        let button = CustomButton(title: "Открыть пост", titleColor: .systemBlue)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Открыть пост", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        button.setupTapButton{
+            self.buttonPressed()
+        }
         return button
     }()
     
-    private lazy var buttonTwo: UIButton = {
-        let button = UIButton()
+    private lazy var buttonTwo: CustomButton = {
+        let button = CustomButton(title: "Открыть пост 2", titleColor: .systemBlue)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Открыть пост 2", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        button.setupTapButton{
+            self.buttonPressed()
+        }
         return button
     }()
     
@@ -62,7 +62,7 @@ class FeedViewController: UIViewController {
         NSLayoutConstraint.activate(constraint)
     }
     
-    @objc func buttonPressed(_ sender: UIButton) {
+     func buttonPressed() {
         let postViewController = PostViewController()
         
         postViewController.postTitle = post.author

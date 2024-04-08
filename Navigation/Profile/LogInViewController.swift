@@ -100,13 +100,13 @@ class LogInViewController: UIViewController {
     }()
     
     lazy var loginButtonView: CustomButton = {
-        let button = CustomButton()
+        let button = CustomButton(title: "Log In", titleColor: .white)
+        button.setupTapButton {
+            self.buttonPressed()
+        }
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
-        button.setTitle("Log In", for: .normal)
-        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(named: "blue_pixel")
-        button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -205,7 +205,7 @@ class LogInViewController: UIViewController {
     }
     
     
-    @objc func buttonPressed(_ sender: UIButton) {
+    func buttonPressed() {
         if(!passwordText.isEmpty && !loginText.isEmpty){
             if let user = userService.getUser(login: loginText){
                 if(loginDelegate.check(login: loginText, password: passwordText)){
