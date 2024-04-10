@@ -12,7 +12,7 @@ class PhotosViewController: UIViewController{
     
     var images: [UIImage] = []
     
-    let imagePublisherFacade: ImagePublisherFacade = ImagePublisherFacade()
+    let imagePublisherFacade = ImagePublisherFacade()
     
     private let collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()

@@ -35,6 +35,7 @@
 		BF941CBE2BA347A0002AB495 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF941CA92BA347A0002AB495 /* StorageService.framework */; };
 		BF941CBF2BA347A0002AB495 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF941CA92BA347A0002AB495 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF941CC72BA347C6002AB495 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC6DD32B6B90250052A00E /* Post.swift */; };
+		BF9511212BC425E5002D02E4 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9511202BC425E5002D02E4 /* FeedModel.swift */; };
 		BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */; };
 		BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */; };
 		BFB94C8F2BB424B300ACD06F /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BFB94C8E2BB424B300ACD06F /* iOSIntPackage */; };
@@ -98,6 +99,7 @@
 		BF941CAB2BA347A0002AB495 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		BF941CAC2BA347A0002AB495 /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
 		BF941CB92BA347A0002AB495 /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
+		BF9511202BC425E5002D02E4 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BFBDEBF12B6FC4D30076A61F /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BF95111F2BC425AE002D02E4 /* FeedModule */,
 				BF8EDCAA2BAAEB6F00BF3FFD /* service */,
 				BF4C22232B6FB0B500648FA3 /* UIView */,
 				BFFC6DD72B6C09920052A00E /* UITableView+Extensions.swift */,
@@ -164,7 +167,6 @@
 				BF00E8612B53653B0079B703 /* Info.plist */,
 				BF00E85C2B53653B0079B703 /* Assets.xcassets */,
 				BF00E85E2B53653B0079B703 /* LaunchScreen.storyboard */,
-				BF00E8672B5367260079B703 /* FeedViewController.swift */,
 				BF00E86B2B5367D00079B703 /* PostViewController.swift */,
 				BF00E86F2B5376BA0079B703 /* InfoViewController.swift */,
 				BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */,
@@ -220,6 +222,15 @@
 				BF941CB92BA347A0002AB495 /* StorageServiceTests.swift */,
 			);
 			path = StorageServiceTests;
+			sourceTree = "<group>";
+		};
+		BF95111F2BC425AE002D02E4 /* FeedModule */ = {
+			isa = PBXGroup;
+			children = (
+				BF00E8672B5367260079B703 /* FeedViewController.swift */,
+				BF9511202BC425E5002D02E4 /* FeedModel.swift */,
+			);
+			path = FeedModule;
 			sourceTree = "<group>";
 		};
 		BFA3A9E82B5FD192008CC6FA /* Profile */ = {
@@ -393,6 +404,7 @@
 				BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */,
 				BF00E8542B5365390079B703 /* AppDelegate.swift in Sources */,
 				BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */,
+				BF9511212BC425E5002D02E4 /* FeedModel.swift in Sources */,
 				BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */,
 				BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */,
 				BF939BC32B70F78200F54B62 /* PhotosViewController.swift in Sources */,
