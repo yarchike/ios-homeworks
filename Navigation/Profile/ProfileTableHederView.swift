@@ -57,8 +57,7 @@ class ProfileHeaderView : UIView{
     }()
     
     lazy var setStatusButton: CustomButton = {
-        let button = CustomButton(title: "Set status", titleColor: .white)
-        button.setupTapButton {
+        let button = CustomButton(title: "Set status", titleColor: .white){
             if !self.statusText.isEmpty{
                 self.statusLabel.text = self.statusText
                 self.statusTextField.text = ""

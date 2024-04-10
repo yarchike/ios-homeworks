@@ -100,8 +100,7 @@ class LogInViewController: UIViewController {
     }()
     
     lazy var loginButtonView: CustomButton = {
-        let button = CustomButton(title: "Log In", titleColor: .white)
-        button.setupTapButton {
+        let button = CustomButton(title: "Log In", titleColor: .white){
             self.buttonPressed()
         }
         button.clipsToBounds = true

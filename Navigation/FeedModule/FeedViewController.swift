@@ -15,20 +15,18 @@ class FeedViewController: UIViewController {
     let feedModel = FeedModel()
     
     private lazy var buttonOne: CustomButton = {
-        let button = CustomButton(title: "Открыть пост", titleColor: .systemBlue)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setupTapButton{
+        let button = CustomButton(title: "Открыть пост", titleColor: .systemBlue){
             self.buttonPressed()
         }
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var buttonTwo: CustomButton = {
-        let button = CustomButton(title: "Открыть пост 2", titleColor: .systemBlue)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setupTapButton{
+        let button = CustomButton(title: "Открыть пост 2", titleColor: .systemBlue){
             self.buttonPressed()
         }
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -41,10 +39,7 @@ class FeedViewController: UIViewController {
     }()
     
     private lazy var checkGuessButton: CustomButton = {
-        let button = CustomButton(title: "Check Guess", titleColor: .white)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
-        button.setupTapButton{
+        let button = CustomButton(title: "Check Guess", titleColor: .white){
             if(self.checkGuessTextField.text != nil && self.feedModel.check(input: self.checkGuessTextField.text!)){
                 self.checkGuessLabel.textColor = .green
                 self.checkGuessLabel.text = "success"
@@ -53,6 +48,8 @@ class FeedViewController: UIViewController {
                 self.checkGuessLabel.text = "failed"
             }
         }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .blue
         return button
     }()
     
