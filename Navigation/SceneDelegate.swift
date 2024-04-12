@@ -19,7 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         
-        let feedViewController = FeedViewController()
+        let feedModel = FeedModel()
+        let postService = PostService()
+        let feedViewModel = FeedVM(feedModel: feedModel, postService: postService)
+        
+        let feedViewController = FeedViewController(viewModel: feedViewModel)
         
         var userService: UserService = CurrentUserService()
 

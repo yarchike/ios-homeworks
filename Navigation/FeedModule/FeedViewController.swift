@@ -10,13 +10,28 @@ import StorageService
 
 class FeedViewController: UIViewController {
     
-    var post = Post.make()[0]
     
-    let feedModel = FeedModel()
+    private var viewModel: FeedVMProtocol
+    
+    init(viewModel: FeedVMProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
     
     private lazy var buttonOne: CustomButton = {
         let button = CustomButton(title: "Открыть пост", titleColor: .systemBlue){
-            self.buttonPressed()
+            self.viewModel.fetchPost()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -24,7 +39,7 @@ class FeedViewController: UIViewController {
     
     private lazy var buttonTwo: CustomButton = {
         let button = CustomButton(title: "Открыть пост 2", titleColor: .systemBlue){
-            self.buttonPressed()
+            self.viewModel.fetchPost()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -40,12 +55,8 @@ class FeedViewController: UIViewController {
     
     private lazy var checkGuessButton: CustomButton = {
         let button = CustomButton(title: "Check Guess", titleColor: .white){
-            if(self.checkGuessTextField.text != nil && self.feedModel.check(input: self.checkGuessTextField.text!)){
-                self.checkGuessLabel.textColor = .green
-                self.checkGuessLabel.text = "success"
-            }else{
-                self.checkGuessLabel.textColor = .red
-                self.checkGuessLabel.text = "failed"
+            if(self.checkGuessTextField.text != nil){
+                self.viewModel.check(input: self.checkGuessTextField.text!)
             }
         }
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +83,7 @@ class FeedViewController: UIViewController {
         stackView.addArrangedSubview(self.checkGuessTextField)
         stackView.addArrangedSubview(self.checkGuessButton)
         stackView.addArrangedSubview(self.checkGuessLabel)
-    
+        
         
         return stackView
     }()
@@ -81,22 +92,65 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(stackView)
+        view.addSubview(activityIndicator)
         setupContraints()
-        
-        
+        bindViewModel()
+    }
+    
+    private func bindViewModel() {
+        viewModel.currentState = { [weak self] state in
+            guard let self else { return }
+            
+            switch state {
+            case .initial:
+                print("initial")
+            case .loading:
+                activityIndicator.isHidden = false
+                stackView.isHidden = true
+                activityIndicator.startAnimating()
+            case .loadedPost(let post):
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    activityIndicator.isHidden = true
+                    activityIndicator.stopAnimating()
+                    stackView.isHidden = false
+                    routeToPostViewController(post: post)
+                }
+            case .error:
+                print("error")
+            case .loadedCheck(let isSuccess):
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    activityIndicator.isHidden = true
+                    activityIndicator.stopAnimating()
+                    stackView.isHidden = false
+                    if(isSuccess){
+                        self.checkGuessLabel.textColor = .green
+                        self.checkGuessLabel.text = "success"
+                    }else{
+                        self.checkGuessLabel.textColor = .red
+                        self.checkGuessLabel.text = "failed"
+                    }
+                }
+            }
+        }
     }
     
     func setupContraints(){
         let safeAreaGuide = view.safeAreaLayoutGuide
         let constraint = [
             stackView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor)
+            stackView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraint)
     }
     
-     func buttonPressed() {
+    func routeToPostViewController(post: Post) {
         let postViewController = PostViewController()
+        
         
         postViewController.postTitle = post.author
         
