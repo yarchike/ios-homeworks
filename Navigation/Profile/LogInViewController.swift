@@ -13,6 +13,9 @@ class LogInViewController: UIViewController {
     var passwordText = ""
     
     
+    var routeToProfile: ((User) -> ())?
+
+    
     var userService: UserService
     var loginDelegate: LoginViewControllerDelegate
     

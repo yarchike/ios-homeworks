@@ -18,6 +18,8 @@ class FeedViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    var routeToPost: (Post) -> () = {_ in }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -149,15 +151,7 @@ class FeedViewController: UIViewController {
     }
     
     func routeToPostViewController(post: Post) {
-        let postViewController = PostViewController()
-        
-        
-        postViewController.postTitle = post.author
-        
-        self.navigationController?.pushViewController(postViewController, animated: true)
-        
-        
-        
+        routeToPost(post)
     }
     
 }

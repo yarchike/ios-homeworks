@@ -21,7 +21,6 @@
 		BF58D7B82BC924F60099CAC0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B72BC924F60099CAC0 /* Coordinator.swift */; };
 		BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */; };
 		BF58D7BC2BC927A40099CAC0 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */; };
-		BF58D7BF2BC93D950099CAC0 /* PostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7BE2BC93D950099CAC0 /* PostCoordinator.swift */; };
 		BF72A3F92BB16ED80051C048 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3F82BB16ED80051C048 /* Checker.swift */; };
 		BF72A3FC2BB1701A0051C048 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3FB2BB1701A0051C048 /* LoginViewControllerDelegate.swift */; };
 		BF72A3FE2BB174380051C048 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3FD2BB174380051C048 /* LoginInspector.swift */; };
@@ -96,7 +95,6 @@
 		BF58D7B72BC924F60099CAC0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
-		BF58D7BE2BC93D950099CAC0 /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
 		BF72A3F82BB16ED80051C048 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		BF72A3FB2BB1701A0051C048 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BF72A3FD2BB174380051C048 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				BF58D7B72BC924F60099CAC0 /* Coordinator.swift */,
 				BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */,
 				BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */,
-				BF58D7BE2BC93D950099CAC0 /* PostCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -451,7 +448,6 @@
 				BF58D7B62BC924D50099CAC0 /* AppCoordinator.swift in Sources */,
 				BFBDEBF42B6FC6E20076A61F /* Photo.swift in Sources */,
 				BFFC6DD82B6C09920052A00E /* UITableView+Extensions.swift in Sources */,
-				BF58D7BF2BC93D950099CAC0 /* PostCoordinator.swift in Sources */,
 				BF72A3FE2BB174380051C048 /* LoginInspector.swift in Sources */,
 				BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */,
 				BF9EA3752BC71E93004114B2 /* FeedVMProtocol.swift in Sources */,

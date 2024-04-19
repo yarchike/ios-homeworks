@@ -9,7 +9,7 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    
+    var routeToInfo: () -> () = {}
     
     var postTitle:String = ""
     
@@ -23,8 +23,7 @@ class PostViewController: UIViewController {
     }
     
     @objc func buttonPressed() {
-        let infoViewController = InfoViewController()
-        self.navigationController?.pushViewController(infoViewController, animated: true)
+        routeToInfo()
         
     }
     

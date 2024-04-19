@@ -20,13 +20,11 @@ class AppCoordinator: Coordinator{
         self.add(coordinator: feedCoordinator)
         self.add(coordinator: profileCoordinator)
         
-        let controllers = [feedCoordinator.navigatorController, profileCoordinator.navigatorController]
+        let controllers = [feedCoordinator.getNavigationController(), profileCoordinator.getNavigationController()]
         tabBarController.viewControllers = controllers
         tabBarController.selectedIndex = 0
         //tabBarController.selectedIndex = 1
         UITabBar.appearance().backgroundColor = .white
     }
-    
-    
     
 }
