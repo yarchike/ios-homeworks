@@ -54,22 +54,19 @@ class PhotosViewController: UIViewController{
         let startTime = CFAbsoluteTimeGetCurrent()
         
         ImageProcessor().processImagesOnThread(sourceImages: photos.map({
-            UIImage(named: $0.image) ?? UIImage()
-        }), filter: .colorInvert, qos: .default){cgImages in
-            self.images = cgImages.map { cgImage in
-                if let cgImage = cgImage{
-                    return UIImage(cgImage: cgImage)
-                }else{
-                    return UIImage()
-                }
-            }
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                self.collectionView.reloadData()
-                let endTime = CFAbsoluteTimeGetCurrent()
-                print("time run: \(endTime - startTime)")
-            }
-        }
+                  UIImage(named: $0.image) ?? UIImage()
+              }), filter: .colorInvert, qos: .background){ [weak self] cgImages in
+                  self?.images = cgImages
+                      .compactMap { $0 }
+                      .map { UIImage(cgImage: $0) }
+                  
+                  let endTime = CFAbsoluteTimeGetCurrent()
+                  print("time run: \(endTime - startTime)")
+                  
+                  DispatchQueue.main.async {
+                      self?.collectionView.reloadData()
+                  }
+              }
         
     }
     
