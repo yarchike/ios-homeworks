@@ -216,7 +216,8 @@ class LogInViewController: UIViewController {
             passwordView.heightAnchor.constraint(equalToConstant: 50),
             
             activityIndicator.topAnchor.constraint(equalTo: lineView.bottomAnchor),
-            activityIndicator.trailingAnchor.constraint(equalTo: loginAndPasswordView.trailingAnchor, constant: -8),
+            activityIndicator.centerXAnchor.constraint(equalTo: loginAndPasswordView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: loginAndPasswordView.centerYAnchor),
             activityIndicator.heightAnchor.constraint(equalToConstant: 50),
             
             loginButtonView.topAnchor.constraint(equalTo: loginAndPasswordView.bottomAnchor, constant: 16),
@@ -241,6 +242,7 @@ class LogInViewController: UIViewController {
         loginText = userService.user.login
         let bruteForceService = BruteForceService()
         activityIndicator.startAnimating()
+        findPasswordButtonView.isEnabled = false
         let queue = DispatchQueue(label: "bruteForce", qos:
         .default)
         queue.async {
@@ -249,6 +251,7 @@ class LogInViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
+                self.findPasswordButtonView.isEnabled = true
                 self.passwordView.isSecureTextEntry = false
                 self.passwordView.text = password
                 self.passwordText = password
