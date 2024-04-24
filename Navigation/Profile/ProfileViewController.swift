@@ -4,6 +4,8 @@ import StorageService
 class ProfileViewController: UIViewController {
     
     fileprivate let data = Post.make()
+    
+    var routeToPhoto: () -> () = {}
 
     var user: User?
     
@@ -15,10 +17,6 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
-
-    
-    
     
     private enum CellReuseID: String {
         case base = "BaseTableViewCell_ReuseID"
@@ -109,10 +107,7 @@ extension ProfileViewController: UITableViewDataSource {
             ) as? PhotosTableViewCell else {
                 fatalError("could not dequeueReusableCell")
             }
-            cell.buttonTapCallback = {
-                let photosViewController = PhotosViewController()
-                self.navigationController?.pushViewController(photosViewController, animated: true)
-            }
+            cell.buttonTapCallback = routeToPhoto
             cell.update()
             
             return cell

@@ -17,37 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         
-        let tabBarController = UITabBarController()
-        
-        let feedModel = FeedModel()
-        let postService = PostService()
-        let feedViewModel = FeedVM(feedModel: feedModel, postService: postService)
-        
-        let feedViewController = FeedViewController(viewModel: feedViewModel)
-        
-        var userService: UserService = CurrentUserService()
-
-        #if DEBUG
-        userService = TestUserService()
-        #endif
-        
-        //let loginViewController = LogInViewController(userService: userService, delegate: MyLoginFactory.makeLoginInspector())
-        let loginViewController = ProfileViewController()
+        let appCoordinator = AppCoordinator()
         
         
-        
-        feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "doc.richtext"), tag: 0)
-        loginViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
-        
-        let controllers = [feedViewController, loginViewController]
-        tabBarController.viewControllers = controllers.map {
-            UINavigationController(rootViewController: $0)
-        }
-        tabBarController.selectedIndex = 0
-        //tabBarController.selectedIndex = 1
-        
-        window.rootViewController = tabBarController
-        UITabBar.appearance().backgroundColor = .white
+        window.rootViewController = appCoordinator.tabBarController
+    
         window.makeKeyAndVisible()
         
         self.window = window
