@@ -10,7 +10,7 @@ import Foundation
 class Checker  {
     
     private let login = "user"
-    private let password = "123456"
+    private let password = "pass"
     
     static let shared: Checker = {
         let instance = Checker()
@@ -19,7 +19,7 @@ class Checker  {
     private init() {}
     
     func check(login: String, password: String)-> Bool{
-        login == self.login && password == self.password
+        return login == self.login && password == self.password
     }
 }
 
