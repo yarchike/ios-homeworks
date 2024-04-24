@@ -10,7 +10,10 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController{
     
-    var images: [UIImage] = []
+    fileprivate lazy var photos: [Photo] = Photo.make()
+    lazy var images: [UIImage] = photos.map({
+        UIImage(named: $0.image) ?? UIImage()
+    })
     
     let imagePublisherFacade = ImagePublisherFacade()
     
@@ -39,16 +42,38 @@ class PhotosViewController: UIViewController{
         setupView()
         addSubviews()
         setupConstraints()
-        subscribeProtocolObserver()
-        addImage()
+//        subscribeProtocolObserver()
+//        addImage()
+        setupProcessImagesOnThread()
         
+        
+    }
+    
+    func setupProcessImagesOnThread(){
+        
+        let startTime = CFAbsoluteTimeGetCurrent()
+        
+        ImageProcessor().processImagesOnThread(sourceImages: photos.map({
+                  UIImage(named: $0.image) ?? UIImage()
+              }), filter: .colorInvert, qos: .background){ [weak self] cgImages in
+                  self?.images = cgImages
+                      .compactMap { $0 }
+                      .map { UIImage(cgImage: $0) }
+                  
+                  let endTime = CFAbsoluteTimeGetCurrent()
+                  print("time run: \(endTime - startTime)")
+                  
+                  DispatchQueue.main.async {
+                      self?.collectionView.reloadData()
+                  }
+              }
         
     }
     
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        imagePublisherFacade.removeSubscription(for: self)
+//        imagePublisherFacade.removeSubscription(for: self)
         
     }
     
@@ -79,15 +104,15 @@ class PhotosViewController: UIViewController{
         ])
     }
     
-    func subscribeProtocolObserver() {
-        imagePublisherFacade.subscribe(self)
-    }
-    
-    func addImage(){
-        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 10, userImages: Photo.make().map{
-            UIImage(named: $0.image)!
-        })
-    }
+//    func subscribeProtocolObserver() {
+//        imagePublisherFacade.subscribe(self)
+//    }
+//    
+//    func addImage(){
+//        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 10, userImages: Photo.make().map{
+//            UIImage(named: $0.image)!
+//        })
+//    }
     
     
     
@@ -157,9 +182,9 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-extension PhotosViewController: ImageLibrarySubscriber{
-    func receive(images: [UIImage]){
-        self.images = images
-        collectionView.reloadData()
-    }
-}
+//extension PhotosViewController: ImageLibrarySubscriber{
+//    func receive(images: [UIImage]){
+//        self.images = images
+//        collectionView.reloadData()
+//    }
+//}
