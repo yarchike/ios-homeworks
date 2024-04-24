@@ -22,8 +22,8 @@ class AppCoordinator: Coordinator{
         
         let controllers = [feedCoordinator.getNavigationController(), profileCoordinator.getNavigationController()]
         tabBarController.viewControllers = controllers
-        tabBarController.selectedIndex = 0
-        //tabBarController.selectedIndex = 1
+        //tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = 1
         UITabBar.appearance().backgroundColor = .white
     }
     

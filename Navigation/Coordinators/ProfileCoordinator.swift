@@ -15,7 +15,7 @@ class ProfileCoordinator: Coordinator {
         return self.navigationController
     }
     
-    let isAuthorized = true
+    let isAuthorized = false
     
     init(){
         self.navigationController = UINavigationController()

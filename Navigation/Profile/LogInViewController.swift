@@ -113,6 +113,23 @@ class LogInViewController: UIViewController {
         return button
     }()
     
+    lazy var findPasswordButtonView: CustomButton = {
+        let button = CustomButton(title: "Подобрать пароль", titleColor: .white){
+            self.brutePassword()
+        }
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        button.backgroundColor = UIColor(named: "blue_pixel")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,7 +183,10 @@ class LogInViewController: UIViewController {
         contentView.addSubview(loginView)
         contentView.addSubview(lineView)
         loginAndPasswordView.addSubview(passwordView)
+        loginAndPasswordView.addSubview(activityIndicator)
         contentView.addSubview(loginButtonView)
+        contentView.addSubview(findPasswordButtonView)
+        
         
         
         NSLayoutConstraint.activate([
@@ -195,14 +215,54 @@ class LogInViewController: UIViewController {
             passwordView.trailingAnchor.constraint(equalTo: loginAndPasswordView.trailingAnchor, constant: -8),
             passwordView.heightAnchor.constraint(equalToConstant: 50),
             
+            activityIndicator.topAnchor.constraint(equalTo: lineView.bottomAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: loginAndPasswordView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: loginAndPasswordView.centerYAnchor),
+            activityIndicator.heightAnchor.constraint(equalToConstant: 50),
+            
             loginButtonView.topAnchor.constraint(equalTo: loginAndPasswordView.bottomAnchor, constant: 16),
             loginButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginButtonView.heightAnchor.constraint(equalToConstant: 50),
-            loginButtonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            
+            findPasswordButtonView.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
+            findPasswordButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            findPasswordButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            findPasswordButtonView.heightAnchor.constraint(equalToConstant: 50),
+            findPasswordButtonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
         
+        
+    }
+    
+    
+    func brutePassword(){
+        loginView.text = userService.user.login
+        loginText = userService.user.login
+        let bruteForceService = BruteForceService()
+        activityIndicator.startAnimating()
+        findPasswordButtonView.isEnabled = false
+        let queue = DispatchQueue(label: "bruteForce", qos:
+        .default)
+        queue.async {
+            let password = bruteForceService.bruteForce{password in
+                self.loginDelegate.check(login: self.userService.user.login, password: password)
+            }
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.findPasswordButtonView.isEnabled = true
+                self.passwordView.isSecureTextEntry = false
+                self.passwordView.text = password
+                self.passwordText = password
+                DispatchQueue.global().asyncAfter(deadline: .now() + 3, execute: { [weak self] in
+                    guard let self else { return }
+                    DispatchQueue.main.async {
+                        self.buttonPressed()
+                    }
+                })
+            }
+        }
         
     }
     
