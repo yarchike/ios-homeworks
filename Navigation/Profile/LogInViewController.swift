@@ -11,6 +11,8 @@ class LogInViewController: UIViewController {
     
     var loginText = ""
     var passwordText = ""
+
+    var countErrors = 0
     
     
     var routeToProfile: ((User) -> ())?
@@ -130,6 +132,11 @@ class LogInViewController: UIViewController {
         return indicator
     }()
     
+    private let timeLabel: UILabel = {
+        let uiLabel = UILabel()
+        uiLabel.translatesAutoresizingMaskIntoConstraints = false
+        return uiLabel
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,6 +193,7 @@ class LogInViewController: UIViewController {
         loginAndPasswordView.addSubview(activityIndicator)
         contentView.addSubview(loginButtonView)
         contentView.addSubview(findPasswordButtonView)
+        contentView.addSubview(timeLabel)
         
         
         
@@ -229,7 +237,12 @@ class LogInViewController: UIViewController {
             findPasswordButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             findPasswordButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             findPasswordButtonView.heightAnchor.constraint(equalToConstant: 50),
-            findPasswordButtonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            
+            timeLabel.topAnchor.constraint(equalTo: findPasswordButtonView.bottomAnchor, constant: 16),
+            timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            timeLabel.heightAnchor.constraint(equalToConstant: 50),
+            timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
         
@@ -271,19 +284,45 @@ class LogInViewController: UIViewController {
         if(!passwordText.isEmpty && !loginText.isEmpty){
             if let user = userService.getUser(login: loginText){
                 if(loginDelegate.check(login: loginText, password: passwordText)){
+                    countErrors = 0
                     let profileViewController = ProfileViewController()
                     profileViewController.user = user
                     self.navigationController?.pushViewController(profileViewController, animated: true)
                 }else{
+                    countErrors += 1
                     showErrorAlert(text: "Не верный логин или пароль")
                 }
             }
             else{
+                countErrors += 1
                 showErrorAlert(text: "Нету такого пользователя")
             }
         }else{
+            countErrors += 1
             showErrorAlert(text: "Не введен логин или пароль")
         }
+        if(countErrors >= 3){
+            blockLogin()
+        }
+        
+    }
+    
+    func blockLogin(){
+        loginButtonView.isEnabled = false
+        var counter = 60
+        Timer.scheduledTimer(
+            withTimeInterval: 1.0,
+            repeats: true) { [weak self] timer in
+                guard let self else { return }
+                counter -= 1
+                
+                timeLabel.text = counter <= 0 ? "" : "До следующей попытки \(counter) с."
+                if counter <= 0 {
+                    timer.invalidate()
+                    countErrors = 0
+                    loginButtonView.isEnabled = true
+                }
+            }
         
     }
     
