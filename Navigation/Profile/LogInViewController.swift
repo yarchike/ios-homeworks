@@ -11,7 +11,7 @@ class LogInViewController: UIViewController {
     
     var loginText = ""
     var passwordText = ""
-    private var timer: Timer?
+
     var countErrors = 0
     
     
@@ -310,7 +310,7 @@ class LogInViewController: UIViewController {
     func blockLogin(){
         loginButtonView.isEnabled = false
         var counter = 60
-        timer = Timer.scheduledTimer(
+        Timer.scheduledTimer(
             withTimeInterval: 1.0,
             repeats: true) { [weak self] timer in
                 guard let self else { return }
@@ -318,8 +318,7 @@ class LogInViewController: UIViewController {
                 
                 timeLabel.text = counter <= 0 ? "" : "До следующей попытки \(counter) с."
                 if counter <= 0 {
-                    self.timer?.invalidate()
-                    self.timer = nil
+                    timer.invalidate()
                     countErrors = 0
                     loginButtonView.isEnabled = true
                 }
