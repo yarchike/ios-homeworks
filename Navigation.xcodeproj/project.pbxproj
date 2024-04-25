@@ -49,6 +49,9 @@
 		BF9EA3792BC720B5004114B2 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EA3782BC720B5004114B2 /* PostService.swift */; };
 		BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */; };
 		BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */; };
+		BFB461EB2BDAC61F009705CE /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461EA2BDAC61F009705CE /* VideoViewController.swift */; };
+		BFB461EE2BDAC761009705CE /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461ED2BDAC761009705CE /* VideoViewCell.swift */; };
+		BFB461F02BDAC7F7009705CE /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461EF2BDAC7F7009705CE /* Video.swift */; };
 		BFBDEBF22B6FC4D30076A61F /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBF12B6FC4D30076A61F /* PhotosTableViewCell.swift */; };
 		BFBDEBF42B6FC6E20076A61F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBF32B6FC6E20076A61F /* Photo.swift */; };
 		BFBDEBFF2B6FDE910076A61F /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */; };
@@ -124,6 +127,9 @@
 		BF9EA3782BC720B5004114B2 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BFB461EA2BDAC61F009705CE /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		BFB461ED2BDAC761009705CE /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
+		BFB461EF2BDAC7F7009705CE /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		BFBDEBF12B6FC4D30076A61F /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		BFBDEBF32B6FC6E20076A61F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
@@ -177,6 +183,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BFB461EC2BDAC626009705CE /* Video */,
 				BF1E01AD2BDA86C3001D956E /* AudioPlayer */,
 				BF58D7B42BC9249B0099CAC0 /* Coordinators */,
 				BF95111F2BC425AE002D02E4 /* FeedModule */,
@@ -300,6 +307,15 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		BFB461EC2BDAC626009705CE /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				BFB461EA2BDAC61F009705CE /* VideoViewController.swift */,
+				BFB461ED2BDAC761009705CE /* VideoViewCell.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		BFBDEBF02B6FC4BE0076A61F /* Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +341,7 @@
 				BFBDEBF32B6FC6E20076A61F /* Photo.swift */,
 				BF8EDCA82BAAEB0400BF3FFD /* User.swift */,
 				BF3B17802BDA423500993DE8 /* ApiError.swift */,
+				BFB461EF2BDAC7F7009705CE /* Video.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -456,6 +473,7 @@
 				BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */,
 				BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */,
 				BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */,
+				BFB461EB2BDAC61F009705CE /* VideoViewController.swift in Sources */,
 				BF8EDCB72BAAF68C00BF3FFD /* TestUserService.swift in Sources */,
 				BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */,
 				BFBDEC022B6FDF0D0076A61F /* ReusableView.swift in Sources */,
@@ -466,8 +484,10 @@
 				BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */,
 				BF00E8542B5365390079B703 /* AppDelegate.swift in Sources */,
 				BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */,
+				BFB461EE2BDAC761009705CE /* VideoViewCell.swift in Sources */,
 				BF9511212BC425E5002D02E4 /* FeedModel.swift in Sources */,
 				BF9EA3772BC71EBA004114B2 /* FeedVM.swift in Sources */,
+				BFB461F02BDAC7F7009705CE /* Video.swift in Sources */,
 				BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */,
 				BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */,
 				BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */,

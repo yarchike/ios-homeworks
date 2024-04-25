@@ -24,6 +24,7 @@ class FeedCoordinator: Coordinator {
         let feedViewController = FeedViewController(viewModel: feedViewModel)
         feedViewController.routeToPost = routeToPostViewController
         feedViewController.routeToAudiu = routeToAudioViewController
+        feedViewController.routeToVideo = routeToVideoViewController
         feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "doc.richtext"), tag: 0)
         self.navigationController = UINavigationController(rootViewController: feedViewController)
         
@@ -44,6 +45,10 @@ class FeedCoordinator: Coordinator {
     func routeToAudioViewController(){
         let audioViewController = AudioViewController()
         navigationController.pushViewController(audioViewController, animated: true)
+    }
+    func routeToVideoViewController(){
+        let videoViewController = VideoViewController()
+        navigationController.pushViewController(videoViewController, animated: true)
     }
     
 }
