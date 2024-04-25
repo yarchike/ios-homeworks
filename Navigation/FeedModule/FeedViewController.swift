@@ -20,6 +20,10 @@ class FeedViewController: UIViewController {
     
     var routeToPost: (Post) -> () = {_ in }
     
+    var routeToAudiu: () -> () = {}
+    
+    var routeToVideo: () -> () = {}
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -42,6 +46,20 @@ class FeedViewController: UIViewController {
     private lazy var buttonTwo: CustomButton = {
         let button = CustomButton(title: "Открыть пост 2", titleColor: .systemBlue){
             self.viewModel.fetchPost()
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    private lazy var buttonAudio: CustomButton = {
+        let button = CustomButton(title: "Открыть аудио", titleColor: .systemBlue){
+            self.routeToAudiu()
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    private lazy var buttonVideo: CustomButton = {
+        let button = CustomButton(title: "Открыть видео", titleColor: .systemBlue){
+            self.routeToVideo()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -81,6 +99,8 @@ class FeedViewController: UIViewController {
         stackView.spacing = 10.0
         stackView.addArrangedSubview(self.buttonOne)
         stackView.addArrangedSubview(self.buttonTwo)
+        stackView.addArrangedSubview(self.buttonAudio)
+        stackView.addArrangedSubview(self.buttonVideo)
         
         stackView.addArrangedSubview(self.checkGuessTextField)
         stackView.addArrangedSubview(self.checkGuessButton)

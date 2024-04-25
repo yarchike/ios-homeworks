@@ -16,6 +16,8 @@
 		BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86B2B5367D00079B703 /* PostViewController.swift */; };
 		BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86F2B5376BA0079B703 /* InfoViewController.swift */; };
 		BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C03182BD93450003D1398 /* BruteForceService.swift */; };
+		BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */; };
+		BF1E01B22BDA8CFA001D956E /* Queen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF1E01B12BDA8CFA001D956E /* Queen.mp3 */; };
 		BF3B17812BDA423500993DE8 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B17802BDA423500993DE8 /* ApiError.swift */; };
 		BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */; };
 		BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22242B6FB10000648FA3 /* CustomButton.swift */; };
@@ -92,6 +94,8 @@
 		BF00E86B2B5367D00079B703 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		BF00E86F2B5376BA0079B703 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		BF0C03182BD93450003D1398 /* BruteForceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceService.swift; sourceTree = "<group>"; };
+		BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
+		BF1E01B12BDA8CFA001D956E /* Queen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Queen.mp3; path = "../../../../iosint-code/12/AVFoundation_Audio/AVFoundation_Audio/Music/Queen.mp3"; sourceTree = "<group>"; };
 		BF3B17802BDA423500993DE8 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BF4C22242B6FB10000648FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BF1E01AD2BDA86C3001D956E /* AudioPlayer */,
 				BF58D7B42BC9249B0099CAC0 /* Coordinators */,
 				BF95111F2BC425AE002D02E4 /* FeedModule */,
 				BF8EDCAA2BAAEB6F00BF3FFD /* service */,
@@ -191,6 +196,23 @@
 				BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BF1E01AD2BDA86C3001D956E /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				BF1E01B02BDA8CB2001D956E /* Music */,
+				BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		BF1E01B02BDA8CB2001D956E /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				BF1E01B12BDA8CFA001D956E /* Queen.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		BF4C22232B6FB0B500648FA3 /* UIView */ = {
@@ -409,6 +431,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1E01B22BDA8CFA001D956E /* Queen.mp3 in Resources */,
 				BF00E8602B53653B0079B703 /* LaunchScreen.storyboard in Resources */,
 				BF00E85D2B53653B0079B703 /* Assets.xcassets in Resources */,
 			);
@@ -461,6 +484,7 @@
 				BF9EA3752BC71E93004114B2 /* FeedVMProtocol.swift in Sources */,
 				BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
+				BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */,
 				BFFC6DD62B6BCCCF0052A00E /* PostTableViewCell.swift in Sources */,
 				BF72A3FC2BB1701A0051C048 /* LoginViewControllerDelegate.swift in Sources */,
 				BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */,
