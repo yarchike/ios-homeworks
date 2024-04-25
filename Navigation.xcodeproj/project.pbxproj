@@ -52,6 +52,7 @@
 		BFB461EB2BDAC61F009705CE /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461EA2BDAC61F009705CE /* VideoViewController.swift */; };
 		BFB461EE2BDAC761009705CE /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461ED2BDAC761009705CE /* VideoViewCell.swift */; };
 		BFB461F02BDAC7F7009705CE /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461EF2BDAC7F7009705CE /* Video.swift */; };
+		BFB461F32BDB06BB009705CE /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461F22BDB06BB009705CE /* RecordViewController.swift */; };
 		BFBDEBF22B6FC4D30076A61F /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBF12B6FC4D30076A61F /* PhotosTableViewCell.swift */; };
 		BFBDEBF42B6FC6E20076A61F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBF32B6FC6E20076A61F /* Photo.swift */; };
 		BFBDEBFF2B6FDE910076A61F /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */; };
@@ -130,6 +131,7 @@
 		BFB461EA2BDAC61F009705CE /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		BFB461ED2BDAC761009705CE /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
 		BFB461EF2BDAC7F7009705CE /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		BFB461F22BDB06BB009705CE /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		BFBDEBF12B6FC4D30076A61F /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		BFBDEBF32B6FC6E20076A61F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BFB461F12BDB06A9009705CE /* Record */,
 				BFB461EC2BDAC626009705CE /* Video */,
 				BF1E01AD2BDA86C3001D956E /* AudioPlayer */,
 				BF58D7B42BC9249B0099CAC0 /* Coordinators */,
@@ -314,6 +317,14 @@
 				BFB461ED2BDAC761009705CE /* VideoViewCell.swift */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		BFB461F12BDB06A9009705CE /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				BFB461F22BDB06BB009705CE /* RecordViewController.swift */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		BFBDEBF02B6FC4BE0076A61F /* Photos */ = {
@@ -471,6 +482,7 @@
 				BF9EA3792BC720B5004114B2 /* PostService.swift in Sources */,
 				BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */,
 				BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */,
+				BFB461F32BDB06BB009705CE /* RecordViewController.swift in Sources */,
 				BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */,
 				BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */,
 				BFB461EB2BDAC61F009705CE /* VideoViewController.swift in Sources */,
@@ -673,6 +685,7 @@
 				DEVELOPMENT_TEAM = V99ACVZ6SW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Прошу дать разрешение на использования микрофона";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -705,6 +718,7 @@
 				DEVELOPMENT_TEAM = V99ACVZ6SW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Прошу дать разрешение на использования микрофона";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

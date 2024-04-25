@@ -24,6 +24,8 @@ class FeedViewController: UIViewController {
     
     var routeToVideo: () -> () = {}
     
+    var routeToRecord: () -> () = {}
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -65,6 +67,14 @@ class FeedViewController: UIViewController {
         return button
     }()
     
+    private lazy var buttonRecord: CustomButton = {
+        let button = CustomButton(title: "Открыть запись", titleColor: .systemBlue){
+            self.routeToRecord()
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     
     private lazy var checkGuessTextField: UITextField = {
         let textField = UITextField()
@@ -101,6 +111,7 @@ class FeedViewController: UIViewController {
         stackView.addArrangedSubview(self.buttonTwo)
         stackView.addArrangedSubview(self.buttonAudio)
         stackView.addArrangedSubview(self.buttonVideo)
+        stackView.addArrangedSubview(self.buttonRecord)
         
         stackView.addArrangedSubview(self.checkGuessTextField)
         stackView.addArrangedSubview(self.checkGuessButton)
