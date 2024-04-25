@@ -7,11 +7,15 @@
 
 protocol UserService {
     var user: User { get }
-    func getUser(login: String) -> User?
+    func getUser(login: String) throws -> User
 }
 
 extension UserService {
-    func getUser(login: String) -> User? {
-        return login == user.login ? user : nil
+    func getUser(login: String) throws -> User {
+        if(login == user.login){
+            return user
+        }else{
+            throw ApiError.notFound
+        }
     }
 }

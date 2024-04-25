@@ -260,7 +260,22 @@ class LogInViewController: UIViewController {
         .default)
         queue.async {
             let password = bruteForceService.bruteForce{password in
-                self.loginDelegate.check(login: self.userService.user.login, password: password)
+                var truePassword = false
+                do{
+                   try self.loginDelegate.check(login: self.userService.user.login, password: password){ result in
+                        switch result{
+                        case .success(let result):
+                            truePassword = result
+                        case .failure(_):
+                            truePassword  = false
+                        }
+                        
+                    }
+                }
+                catch {
+                    truePassword = false
+                }
+                return truePassword
             }
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
@@ -282,20 +297,31 @@ class LogInViewController: UIViewController {
     
     func buttonPressed() {
         if(!passwordText.isEmpty && !loginText.isEmpty){
-            if let user = userService.getUser(login: loginText){
-                if(loginDelegate.check(login: loginText, password: passwordText)){
-                    countErrors = 0
-                    let profileViewController = ProfileViewController()
-                    profileViewController.user = user
-                    self.navigationController?.pushViewController(profileViewController, animated: true)
-                }else{
-                    countErrors += 1
-                    showErrorAlert(text: "Не верный логин или пароль")
+            do{
+                guard let user = try? userService.getUser(login: loginText) else {
+                    preconditionFailure("Без пользователя не работает")
+                }
+                try loginDelegate.check(login: loginText, password: passwordText){result in
+                    switch result {
+                    case .success(_):
+                        self.countErrors = 0
+                        let profileViewController = ProfileViewController()
+                        profileViewController.user = user
+                        self.navigationController?.pushViewController(profileViewController, animated: true)
+                    case .failure(let error):
+                        self.handleError(with: error)
+                    }
                 }
             }
-            else{
+            catch ApiError.notFound{
                 countErrors += 1
                 showErrorAlert(text: "Нету такого пользователя")
+            }
+            catch ApiError.badRequest{
+                showErrorAlert(text: "Нет доступа к серверу")
+            }
+            catch{
+                showErrorAlert(text: "Неизвестрая ошибка")
             }
         }else{
             countErrors += 1
@@ -386,6 +412,22 @@ class LogInViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ок", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
+    }
+    
+    private func handleError(with error: ApiError) {
+        switch error{
+        case .unAuth:
+            self.countErrors += 1
+            self.showErrorAlert(text: "Не верный логин или пароль")
+        case .badRequest:
+            self.showErrorAlert(text: "Ошибка сервера")
+        case .notFound:
+            self.showErrorAlert(text: "Неизвестная ошибка")
+        case .unowned:
+            self.showErrorAlert(text: "Неизвестная ошибка")
+        case .forbidden:
+            self.showErrorAlert(text: "Неизвестная ошибка")
+        }
     }
     
 }
