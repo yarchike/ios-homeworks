@@ -298,9 +298,7 @@ class LogInViewController: UIViewController {
     func buttonPressed() {
         if(!passwordText.isEmpty && !loginText.isEmpty){
             do{
-                guard let user = try? userService.getUser(login: loginText) else {
-                    preconditionFailure("Без пользователя не работает")
-                }
+                let user = try userService.getUser(login: loginText)
                 try loginDelegate.check(login: loginText, password: passwordText){result in
                     switch result {
                     case .success(_):
