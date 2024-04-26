@@ -17,7 +17,6 @@
 		BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86F2B5376BA0079B703 /* InfoViewController.swift */; };
 		BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C03182BD93450003D1398 /* BruteForceService.swift */; };
 		BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */; };
-		BF1E01B22BDA8CFA001D956E /* Queen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF1E01B12BDA8CFA001D956E /* Queen.mp3 */; };
 		BF3B17812BDA423500993DE8 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B17802BDA423500993DE8 /* ApiError.swift */; };
 		BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */; };
 		BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22242B6FB10000648FA3 /* CustomButton.swift */; };
@@ -30,6 +29,11 @@
 		BF72A3FE2BB174380051C048 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3FD2BB174380051C048 /* LoginInspector.swift */; };
 		BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A4002BB17D870051C048 /* LoginFactory.swift */; };
 		BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A4032BB17DC00051C048 /* MyLoginFactory.swift */; };
+		BF8EB6ED2BDB86FE00548656 /* Queen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6EC2BDB86FE00548656 /* Queen.mp3 */; };
+		BF8EB6F42BDB988900548656 /* Linkin Park – In the End.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F32BDB988900548656 /* Linkin Park – In the End.mp3 */; };
+		BF8EB6F62BDB989400548656 /* Linkin Park – New Divide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F52BDB989400548656 /* Linkin Park – New Divide.mp3 */; };
+		BF8EB6F82BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F72BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 */; };
+		BF8EB6FA2BDB98A600548656 /* Linkin Park – What I've Done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F92BDB98A600548656 /* Linkin Park – What I've Done.mp3 */; };
 		BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA12BAAE67000BF3FFD /* SnapKit */; };
 		BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */; };
 		BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCA82BAAEB0400BF3FFD /* User.swift */; };
@@ -99,7 +103,6 @@
 		BF00E86F2B5376BA0079B703 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		BF0C03182BD93450003D1398 /* BruteForceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceService.swift; sourceTree = "<group>"; };
 		BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
-		BF1E01B12BDA8CFA001D956E /* Queen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Queen.mp3; path = "../../../../iosint-code/12/AVFoundation_Audio/AVFoundation_Audio/Music/Queen.mp3"; sourceTree = "<group>"; };
 		BF3B17802BDA423500993DE8 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BF4C22242B6FB10000648FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -112,6 +115,11 @@
 		BF72A3FD2BB174380051C048 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
 		BF72A4002BB17D870051C048 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		BF72A4032BB17DC00051C048 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
+		BF8EB6EC2BDB86FE00548656 /* Queen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Queen.mp3; sourceTree = "<group>"; };
+		BF8EB6F32BDB988900548656 /* Linkin Park – In the End.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – In the End.mp3"; sourceTree = "<group>"; };
+		BF8EB6F52BDB989400548656 /* Linkin Park – New Divide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – New Divide.mp3"; sourceTree = "<group>"; };
+		BF8EB6F72BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – Part of Me Hybrid Theory EP.mp3"; sourceTree = "<group>"; };
+		BF8EB6F92BDB98A600548656 /* Linkin Park – What I've Done.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – What I've Done.mp3"; sourceTree = "<group>"; };
 		BF8EDCA82BAAEB0400BF3FFD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BF8EDCAC2BAAEB9600BF3FFD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BF8EDCAE2BAAEC3E00BF3FFD /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
@@ -220,7 +228,11 @@
 		BF1E01B02BDA8CB2001D956E /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				BF1E01B12BDA8CFA001D956E /* Queen.mp3 */,
+				BF8EB6F92BDB98A600548656 /* Linkin Park – What I've Done.mp3 */,
+				BF8EB6F72BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 */,
+				BF8EB6F52BDB989400548656 /* Linkin Park – New Divide.mp3 */,
+				BF8EB6F32BDB988900548656 /* Linkin Park – In the End.mp3 */,
+				BF8EB6EC2BDB86FE00548656 /* Queen.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -459,9 +471,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1E01B22BDA8CFA001D956E /* Queen.mp3 in Resources */,
+				BF8EB6ED2BDB86FE00548656 /* Queen.mp3 in Resources */,
+				BF8EB6F82BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 in Resources */,
 				BF00E8602B53653B0079B703 /* LaunchScreen.storyboard in Resources */,
 				BF00E85D2B53653B0079B703 /* Assets.xcassets in Resources */,
+				BF8EB6F62BDB989400548656 /* Linkin Park – New Divide.mp3 in Resources */,
+				BF8EB6F42BDB988900548656 /* Linkin Park – In the End.mp3 in Resources */,
+				BF8EB6FA2BDB98A600548656 /* Linkin Park – What I've Done.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
