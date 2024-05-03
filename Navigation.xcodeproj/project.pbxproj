@@ -16,6 +16,7 @@
 		BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86B2B5367D00079B703 /* PostViewController.swift */; };
 		BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86F2B5376BA0079B703 /* InfoViewController.swift */; };
 		BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C03182BD93450003D1398 /* BruteForceService.swift */; };
+		BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */; };
 		BF3B17812BDA423500993DE8 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B17802BDA423500993DE8 /* ApiError.swift */; };
 		BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */; };
 		BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22242B6FB10000648FA3 /* CustomButton.swift */; };
@@ -28,6 +29,11 @@
 		BF72A3FE2BB174380051C048 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3FD2BB174380051C048 /* LoginInspector.swift */; };
 		BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A4002BB17D870051C048 /* LoginFactory.swift */; };
 		BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A4032BB17DC00051C048 /* MyLoginFactory.swift */; };
+		BF8EB6ED2BDB86FE00548656 /* Queen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6EC2BDB86FE00548656 /* Queen.mp3 */; };
+		BF8EB6F42BDB988900548656 /* Linkin Park – In the End.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F32BDB988900548656 /* Linkin Park – In the End.mp3 */; };
+		BF8EB6F62BDB989400548656 /* Linkin Park – New Divide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F52BDB989400548656 /* Linkin Park – New Divide.mp3 */; };
+		BF8EB6F82BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F72BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 */; };
+		BF8EB6FA2BDB98A600548656 /* Linkin Park – What I've Done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F92BDB98A600548656 /* Linkin Park – What I've Done.mp3 */; };
 		BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA12BAAE67000BF3FFD /* SnapKit */; };
 		BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */; };
 		BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCA82BAAEB0400BF3FFD /* User.swift */; };
@@ -47,6 +53,10 @@
 		BF9EA3792BC720B5004114B2 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EA3782BC720B5004114B2 /* PostService.swift */; };
 		BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */; };
 		BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */; };
+		BFB461EB2BDAC61F009705CE /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461EA2BDAC61F009705CE /* VideoViewController.swift */; };
+		BFB461EE2BDAC761009705CE /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461ED2BDAC761009705CE /* VideoViewCell.swift */; };
+		BFB461F02BDAC7F7009705CE /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461EF2BDAC7F7009705CE /* Video.swift */; };
+		BFB461F32BDB06BB009705CE /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB461F22BDB06BB009705CE /* RecordViewController.swift */; };
 		BFBDEBF22B6FC4D30076A61F /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBF12B6FC4D30076A61F /* PhotosTableViewCell.swift */; };
 		BFBDEBF42B6FC6E20076A61F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBF32B6FC6E20076A61F /* Photo.swift */; };
 		BFBDEBFF2B6FDE910076A61F /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */; };
@@ -92,6 +102,7 @@
 		BF00E86B2B5367D00079B703 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		BF00E86F2B5376BA0079B703 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		BF0C03182BD93450003D1398 /* BruteForceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceService.swift; sourceTree = "<group>"; };
+		BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		BF3B17802BDA423500993DE8 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BF4C22242B6FB10000648FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -104,6 +115,11 @@
 		BF72A3FD2BB174380051C048 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
 		BF72A4002BB17D870051C048 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		BF72A4032BB17DC00051C048 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
+		BF8EB6EC2BDB86FE00548656 /* Queen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Queen.mp3; sourceTree = "<group>"; };
+		BF8EB6F32BDB988900548656 /* Linkin Park – In the End.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – In the End.mp3"; sourceTree = "<group>"; };
+		BF8EB6F52BDB989400548656 /* Linkin Park – New Divide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – New Divide.mp3"; sourceTree = "<group>"; };
+		BF8EB6F72BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – Part of Me Hybrid Theory EP.mp3"; sourceTree = "<group>"; };
+		BF8EB6F92BDB98A600548656 /* Linkin Park – What I've Done.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – What I've Done.mp3"; sourceTree = "<group>"; };
 		BF8EDCA82BAAEB0400BF3FFD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BF8EDCAC2BAAEB9600BF3FFD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BF8EDCAE2BAAEC3E00BF3FFD /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
@@ -120,6 +136,10 @@
 		BF9EA3782BC720B5004114B2 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BFB461EA2BDAC61F009705CE /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		BFB461ED2BDAC761009705CE /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
+		BFB461EF2BDAC7F7009705CE /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		BFB461F22BDB06BB009705CE /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		BFBDEBF12B6FC4D30076A61F /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		BFBDEBF32B6FC6E20076A61F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
@@ -173,6 +193,9 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BFB461F12BDB06A9009705CE /* Record */,
+				BFB461EC2BDAC626009705CE /* Video */,
+				BF1E01AD2BDA86C3001D956E /* AudioPlayer */,
 				BF58D7B42BC9249B0099CAC0 /* Coordinators */,
 				BF95111F2BC425AE002D02E4 /* FeedModule */,
 				BF8EDCAA2BAAEB6F00BF3FFD /* service */,
@@ -191,6 +214,27 @@
 				BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BF1E01AD2BDA86C3001D956E /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				BF1E01B02BDA8CB2001D956E /* Music */,
+				BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		BF1E01B02BDA8CB2001D956E /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				BF8EB6F92BDB98A600548656 /* Linkin Park – What I've Done.mp3 */,
+				BF8EB6F72BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 */,
+				BF8EB6F52BDB989400548656 /* Linkin Park – New Divide.mp3 */,
+				BF8EB6F32BDB988900548656 /* Linkin Park – In the End.mp3 */,
+				BF8EB6EC2BDB86FE00548656 /* Queen.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		BF4C22232B6FB0B500648FA3 /* UIView */ = {
@@ -278,6 +322,23 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		BFB461EC2BDAC626009705CE /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				BFB461EA2BDAC61F009705CE /* VideoViewController.swift */,
+				BFB461ED2BDAC761009705CE /* VideoViewCell.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		BFB461F12BDB06A9009705CE /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				BFB461F22BDB06BB009705CE /* RecordViewController.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
 		BFBDEBF02B6FC4BE0076A61F /* Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +364,7 @@
 				BFBDEBF32B6FC6E20076A61F /* Photo.swift */,
 				BF8EDCA82BAAEB0400BF3FFD /* User.swift */,
 				BF3B17802BDA423500993DE8 /* ApiError.swift */,
+				BFB461EF2BDAC7F7009705CE /* Video.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -409,8 +471,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF8EB6ED2BDB86FE00548656 /* Queen.mp3 in Resources */,
+				BF8EB6F82BDB989B00548656 /* Linkin Park – Part of Me Hybrid Theory EP.mp3 in Resources */,
 				BF00E8602B53653B0079B703 /* LaunchScreen.storyboard in Resources */,
 				BF00E85D2B53653B0079B703 /* Assets.xcassets in Resources */,
+				BF8EB6F62BDB989400548656 /* Linkin Park – New Divide.mp3 in Resources */,
+				BF8EB6F42BDB988900548656 /* Linkin Park – In the End.mp3 in Resources */,
+				BF8EB6FA2BDB98A600548656 /* Linkin Park – What I've Done.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,8 +498,10 @@
 				BF9EA3792BC720B5004114B2 /* PostService.swift in Sources */,
 				BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */,
 				BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */,
+				BFB461F32BDB06BB009705CE /* RecordViewController.swift in Sources */,
 				BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */,
 				BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */,
+				BFB461EB2BDAC61F009705CE /* VideoViewController.swift in Sources */,
 				BF8EDCB72BAAF68C00BF3FFD /* TestUserService.swift in Sources */,
 				BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */,
 				BFBDEC022B6FDF0D0076A61F /* ReusableView.swift in Sources */,
@@ -443,8 +512,10 @@
 				BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */,
 				BF00E8542B5365390079B703 /* AppDelegate.swift in Sources */,
 				BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */,
+				BFB461EE2BDAC761009705CE /* VideoViewCell.swift in Sources */,
 				BF9511212BC425E5002D02E4 /* FeedModel.swift in Sources */,
 				BF9EA3772BC71EBA004114B2 /* FeedVM.swift in Sources */,
+				BFB461F02BDAC7F7009705CE /* Video.swift in Sources */,
 				BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */,
 				BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */,
 				BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */,
@@ -461,6 +532,7 @@
 				BF9EA3752BC71E93004114B2 /* FeedVMProtocol.swift in Sources */,
 				BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
+				BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */,
 				BFFC6DD62B6BCCCF0052A00E /* PostTableViewCell.swift in Sources */,
 				BF72A3FC2BB1701A0051C048 /* LoginViewControllerDelegate.swift in Sources */,
 				BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */,
@@ -629,6 +701,7 @@
 				DEVELOPMENT_TEAM = V99ACVZ6SW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Прошу дать разрешение на использования микрофона";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -661,6 +734,7 @@
 				DEVELOPMENT_TEAM = V99ACVZ6SW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Прошу дать разрешение на использования микрофона";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
