@@ -20,6 +20,7 @@
 		BF3B17812BDA423500993DE8 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B17802BDA423500993DE8 /* ApiError.swift */; };
 		BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */; };
 		BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22242B6FB10000648FA3 /* CustomButton.swift */; };
+		BF5732A42BE51AEA00E58E15 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5732A32BE51AEA00E58E15 /* NetworkManager.swift */; };
 		BF58D7B62BC924D50099CAC0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B52BC924D50099CAC0 /* AppCoordinator.swift */; };
 		BF58D7B82BC924F60099CAC0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B72BC924F60099CAC0 /* Coordinator.swift */; };
 		BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */; };
@@ -106,6 +107,7 @@
 		BF3B17802BDA423500993DE8 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BF4C22242B6FB10000648FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		BF5732A32BE51AEA00E58E15 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BF58D7B52BC924D50099CAC0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		BF58D7B72BC924F60099CAC0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				BF72A3FD2BB174380051C048 /* LoginInspector.swift */,
 				BF9EA3782BC720B5004114B2 /* PostService.swift */,
 				BF0C03182BD93450003D1398 /* BruteForceService.swift */,
+				BF5732A32BE51AEA00E58E15 /* NetworkManager.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				BFFC6DD62B6BCCCF0052A00E /* PostTableViewCell.swift in Sources */,
 				BF72A3FC2BB1701A0051C048 /* LoginViewControllerDelegate.swift in Sources */,
 				BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */,
+				BF5732A42BE51AEA00E58E15 /* NetworkManager.swift in Sources */,
 				BF72A3F92BB16ED80051C048 /* Checker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
