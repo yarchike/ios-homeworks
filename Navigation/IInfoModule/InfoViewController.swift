@@ -9,6 +9,8 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+    var residentsPlanet : [ResidentPlanet] = []
+    
     private lazy var actionButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -32,12 +34,27 @@ class InfoViewController: UIViewController {
         return labelView
     }()
     
+    private lazy var namePlanetLabel: UILabel = {
+        let labelView = UILabel()
+        labelView.translatesAutoresizingMaskIntoConstraints = false
+        labelView.text = "Загрузка..."
+        return labelView
+    }()
+    
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
     }()
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView.init(
+            frame: .zero,
+            style: .plain
+        )
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
     
     
@@ -47,6 +64,9 @@ class InfoViewController: UIViewController {
         
         addSubviews()
         setupConstraints()
+        tuneTableView()
+        loadUser()
+        getPlaent()
         
     }
     
@@ -55,13 +75,14 @@ class InfoViewController: UIViewController {
         
         view.addSubview(labelView)
         view.addSubview(palnetLabelView)
-        
+        view.addSubview(namePlanetLabel)
         view.addSubview(activityIndicator)
+        
+        view.addSubview(tableView)
         
         actionButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         
-        loadUser()
-        getPlaent()
+        
     }
     
     
@@ -78,18 +99,32 @@ class InfoViewController: UIViewController {
                 equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -20.0
             ),
-            actionButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            actionButton.heightAnchor.constraint(equalToConstant: 44.0),
+            actionButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            actionButton.heightAnchor.constraint(equalToConstant: 20.0),
             
             
             labelView.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: 16),
             labelView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            labelView.heightAnchor.constraint(equalToConstant: 44.0),
+            labelView.heightAnchor.constraint(equalToConstant: 20.0),
             
             palnetLabelView.topAnchor.constraint(equalTo: labelView.bottomAnchor, constant: 16),
             palnetLabelView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            palnetLabelView.heightAnchor.constraint(equalToConstant: 44.0),
+            palnetLabelView.heightAnchor.constraint(equalToConstant: 20.0),
             
+            namePlanetLabel.topAnchor.constraint(equalTo: palnetLabelView.bottomAnchor, constant: 16),
+            namePlanetLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            namePlanetLabel.heightAnchor.constraint(equalToConstant: 20.0),
+            
+            tableView.topAnchor.constraint(equalTo: namePlanetLabel.bottomAnchor, constant: 16),
+            tableView.leadingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.leadingAnchor,
+                constant: 20.0
+            ),
+            tableView.trailingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.trailingAnchor,
+                constant: -20.0
+            ),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             
             
             activityIndicator.leadingAnchor.constraint(
@@ -104,6 +139,16 @@ class InfoViewController: UIViewController {
             activityIndicator.heightAnchor.constraint(equalToConstant: 44.0),
         ])
         
+        
+    }
+    
+    private func tuneTableView() {
+        
+        tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: InfoTableViewCell.cellId)
+        
+        
+        tableView.dataSource = self
+        tableView.delegate = self
         
     }
     
@@ -135,7 +180,9 @@ class InfoViewController: UIViewController {
             case .success(let planet):
                 DispatchQueue.main.async{ [weak self] in
                     self?.palnetLabelView.text = planet.orbitalPeriod
+                    self?.namePlanetLabel.text = planet.name
                     self?.activityIndicator.stopAnimating()
+                    self?.getResidentsPlanet(planet: planet)
                 }
                 
             case .failure(_):
@@ -159,4 +206,45 @@ class InfoViewController: UIViewController {
         print(alertAction.title as Any)
     }
     
+    
+    func getResidentsPlanet(planet: Planet){
+        
+        NetworkManager.getResidentsPlanet(planet: planet){ result in
+            switch result{
+                
+            case .success(let residents):
+                DispatchQueue.main.async {
+                    self.residentsPlanet = residents
+                    self.tableView.reloadData()
+                }
+            case .failure(_):
+                break
+            }
+            
+        }
+    }
+    
 }
+
+extension InfoViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return residentsPlanet.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: InfoTableViewCell.cellId,
+                for: indexPath
+            ) as? InfoTableViewCell else {
+                fatalError("could not dequeueReusableCell")
+            }
+            cell.update(residentsPlanet[indexPath.row])
+            
+            return cell
+    }
+    
+}
+
+extension InfoViewController: UITableViewDelegate {}

@@ -65,6 +65,8 @@
 		BFF1B54B2BD8F885005C5929 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BFF1B54A2BD8F885005C5929 /* iOSIntPackage */; };
 		BFFBFDF22BEBBDA1008D8847 /* ResponseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */; };
 		BFFBFDF42BEBD3DE008D8847 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF32BEBD3DE008D8847 /* Planet.swift */; };
+		BFFBFDF62BEBE1A1008D8847 /* ResidentPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF52BEBE1A1008D8847 /* ResidentPlanet.swift */; };
+		BFFBFDF92BEBE2F2008D8847 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF82BEBE2F2008D8847 /* InfoTableViewCell.swift */; };
 		BFFC6DD62B6BCCCF0052A00E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */; };
 		BFFC6DD82B6C09920052A00E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC6DD72B6C09920052A00E /* UITableView+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -150,6 +152,8 @@
 		BFBDEC012B6FDF0D0076A61F /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUser.swift; sourceTree = "<group>"; };
 		BFFBFDF32BEBD3DE008D8847 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		BFFBFDF52BEBE1A1008D8847 /* ResidentPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentPlanet.swift; sourceTree = "<group>"; };
+		BFFBFDF82BEBE2F2008D8847 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		BFFC6DD32B6B90250052A00E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		BFFC6DD72B6C09920052A00E /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BFFBFDF72BEBE23F008D8847 /* IInfoModule */,
 				BFB461F12BDB06A9009705CE /* Record */,
 				BFB461EC2BDAC626009705CE /* Video */,
 				BF1E01AD2BDA86C3001D956E /* AudioPlayer */,
@@ -216,7 +221,6 @@
 				BF00E85C2B53653B0079B703 /* Assets.xcassets */,
 				BF00E85E2B53653B0079B703 /* LaunchScreen.storyboard */,
 				BF00E86B2B5367D00079B703 /* PostViewController.swift */,
-				BF00E86F2B5376BA0079B703 /* InfoViewController.swift */,
 				BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */,
 			);
 			path = Navigation;
@@ -365,6 +369,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		BFFBFDF72BEBE23F008D8847 /* IInfoModule */ = {
+			isa = PBXGroup;
+			children = (
+				BF00E86F2B5376BA0079B703 /* InfoViewController.swift */,
+				BFFBFDF82BEBE2F2008D8847 /* InfoTableViewCell.swift */,
+			);
+			path = IInfoModule;
+			sourceTree = "<group>";
+		};
 		BFFC6DD22B6B8FFA0052A00E /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +387,7 @@
 				BFB461EF2BDAC7F7009705CE /* Video.swift */,
 				BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */,
 				BFFBFDF32BEBD3DE008D8847 /* Planet.swift */,
+				BFFBFDF52BEBE1A1008D8847 /* ResidentPlanet.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -541,6 +555,7 @@
 				BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */,
 				BF9EA3752BC71E93004114B2 /* FeedVMProtocol.swift in Sources */,
 				BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */,
+				BFFBFDF92BEBE2F2008D8847 /* InfoTableViewCell.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
 				BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */,
 				BFFBFDF42BEBD3DE008D8847 /* Planet.swift in Sources */,
@@ -549,6 +564,7 @@
 				BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */,
 				BF5732A42BE51AEA00E58E15 /* NetworkManager.swift in Sources */,
 				BF72A3F92BB16ED80051C048 /* Checker.swift in Sources */,
+				BFFBFDF62BEBE1A1008D8847 /* ResidentPlanet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
