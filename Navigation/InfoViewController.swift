@@ -17,12 +17,47 @@ class InfoViewController: UIViewController {
         return button
     }()
     
+    
+    private lazy var labelView: UILabel = {
+        let labelView = UILabel()
+        labelView.translatesAutoresizingMaskIntoConstraints = false
+        labelView.text = "Загрузка..."
+        return labelView
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        addSubviews()
+        setupConstraints()
+        
+    }
+    
+    private func addSubviews() {
         view.addSubview(actionButton)
         
+        view.addSubview(labelView)
+        
+        view.addSubview(activityIndicator)
+        
+        actionButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        
+        loadUser()
+    }
+    
+    
+    
+    private func setupConstraints() {
         
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -35,10 +70,49 @@ class InfoViewController: UIViewController {
                 constant: -20.0
             ),
             actionButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            actionButton.heightAnchor.constraint(equalToConstant: 44.0)
+            actionButton.heightAnchor.constraint(equalToConstant: 44.0),
+            
+            
+            labelView.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: 16),
+            labelView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            labelView.heightAnchor.constraint(equalToConstant: 44.0),
+            
+            
+            activityIndicator.leadingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.leadingAnchor,
+                constant: 20.0
+            ),
+            activityIndicator.trailingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.trailingAnchor,
+                constant: -20.0
+            ),
+            activityIndicator.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            activityIndicator.heightAnchor.constraint(equalToConstant: 44.0),
         ])
         
-        actionButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        
+    }
+    
+    func loadUser(){
+        activityIndicator.startAnimating()
+        NetworkManager.getUser{ [weak self] result in
+            switch result {
+                
+            case .success(let result):
+                DispatchQueue.main.async{ [weak self] in
+                    self?.labelView.text = result
+                    self?.activityIndicator.stopAnimating()
+                }
+                
+            case .failure(_):
+                DispatchQueue.main.async{ [weak self] in
+                    self?.labelView.text = "Ошибка загрузки"
+                    self?.activityIndicator.stopAnimating()
+                }
+            }
+        }
+        
+        
     }
     
     @objc func buttonPressed(_ sender: UIButton) {

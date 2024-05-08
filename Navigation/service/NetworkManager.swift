@@ -55,4 +55,43 @@ struct NetworkManager{
         tast.resume()
         
     }
+    
+    static func getUser(completion: @escaping (Result<String, Error>) -> Void){
+        let urlString = "https://jsonplaceholder.typicode.com/todos/1"
+        let url = URL(string: urlString)!
+        
+        let tast = URLSession.shared.dataTask(with: url){ data, response, error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                print(error.localizedDescription.debugDescription)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else{
+                return
+            }
+            
+            print(response.statusCode)
+            print(response.allHeaderFields)
+            
+            guard let data else {
+                return
+            }
+            
+            do{
+                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                guard let result = json?["title"] else{
+                    return
+                }
+                completion(.success(result as? String ?? ""))
+            }catch{
+                print("Ошибка")
+            }
+            
+        }
+        
+        tast.resume()
+        
+    }
 }
