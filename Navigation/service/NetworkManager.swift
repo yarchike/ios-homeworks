@@ -94,4 +94,42 @@ struct NetworkManager{
         tast.resume()
         
     }
+    
+    static func getPlanet(completion: @escaping (Result<Planet, Error>) -> Void){
+        
+        let urlString = "https://swapi.dev/api/planets/1"
+        let url = URL(string: urlString)!
+        
+        let tast = URLSession.shared.dataTask(with: url){ data, response, error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                print(error.localizedDescription.debugDescription)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else{
+                return
+            }
+            
+            print(response.statusCode)
+            print(response.allHeaderFields)
+            
+            guard let data else {
+                return
+            }
+            
+            do{
+                let planet = try JSONDecoder().decode(Planet.self, from: data)
+                completion(.success(planet))
+            }catch{
+                print("Ошибка")
+            }
+            
+        }
+        
+        tast.resume()
+        
+    }
+        
 }

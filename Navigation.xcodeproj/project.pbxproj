@@ -64,6 +64,7 @@
 		BFBDEC022B6FDF0D0076A61F /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEC012B6FDF0D0076A61F /* ReusableView.swift */; };
 		BFF1B54B2BD8F885005C5929 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BFF1B54A2BD8F885005C5929 /* iOSIntPackage */; };
 		BFFBFDF22BEBBDA1008D8847 /* ResponseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */; };
+		BFFBFDF42BEBD3DE008D8847 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF32BEBD3DE008D8847 /* Planet.swift */; };
 		BFFC6DD62B6BCCCF0052A00E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */; };
 		BFFC6DD82B6C09920052A00E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC6DD72B6C09920052A00E /* UITableView+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -148,6 +149,7 @@
 		BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
 		BFBDEC012B6FDF0D0076A61F /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUser.swift; sourceTree = "<group>"; };
+		BFFBFDF32BEBD3DE008D8847 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		BFFC6DD32B6B90250052A00E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		BFFC6DD72B6C09920052A00E /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				BF3B17802BDA423500993DE8 /* ApiError.swift */,
 				BFB461EF2BDAC7F7009705CE /* Video.swift */,
 				BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */,
+				BFFBFDF32BEBD3DE008D8847 /* Planet.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
 				BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */,
+				BFFBFDF42BEBD3DE008D8847 /* Planet.swift in Sources */,
 				BFFC6DD62B6BCCCF0052A00E /* PostTableViewCell.swift in Sources */,
 				BF72A3FC2BB1701A0051C048 /* LoginViewControllerDelegate.swift in Sources */,
 				BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */,
