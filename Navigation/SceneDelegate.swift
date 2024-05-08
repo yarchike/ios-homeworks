@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = window
         
-        let appConfig = AppConfiguration.allCases.randomElement() ?? AppConfiguration.test
+        let appConfig = AppConfiguration.allCases.randomElement() ?? AppConfiguration.people
         NetworkManager.request(for: appConfig)
     }
     

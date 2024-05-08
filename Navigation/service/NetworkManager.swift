@@ -8,23 +8,13 @@
 import Foundation
 
 
-enum AppConfiguration: CaseIterable{
-    case api
-    case test
-    case stage
+enum AppConfiguration: String, CaseIterable {
+    case people = "https://swapi.dev/api/people"
+    case starships = "https://swapi.dev/api/starships"
+    case planets = "https://swapi.dev/api/planets"
     
-    var url: URL {
-        switch self {
-        case .api:
-            return URL(string: "https://swapi.dev/api/people/8")!
-            
-        case .test:
-            return URL(string: "https://swapi.dev/api/starships/3")!
-            
-        case .stage:
-            return URL(string: "https://swapi.dev/api/planets/5")!
-            
-        }
+    var url: URL? {
+        URL(string: self.rawValue)
     }
 }
 
@@ -34,7 +24,11 @@ struct NetworkManager{
     static func request(for configuration: AppConfiguration) {
         print("request")
         
-        let tast = URLSession.shared.dataTask(with: configuration.url){ data, response, error in
+        guard let url = configuration.url else {
+            return
+        }
+        
+        let tast = URLSession.shared.dataTask(with: url){ data, response, error in
             
             
             if let error = error {
