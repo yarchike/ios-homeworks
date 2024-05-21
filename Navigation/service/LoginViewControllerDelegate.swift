@@ -7,5 +7,5 @@
 
 
 protocol LoginViewControllerDelegate{
-    func check(login: String, password: String, completion: @escaping (Result<Bool, ApiError>) -> Void) throws
+    func check(login: String, password: String, completion: @escaping (Result<String, ApiError>) -> Void) throws
 }

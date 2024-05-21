@@ -9,7 +9,11 @@ import Foundation
 
 struct MyLoginFactory: LoginFactory{
     static func makeLoginInspector() -> LoginInspector {
-        return LoginInspector()
+        return LoginInspector(checkerService: makeCheckerService())
+    }
+    
+    static func makeCheckerService() -> CheckerServiceProtocol {
+        return CheckerService()
     }
     
     

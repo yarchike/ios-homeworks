@@ -13,4 +13,5 @@ enum ApiError: Error {
     case unAuth
     case unowned
     case forbidden
+    case authError(message: String)
 }

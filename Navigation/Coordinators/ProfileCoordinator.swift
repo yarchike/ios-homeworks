@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
@@ -15,12 +16,11 @@ class ProfileCoordinator: Coordinator {
         return self.navigationController
     }
     
-    let isAuthorized = false
     
     init(){
         self.navigationController = UINavigationController()
         var viewController: UIViewController?
-        if isAuthorized {
+        if Auth.auth().currentUser != nil {
             viewController = getProfileViewController()
         }else{
             viewController = getLoginViewController()
@@ -61,6 +61,7 @@ class ProfileCoordinator: Coordinator {
     func getProfileViewController() -> ProfileViewController{
         let profileViewController = ProfileViewController()
         profileViewController.routeToPhoto = routeToPhoto
+        profileViewController.routeToLogin = routeToLogin
         return profileViewController
     }
     
