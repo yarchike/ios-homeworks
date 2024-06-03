@@ -6,5 +6,6 @@
 //
 
 protocol LoginFactory{
-    static func makeLoginInspector()->LoginInspector
+    static func makeLoginInspector()-> LoginInspector
+    static func makeCheckerService() -> CheckerServiceProtocol
 }

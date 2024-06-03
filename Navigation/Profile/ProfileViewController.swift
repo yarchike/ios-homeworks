@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 import StorageService
 
 class ProfileViewController: UIViewController {
@@ -6,6 +7,8 @@ class ProfileViewController: UIViewController {
     fileprivate let data = Post.make()
     
     var routeToPhoto: () -> () = {}
+    
+    var routeToLogin: () -> () = {}
 
     var user: User?
     
@@ -65,6 +68,11 @@ class ProfileViewController: UIViewController {
             
         ])
         
+    }
+    private func checkAutch(){
+        if(Auth.auth().currentUser == nil){
+            routeToLogin()
+        }
     }
     
     private func tuneTableView() {
