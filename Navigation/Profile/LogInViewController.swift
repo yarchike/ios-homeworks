@@ -73,6 +73,7 @@ class LogInViewController: UIViewController {
         textField.backgroundColor  = UIColor.systemGray6
         textField.font = UIFont.boldSystemFont(ofSize: 16.0)
         textField.textColor = .black
+        textField.keyboardType = .emailAddress
         textField.autocapitalizationType = .none
         textField.addTarget(self, action: #selector(loginTextChanged(_:)), for: .editingChanged)
         textField.placeholder = "Email of phone"
