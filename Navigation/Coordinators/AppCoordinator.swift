@@ -17,10 +17,12 @@ class AppCoordinator: Coordinator{
 
         let feedCoordinator = FeedCoordinator()
         let profileCoordinator = ProfileCoordinator()
+        let likeCoordinator = LikeCoordinator()
         self.add(coordinator: feedCoordinator)
         self.add(coordinator: profileCoordinator)
+        self.add(coordinator: likeCoordinator)
         
-        let controllers = [feedCoordinator.getNavigationController(), profileCoordinator.getNavigationController()]
+        let controllers = [feedCoordinator.getNavigationController(), profileCoordinator.getNavigationController(), likeCoordinator.getNavigationController()]
         tabBarController.viewControllers = controllers
         tabBarController.selectedIndex = 0
         //tabBarController.selectedIndex = 1

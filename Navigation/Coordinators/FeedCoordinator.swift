@@ -15,6 +15,7 @@ class FeedCoordinator: Coordinator {
     func getNavigationController() -> UINavigationController{
         return self.navigationController
     }
+
     
     init() {
         navigationController = UINavigationController()

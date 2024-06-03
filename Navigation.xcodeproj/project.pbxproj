@@ -16,6 +16,10 @@
 		BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86B2B5367D00079B703 /* PostViewController.swift */; };
 		BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86F2B5376BA0079B703 /* InfoViewController.swift */; };
 		BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C03182BD93450003D1398 /* BruteForceService.swift */; };
+		BF0E6F652C0DE672000A4D96 /* LikeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F642C0DE672000A4D96 /* LikeTableViewController.swift */; };
+		BF0E6F672C0DE68F000A4D96 /* LikeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */; };
+		BF0E6F6A2C0DE837000A4D96 /* LikeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F682C0DE837000A4D96 /* LikeModel.xcdatamodeld */; };
+		BF0E6F6C2C0DE852000A4D96 /* LikeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F6B2C0DE852000A4D96 /* LikeDataManager.swift */; };
 		BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */; };
 		BF3B17812BDA423500993DE8 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B17802BDA423500993DE8 /* ApiError.swift */; };
 		BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */; };
@@ -111,6 +115,10 @@
 		BF00E86B2B5367D00079B703 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		BF00E86F2B5376BA0079B703 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		BF0C03182BD93450003D1398 /* BruteForceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceService.swift; sourceTree = "<group>"; };
+		BF0E6F642C0DE672000A4D96 /* LikeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeTableViewController.swift; sourceTree = "<group>"; };
+		BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCoordinator.swift; sourceTree = "<group>"; };
+		BF0E6F692C0DE837000A4D96 /* LikeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeModel.xcdatamodel; sourceTree = "<group>"; };
+		BF0E6F6B2C0DE852000A4D96 /* LikeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDataManager.swift; sourceTree = "<group>"; };
 		BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		BF3B17802BDA423500993DE8 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +200,7 @@
 		BF00E8472B5365390079B703 = {
 			isa = PBXGroup;
 			children = (
+				BF0E6F682C0DE837000A4D96 /* LikeModel.xcdatamodeld */,
 				BFC6D82A2BFCAAFA00BB02C6 /* GoogleService-Info.plist */,
 				BF00E8522B5365390079B703 /* Navigation */,
 				BF941CAA2BA347A0002AB495 /* StorageService */,
@@ -212,6 +221,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BF0E6F632C0DE65A000A4D96 /* LikeModule */,
 				BFFBFDF72BEBE23F008D8847 /* IInfoModule */,
 				BFB461F12BDB06A9009705CE /* Record */,
 				BFB461EC2BDAC626009705CE /* Video */,
@@ -233,6 +243,15 @@
 				BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BF0E6F632C0DE65A000A4D96 /* LikeModule */ = {
+			isa = PBXGroup;
+			children = (
+				BF0E6F642C0DE672000A4D96 /* LikeTableViewController.swift */,
+				BF0E6F6B2C0DE852000A4D96 /* LikeDataManager.swift */,
+			);
+			path = LikeModule;
 			sourceTree = "<group>";
 		};
 		BF1E01AD2BDA86C3001D956E /* AudioPlayer */ = {
@@ -272,6 +291,7 @@
 				BF58D7B72BC924F60099CAC0 /* Coordinator.swift */,
 				BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */,
 				BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */,
+				BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -536,10 +556,12 @@
 				BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */,
 				BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */,
 				BFB461F32BDB06BB009705CE /* RecordViewController.swift in Sources */,
+				BF0E6F6A2C0DE837000A4D96 /* LikeModel.xcdatamodeld in Sources */,
 				BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */,
 				BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */,
 				BFB461EB2BDAC61F009705CE /* VideoViewController.swift in Sources */,
 				BF8EDCB72BAAF68C00BF3FFD /* TestUserService.swift in Sources */,
+				BF0E6F672C0DE68F000A4D96 /* LikeCoordinator.swift in Sources */,
 				BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */,
 				BFBDEC022B6FDF0D0076A61F /* ReusableView.swift in Sources */,
 				BF58D7BC2BC927A40099CAC0 /* ProfileCoordinator.swift in Sources */,
@@ -555,6 +577,7 @@
 				BF9EA3772BC71EBA004114B2 /* FeedVM.swift in Sources */,
 				BFB461F02BDAC7F7009705CE /* Video.swift in Sources */,
 				BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */,
+				BF0E6F6C2C0DE852000A4D96 /* LikeDataManager.swift in Sources */,
 				BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */,
 				BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */,
 				BF939BC32B70F78200F54B62 /* PhotosViewController.swift in Sources */,
@@ -572,6 +595,7 @@
 				BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */,
 				BFC6D8322BFCC82C00BB02C6 /* CheckerService.swift in Sources */,
 				BFFBFDF92BEBE2F2008D8847 /* InfoTableViewCell.swift in Sources */,
+				BF0E6F652C0DE672000A4D96 /* LikeTableViewController.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
 				BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */,
 				BFFBFDF42BEBD3DE008D8847 /* Planet.swift in Sources */,
@@ -949,6 +973,19 @@
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		BF0E6F682C0DE837000A4D96 /* LikeModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BF0E6F692C0DE837000A4D96 /* LikeModel.xcdatamodel */,
+			);
+			currentVersion = BF0E6F692C0DE837000A4D96 /* LikeModel.xcdatamodel */;
+			path = LikeModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BF00E8482B5365390079B703 /* Project object */;
 }
