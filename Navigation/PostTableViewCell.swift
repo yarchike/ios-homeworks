@@ -135,4 +135,16 @@ class PostTableViewCell: UITableViewCell {
         likesLableView.text = "Likes: \(model.likes)"
         viewsLableView.text = "Views: \(model.views)"
     }
+    
+    func update(_ model: LikePost) {
+        labelView.text = model.author
+        if let image = UIImage(named: model.image ?? "") {
+              ImageProcessor().processImage(sourceImage: image, filter: .colorInvert) {
+                  contantImageView.image = $0
+              }
+          }
+        contantTextView.text = model.postDescription
+        likesLableView.text = "Likes: \(model.likes)"
+        viewsLableView.text = "Views: \(model.views)"
+    }
 }

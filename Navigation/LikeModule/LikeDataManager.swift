@@ -32,14 +32,37 @@ final class LikeDataManager {
         return (try? persistentContainer.viewContext.fetch(request)) ?? []
     }
     
+    func getLikeFilterPost(author: String) -> [LikePost]{
+        let request = LikePost.fetchRequest()
+        request.predicate = NSPredicate(format: "author CONTAINS[c] %@", author)
+        return (try? persistentContainer.viewContext.fetch(request)) ?? []
+    }
+    
     func addLikePost(post: Post){
-        let likePost = LikePost(context: persistentContainer.viewContext)
-        likePost.author = post.author
-        likePost.image = post.image
-        likePost.likes = Int16(post.likes)
-        likePost.views = Int16(post.views)
-        likePost.postDescription = post.postDescription
-        try? persistentContainer.viewContext.save()
+        persistentContainer.performBackgroundTask { [weak self] backContext in
+            guard let self else {
+                return
+            }
+            let likePost = LikePost(context: persistentContainer.viewContext)
+            likePost.author = post.author
+            likePost.image = post.image
+            likePost.likes = Int16(post.likes)
+            likePost.views = Int16(post.views)
+            likePost.postDescription = post.postDescription
+            try? backContext.save()
+        }
+  
+    }
+    
+    func deleteLikePost(likePost: LikePost, completion: @escaping () -> Void){
+        persistentContainer.performBackgroundTask { backContext in
+
+            let context = likePost.managedObjectContext
+            context?.delete(likePost)
+            try? backContext.save()
+            completion()
+        }
+  
     }
     
 }
