@@ -4,6 +4,8 @@ import StorageService
 
 class PostTableViewCell: UITableViewCell {
     
+    static let cellId = "PostTableViewCell"
+    
     
     let labelView: UILabel = {
         let labelView = UILabel()
@@ -129,7 +131,7 @@ class PostTableViewCell: UITableViewCell {
                   contantImageView.image = $0
               }
           }
-        contantTextView.text = model.description
+        contantTextView.text = model.postDescription
         likesLableView.text = "Likes: \(model.likes)"
         viewsLableView.text = "Views: \(model.views)"
     }

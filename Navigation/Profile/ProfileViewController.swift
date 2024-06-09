@@ -86,7 +86,7 @@ class ProfileViewController: UIViewController {
             tableView.sectionHeaderTopPadding = 0.0
         }
         
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: CellReuseID.base.rawValue)
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: CellReuseID.photo.rawValue)
         
         
@@ -121,11 +121,16 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         }
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellReuseID.base.rawValue,
+            withIdentifier: PostTableViewCell.cellId,
             for: indexPath
         ) as? PostTableViewCell else {
             fatalError("could not dequeueReusableCell")
         }
+        if cell.gestureRecognizers == nil {
+              let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
+              tapGesture.numberOfTapsRequired = 2
+              cell.addGestureRecognizer(tapGesture)
+          }
         
         cell.update(data[indexPath.row])
         
@@ -136,6 +141,13 @@ extension ProfileViewController: UITableViewDataSource {
         in tableView: UITableView
     ) -> Int {
         2
+    }
+    
+    @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
+        if let cell = gesture.view as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+    
+            LikeDataManager.shared.addLikePost(post: data[indexPath.row])
+        }
     }
     
     
