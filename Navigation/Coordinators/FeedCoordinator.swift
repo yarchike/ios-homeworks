@@ -27,6 +27,7 @@ class FeedCoordinator: Coordinator {
         feedViewController.routeToAudiu = routeToAudioViewController
         feedViewController.routeToVideo = routeToVideoViewController
         feedViewController.routeToRecord = routeToRecordViewController
+        feedViewController.routeToMap = routeToMapiewController
         feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "doc.richtext"), tag: 0)
         self.navigationController = UINavigationController(rootViewController: feedViewController)
         
@@ -55,5 +56,9 @@ class FeedCoordinator: Coordinator {
     func routeToRecordViewController(){
         let recordViewController = RecordViewController()
         navigationController.pushViewController(recordViewController, animated: true)
+    }
+    func routeToMapiewController(){
+        let mapViewController = MapViewController()
+        navigationController.pushViewController(mapViewController, animated: true)
     }
 }

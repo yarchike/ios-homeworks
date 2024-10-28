@@ -30,6 +30,7 @@
 		BF58D7B82BC924F60099CAC0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B72BC924F60099CAC0 /* Coordinator.swift */; };
 		BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */; };
 		BF58D7BC2BC927A40099CAC0 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */; };
+		BF6CA1692CCF85E200EB971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6CA1682CCF85E200EB971B /* MapViewController.swift */; };
 		BF72A3F92BB16ED80051C048 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3F82BB16ED80051C048 /* Checker.swift */; };
 		BF72A3FC2BB1701A0051C048 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3FB2BB1701A0051C048 /* LoginViewControllerDelegate.swift */; };
 		BF72A3FE2BB174380051C048 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3FD2BB174380051C048 /* LoginInspector.swift */; };
@@ -130,6 +131,7 @@
 		BF58D7B72BC924F60099CAC0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		BF6CA1682CCF85E200EB971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BF72A3F82BB16ED80051C048 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		BF72A3FB2BB1701A0051C048 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BF72A3FD2BB174380051C048 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BF6CA1672CCF85BB00EB971B /* Map */,
 				BFB461F12BDB06A9009705CE /* Record */,
 				BF0E6F632C0DE65A000A4D96 /* LikeModule */,
 				BFFBFDF72BEBE23F008D8847 /* IInfoModule */,
@@ -297,6 +300,14 @@
 				BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		BF6CA1672CCF85BB00EB971B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BF6CA1682CCF85E200EB971B /* MapViewController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		BF72A3FF2BB17D7C0051C048 /* factory */ = {
@@ -588,6 +599,7 @@
 				BF58D7B82BC924F60099CAC0 /* Coordinator.swift in Sources */,
 				BF939BC52B7100B900F54B62 /* PhotosCollectionViewCell.swift in Sources */,
 				BFBDEBFF2B6FDE910076A61F /* PhotosCell.swift in Sources */,
+				BF6CA1692CCF85E200EB971B /* MapViewController.swift in Sources */,
 				BFBDEBF22B6FC4D30076A61F /* PhotosTableViewCell.swift in Sources */,
 				BF58D7B62BC924D50099CAC0 /* AppCoordinator.swift in Sources */,
 				BFC6D8302BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift in Sources */,
@@ -773,6 +785,7 @@
 				DEVELOPMENT_TEAM = V99ACVZ6SW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please give permisson";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Прошу дать разрешение на использования микрофона";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -806,6 +819,7 @@
 				DEVELOPMENT_TEAM = V99ACVZ6SW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please give permisson";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Прошу дать разрешение на использования микрофона";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
