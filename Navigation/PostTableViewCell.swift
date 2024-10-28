@@ -132,7 +132,7 @@ class PostTableViewCell: UITableViewCell {
               }
           }
         contantTextView.text = model.postDescription
-        likesLableView.text = "Likes: \(model.likes)"
+        likesLableView.text = "\(model.likes) \(String.localizedStringWithFormat(NSLocalizedString("likes_count",tableName: "Plulars", comment: ""), model.likes))"
         viewsLableView.text = "Views: \(model.views)"
     }
     

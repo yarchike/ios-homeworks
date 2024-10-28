@@ -14,7 +14,7 @@ class InfoViewController: UIViewController {
     private lazy var actionButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Открыть важную информацию", for: .normal)
+        button.setTitle("Open important information".localized, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         return button
     }()
@@ -23,21 +23,21 @@ class InfoViewController: UIViewController {
     private lazy var labelView: UILabel = {
         let labelView = UILabel()
         labelView.translatesAutoresizingMaskIntoConstraints = false
-        labelView.text = "Загрузка..."
+        labelView.text = "Loading".localized + "..."
         return labelView
     }()
     
     private lazy var palnetLabelView: UILabel = {
         let labelView = UILabel()
         labelView.translatesAutoresizingMaskIntoConstraints = false
-        labelView.text = "Загрузка..."
+        labelView.text = "Loading".localized + "..."
         return labelView
     }()
     
     private lazy var namePlanetLabel: UILabel = {
         let labelView = UILabel()
         labelView.translatesAutoresizingMaskIntoConstraints = false
-        labelView.text = "Загрузка..."
+        labelView.text = "Loading".localized + "..."
         return labelView
     }()
     
@@ -165,7 +165,7 @@ class InfoViewController: UIViewController {
                 
             case .failure(_):
                 DispatchQueue.main.async{ [weak self] in
-                    self?.labelView.text = "Ошибка загрузки"
+                    self?.labelView.text = "Loading error".localized
                     self?.activityIndicator.stopAnimating()
                 }
             }
@@ -187,7 +187,7 @@ class InfoViewController: UIViewController {
                 
             case .failure(_):
                 DispatchQueue.main.async{ [weak self] in
-                    self?.labelView.text = "Ошибка загрузки"
+                    self?.labelView.text = "Loading error".localized
                     self?.activityIndicator.stopAnimating()
                 }
             }
@@ -195,9 +195,9 @@ class InfoViewController: UIViewController {
     }
     
     @objc func buttonPressed(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Ошибка", message: "Срочно устраните ошибку", preferredStyle: .alert)
-        let actionOne = UIAlertAction(title: "Устранить", style: .default, handler: action)
-        let actionTwo = UIAlertAction(title: "Не критичная ошибка", style: .default, handler: action)
+        let alertController = UIAlertController(title: "Error".localized, message: "Fix the error immediately".localized, preferredStyle: .alert)
+        let actionOne = UIAlertAction(title: "Eliminate".localized, style: .default, handler: action)
+        let actionTwo = UIAlertAction(title: "Not a critical error".localized, style: .default, handler: action)
         alertController.addAction(actionOne)
         alertController.addAction(actionTwo)
         present(alertController, animated:true)
