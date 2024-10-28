@@ -22,6 +22,7 @@ final class LikeDataManager {
                 fatalError("Unresolved error \(error)")
             }
         })
+        container.viewContext.automaticallyMergesChangesFromParent = true
         
         return container
     }()
