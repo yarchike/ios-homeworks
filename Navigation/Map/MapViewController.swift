@@ -20,7 +20,7 @@ class MapViewController: UIViewController {
     }()
     
     private lazy var mapTypeSegmentedControl: UISegmentedControl = {
-        let mapTypeSegmentedControl = UISegmentedControl(items: ["Standard", "Satellite", "Hybrid"])
+        let mapTypeSegmentedControl = UISegmentedControl(items: ["Standard".localized, "Satellite".localized, "Hybrid".localized])
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapTypeSegmentedControl.selectedSegmentIndex = 0
         mapTypeSegmentedControl.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
@@ -126,7 +126,7 @@ class MapViewController: UIViewController {
     func addAnnotation(at coordinate: CLLocationCoordinate2D) {
            let annotation = MKPointAnnotation()
            annotation.coordinate = coordinate
-           annotation.title = "Точка на карте"
+        annotation.title = "Point on the map".localized
            mapView.addAnnotation(annotation)
        }
     
@@ -140,7 +140,7 @@ class MapViewController: UIViewController {
                     mapView.removeAnnotations(mapView.annotations)
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = coordinate
-                    annotation.title = "Пункт назначения"
+            annotation.title = "Destination".localized
                     mapView.addAnnotation(annotation)
                     
     

@@ -40,7 +40,7 @@ class FeedViewController: UIViewController {
     
     
     private lazy var buttonOne: CustomButton = {
-        let button = CustomButton(title: "Открыть пост", titleColor: .systemBlue){
+        let button = CustomButton(title: "Open post".localized, titleColor: .systemBlue){
             self.viewModel.fetchPost()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -48,21 +48,21 @@ class FeedViewController: UIViewController {
     }()
     
     private lazy var buttonTwo: CustomButton = {
-        let button = CustomButton(title: "Открыть пост 2", titleColor: .systemBlue){
+        let button = CustomButton(title: "Open post".localized + " 2", titleColor: .systemBlue){
             self.viewModel.fetchPost()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     private lazy var buttonAudio: CustomButton = {
-        let button = CustomButton(title: "Открыть аудио", titleColor: .systemBlue){
+        let button = CustomButton(title: "Open audio".localized, titleColor: .systemBlue){
             self.routeToAudiu()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     private lazy var buttonVideo: CustomButton = {
-        let button = CustomButton(title: "Открыть видео", titleColor: .systemBlue){
+        let button = CustomButton(title: "Open video".localized, titleColor: .systemBlue){
             self.routeToVideo()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ class FeedViewController: UIViewController {
     }()
     
     private lazy var buttonRecord: CustomButton = {
-        let button = CustomButton(title: "Открыть запись", titleColor: .systemBlue){
+        let button = CustomButton(title: "Open entry".localized, titleColor: .systemBlue){
             self.routeToRecord()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +78,7 @@ class FeedViewController: UIViewController {
     }()
     
     private lazy var buttonMap: CustomButton = {
-        let button = CustomButton(title: "Открыть Карту", titleColor: .systemBlue){
+        let button = CustomButton(title: "Open Map".localized, titleColor: .systemBlue){
             self.routeToMap()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
