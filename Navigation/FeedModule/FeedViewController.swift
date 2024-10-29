@@ -123,7 +123,7 @@ class FeedViewController: UIViewController {
         stackView.addArrangedSubview(self.buttonVideo)
         stackView.addArrangedSubview(self.buttonRecord)
         stackView.addArrangedSubview(self.buttonMap)
-        
+        stackView.backgroundColor =  .customBackgroundColor
         stackView.addArrangedSubview(self.checkGuessTextField)
         stackView.addArrangedSubview(self.checkGuessButton)
         stackView.addArrangedSubview(self.checkGuessLabel)
@@ -134,7 +134,7 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         view.addSubview(stackView)
         view.addSubview(activityIndicator)
         setupContraints()

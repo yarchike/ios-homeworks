@@ -55,7 +55,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
     }
     
     private func addSubviews() {

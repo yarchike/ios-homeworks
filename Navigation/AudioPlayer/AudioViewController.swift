@@ -64,7 +64,7 @@ class AudioViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         view.addSubview(nameSong)
         view.addSubview(playButton)
         view.addSubview(stopButton)

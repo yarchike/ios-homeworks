@@ -11,7 +11,7 @@ class PostTableViewCell: UITableViewCell {
         let labelView = UILabel()
         labelView.text = "Hipster Cat"
         labelView.font = UIFont.boldSystemFont(ofSize: 20.0)
-        labelView.textColor = .black
+        labelView.textColor = .customTextColor
         labelView.numberOfLines = 2
         labelView.translatesAutoresizingMaskIntoConstraints = false
         return labelView
@@ -19,7 +19,7 @@ class PostTableViewCell: UITableViewCell {
     
     let contantImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .black
+        imageView.backgroundColor = .customPhotoBackgroundColor
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -27,9 +27,9 @@ class PostTableViewCell: UITableViewCell {
     
     let contantTextView: UILabel = {
         let labelView = UILabel()
-        labelView.backgroundColor = .white
+        labelView.backgroundColor = .customBackgroundColor
         labelView.numberOfLines = 0
-        labelView.textColor = .systemGray
+        labelView.textColor = .customTextColor
         labelView.font.withSize(14)
         labelView.translatesAutoresizingMaskIntoConstraints = false
         return labelView
@@ -37,8 +37,8 @@ class PostTableViewCell: UITableViewCell {
     
     let likesLableView: UILabel = {
         let labelView = UILabel()
-        labelView.backgroundColor = .white
-        labelView.textColor = .black
+        labelView.backgroundColor = .customBackgroundColor
+        labelView.textColor = .customTextColor
         labelView.font.withSize(16)
         labelView.translatesAutoresizingMaskIntoConstraints = false
         return labelView
@@ -46,8 +46,8 @@ class PostTableViewCell: UITableViewCell {
     
     let viewsLableView: UILabel = {
         let labelView = UILabel()
-        labelView.backgroundColor = .white
-        labelView.textColor = .black
+        labelView.backgroundColor = .customBackgroundColor
+        labelView.textColor = .customTextColor
         labelView.font.withSize(16)
         labelView.translatesAutoresizingMaskIntoConstraints = false
         return labelView
@@ -86,7 +86,7 @@ class PostTableViewCell: UITableViewCell {
     // MARK: - Private
     
     private func tuneView() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .customBackgroundColor
         accessoryType = .none
     }
     

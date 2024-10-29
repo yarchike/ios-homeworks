@@ -35,7 +35,7 @@ class VideoViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
     }
     
     private func addSubviews() {
