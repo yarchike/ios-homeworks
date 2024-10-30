@@ -44,11 +44,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Private
     
     private func setupView() {
-        #if DEBUG
-        view.backgroundColor = .lightGray
-        #else
-        view.backgroundColor = .white
-        #endif
+        view.backgroundColor = .customBackgroundColor
         navigationItem.title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = false
     }

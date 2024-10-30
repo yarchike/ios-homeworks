@@ -26,7 +26,7 @@ class AppCoordinator: Coordinator{
         tabBarController.viewControllers = controllers
         tabBarController.selectedIndex = 0
         //tabBarController.selectedIndex = 1
-        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().backgroundColor = .customBackgroundColor
     }
     
 }

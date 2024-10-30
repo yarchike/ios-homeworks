@@ -15,6 +15,7 @@
 		BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E8672B5367260079B703 /* FeedViewController.swift */; };
 		BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86B2B5367D00079B703 /* PostViewController.swift */; };
 		BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E86F2B5376BA0079B703 /* InfoViewController.swift */; };
+		BF060A862CD0CA810056FEE0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF060A852CD0CA810056FEE0 /* UIColor.swift */; };
 		BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C03182BD93450003D1398 /* BruteForceService.swift */; };
 		BF0E6F652C0DE672000A4D96 /* LikeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F642C0DE672000A4D96 /* LikeTableViewController.swift */; };
 		BF0E6F672C0DE68F000A4D96 /* LikeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */; };
@@ -120,6 +121,7 @@
 		BF00E8672B5367260079B703 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BF00E86B2B5367D00079B703 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		BF00E86F2B5376BA0079B703 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		BF060A852CD0CA810056FEE0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BF0C03182BD93450003D1398 /* BruteForceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceService.swift; sourceTree = "<group>"; };
 		BF0E6F642C0DE672000A4D96 /* LikeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeTableViewController.swift; sourceTree = "<group>"; };
 		BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCoordinator.swift; sourceTree = "<group>"; };
@@ -257,8 +259,6 @@
 				BF00E8612B53653B0079B703 /* Info.plist */,
 				BF00E85C2B53653B0079B703 /* Assets.xcassets */,
 				BF00E85E2B53653B0079B703 /* LaunchScreen.storyboard */,
-				BF00E86B2B5367D00079B703 /* PostViewController.swift */,
-				BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */,
 				BF4F74542C15F33900290D09 /* TextPicker.swift */,
 			);
 			path = Navigation;
@@ -383,6 +383,8 @@
 		BFA3A9E82B5FD192008CC6FA /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				BF00E86B2B5367D00079B703 /* PostViewController.swift */,
+				BFFC6DD52B6BCCCF0052A00E /* PostTableViewCell.swift */,
 				BFBDEBF02B6FC4BE0076A61F /* Photos */,
 				BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */,
 				BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */,
@@ -411,6 +413,7 @@
 		BFBD4A332CCFE6C2007240FF /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				BF060A852CD0CA810056FEE0 /* UIColor.swift */,
 				BFBD4A342CCFE6D3007240FF /* String.swift */,
 			);
 			name = Util;
@@ -638,6 +641,7 @@
 				BFC6D8322BFCC82C00BB02C6 /* CheckerService.swift in Sources */,
 				BFFBFDF92BEBE2F2008D8847 /* InfoTableViewCell.swift in Sources */,
 				BF0E6F652C0DE672000A4D96 /* LikeTableViewController.swift in Sources */,
+				BF060A862CD0CA810056FEE0 /* UIColor.swift in Sources */,
 				BFBD4A352CCFE6D3007240FF /* String.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
 				BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */,

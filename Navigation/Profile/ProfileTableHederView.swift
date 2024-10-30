@@ -42,7 +42,7 @@ class ProfileHeaderView : UIView{
         let nameView = UILabel()
         nameView.text = "Hipster Cat"
         nameView.font = UIFont.boldSystemFont(ofSize: 18.0)
-        nameView.textColor = .black
+        nameView.textColor = .customTextColor
         nameView.translatesAutoresizingMaskIntoConstraints = false
         return nameView
     }()

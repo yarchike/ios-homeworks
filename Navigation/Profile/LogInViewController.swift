@@ -33,7 +33,7 @@ class LogInViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .customBackgroundColor
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         return scrollView
@@ -42,7 +42,7 @@ class LogInViewController: UIViewController {
     private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .white
+        contentView.backgroundColor =  .customBackgroundColor
         
         return contentView
     }()
@@ -155,7 +155,7 @@ class LogInViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         self.navigationController?.navigationBar.isHidden = true
     }
     

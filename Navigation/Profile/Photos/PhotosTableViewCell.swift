@@ -11,7 +11,7 @@ class PhotosTableViewCell: UITableViewCell{
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 24.0)
-        label.textColor = .black
+        label.textColor = .customTextColor
         label.text = "Photo"
         return label
     }()
@@ -61,7 +61,7 @@ class PhotosTableViewCell: UITableViewCell{
     
     private func tuneView() {
         selectionStyle = .none
-        backgroundColor = .white
+        backgroundColor = .customBackgroundColor
     }
     
     private func addSubviews() {
