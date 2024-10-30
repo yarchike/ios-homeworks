@@ -8,9 +8,9 @@
 final class FeedVM: FeedVMProtocol {
     
   
-    private let feedModel: FeedModel
+    private let feedModel: FeedModelProtocol
     
-    private let postService: PostService
+    private let postService: PostServiceProtocol
     
     var state: State = .initial {
         didSet {
@@ -19,7 +19,7 @@ final class FeedVM: FeedVMProtocol {
         }
     }
     
-    init(feedModel: FeedModel, postService: PostService) {
+    init(feedModel: FeedModelProtocol, postService: PostServiceProtocol) {
         self.feedModel = feedModel
         self.postService = postService
     }

@@ -11,6 +11,8 @@ class InfoViewController: UIViewController {
     
     var residentsPlanet : [ResidentPlanet] = []
     
+    
+    
     private lazy var actionButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -154,7 +156,7 @@ class InfoViewController: UIViewController {
     
     func loadUser(){
         activityIndicator.startAnimating()
-        NetworkManager.getUser{ [weak self] result in
+        NetworkManager.shared.getUser{ [weak self] result in
             switch result {
                 
             case .success(let result):
@@ -174,7 +176,7 @@ class InfoViewController: UIViewController {
     
     func getPlaent(){
         activityIndicator.startAnimating()
-        NetworkManager.getPlanet{ [weak self] result in
+        NetworkManager.shared.getPlanet{ [weak self] result in
             switch result {
                 
             case .success(let planet):
@@ -209,7 +211,7 @@ class InfoViewController: UIViewController {
     
     func getResidentsPlanet(planet: Planet){
         
-        NetworkManager.getResidentsPlanet(planet: planet){ result in
+        NetworkManager.shared.getResidentsPlanet(planet: planet){ result in
             switch result{
                 
             case .success(let residents):
