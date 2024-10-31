@@ -31,8 +31,14 @@ final class FeedViewModelTests: XCTestCase {
       }
       
     func testCheck_withValidInput_setsLoadedCheckTrue() {
+            let input = "validInput"
+        if(input == "validInput"){
             modelMock.fakeResult = .success(true)
-            viewModel.check(input: "validInput")
+        }else{
+            modelMock.fakeResult = .success(false)
+        }
+           
+            viewModel.check(input: input)
             XCTAssertEqual(viewModel.state, .loadedCheck(true))
         }
 
