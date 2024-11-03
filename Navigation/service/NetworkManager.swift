@@ -18,114 +18,80 @@ enum AppConfiguration: String, CaseIterable {
     }
 }
 
-struct NetworkManager{
+struct NetworkManager {
     
+    static let shared = NetworkManager(networkService: NetworkService())
     
-    static func request(for configuration: AppConfiguration) {
+    let networkService: NetworkServiceProtocol
+    
+    init(networkService: NetworkServiceProtocol) {
+        self.networkService = networkService
+    }
+    
+    func request(for configuration: AppConfiguration) {
         print("request")
         
         guard let url = configuration.url else {
             return
         }
         
-        let tast = URLSession.shared.dataTask(with: url){ data, response, error in
-            
-            
-            if let error = error {
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse else{
-                return
-            }
-            
-            guard let data else {
-                return
-            }
-            let str = String(decoding: data, as: UTF8.self)
-            
-        }
+        networkService.fetchData(from: url, completion: {result in})
         
-        tast.resume()
         
     }
     
-    static func getUser(completion: @escaping (Result<String, Error>) -> Void){
+    func getUser(completion: @escaping (Result<String, Error>) -> Void){
         let urlString = "https://jsonplaceholder.typicode.com/todos/1"
         let url = URL(string: urlString)!
         
-        let tast = URLSession.shared.dataTask(with: url){ data, response, error in
-            
-            if let error = error {
-
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse else{
-                return
-            }
-            
-
-            
-            guard let data else {
-                return
-            }
-            
-            do{
-                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                guard let result = json?["title"] else{
-                    return
+        
+        networkService.fetchData(from: url){result in
+            switch result{
+            case .success(let data):
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                    guard let result = json?["title"] else{
+                        return
+                    }
+                    completion(.success(result as? String ?? ""))
+                }catch{
+                    print("Ошибка")
                 }
-                completion(.success(result as? String ?? ""))
-            }catch{
-                print("Ошибка")
+            case .failure(let error):
+                completion(.failure(error))
             }
-            
+
         }
-        
-        tast.resume()
-        
     }
     
-    static func getPlanet(completion: @escaping (Result<Planet, Error>) -> Void){
+    func getPlanet(completion: @escaping (Result<Planet, Error>) -> Void){
         
         let urlString = "https://swapi.dev/api/planets/1"
         let url = URL(string: urlString)!
         
-        let tast = URLSession.shared.dataTask(with: url){ data, response, error in
-            
-            if let error = error {
-                return
+
+        networkService.fetchData(from: url) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let planet = try JSONDecoder().decode(Planet.self, from: data)
+                    completion(.success(planet))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
             }
-            
-            guard let response = response as? HTTPURLResponse else{
-                return
-            }
-    
-            
-            guard let data else {
-                return
-            }
-            
-            do{
-                let planet = try JSONDecoder().decode(Planet.self, from: data)
-                completion(.success(planet))
-            }catch{
-                print("Ошибка")
-            }
-            
         }
-        
-        tast.resume()
         
     }
     
     
-    static func getResidentsPlanet(planet: Planet, completion: @escaping (Result<[ResidentPlanet], Error>) -> Void){
+    func getResidentsPlanet(planet: Planet, completion: @escaping (Result<[ResidentPlanet], Error>) -> Void){
         var residents = [ResidentPlanet]()
         var count = planet.residents.count
         planet.residents.forEach{ urlResindet in
-            getResidentPlanet(urlString: urlResindet){ result in
+            self.getResidentPlanet(urlString: urlResindet){ result in
                 switch result{
                     
                 case .success(let resident):
@@ -144,35 +110,24 @@ struct NetworkManager{
        
     }
     
-    static func getResidentPlanet(urlString: String, completion: @escaping (Result<ResidentPlanet, Error>) -> Void){
+    func getResidentPlanet(urlString: String, completion: @escaping (Result<ResidentPlanet, Error>) -> Void){
     
         let url = URL(string: urlString)!
         
-        let tast = URLSession.shared.dataTask(with: url){ data, response, error in
-            
-            if let error = error {
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse else{
-                return
-            }
-            
-            guard let data else {
-                return
-            }
-            
-            do{
-                let residentPlanet = try JSONDecoder().decode(ResidentPlanet.self, from: data)
-                completion(.success(residentPlanet))
-            }catch{
-                print("Ошибка")
+        networkService.fetchData(from: url){ result in
+            switch result {
+            case .success(let data):
+                do{
+                    let residentPlanet = try JSONDecoder().decode(ResidentPlanet.self, from: data)
+                    completion(.success(residentPlanet))
+                }catch{
+                    print("Ошибка")
+                }
+            case .failure(let error):
+                completion(.failure(error))
             }
             
         }
-        
-        tast.resume()
-        
         
     }
         

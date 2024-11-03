@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         let appConfig = AppConfiguration.allCases.randomElement() ?? AppConfiguration.people
-        NetworkManager.request(for: appConfig)
+        NetworkManager.shared.request(for: appConfig)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

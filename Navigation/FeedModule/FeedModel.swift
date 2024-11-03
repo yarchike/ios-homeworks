@@ -6,7 +6,8 @@
 //
 import Foundation
 
-class FeedModel {
+class FeedModel: FeedModelProtocol {
+    
     private let secretWord = "secret"
     
     func check(input: String, completion: @escaping (Result<Bool, Error>) -> Void){

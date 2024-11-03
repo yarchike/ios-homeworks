@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct Post {
+public struct Post:Equatable {
     public  let author: String
     public let postDescription: String
     public let image: String

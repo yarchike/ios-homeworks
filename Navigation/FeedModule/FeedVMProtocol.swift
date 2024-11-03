@@ -15,11 +15,27 @@ protocol FeedVMProtocol {
     func fetchPost()
 }
 
-enum State {
+enum State:Equatable {
+    static func == (lhs: State, rhs: State) -> Bool {
+        switch (lhs, rhs) {
+               case (.initial, .initial),
+                    (.loading, .loading),
+                    (.error, .error):
+                   return true
+               case let (.loadedCheck(lhsResult), .loadedCheck(rhsResult)):
+                   return lhsResult == rhsResult
+               case let (.loadedPost(lhsPost), .loadedPost(rhsPost)):
+                   return lhsPost == rhsPost
+               default:
+                   return false
+               }
+    }
+    
     case initial
     case loading
     case loadedCheck(Bool)
     case loadedPost(Post)
     case error
+ 
 }
 

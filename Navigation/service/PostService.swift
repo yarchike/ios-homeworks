@@ -8,7 +8,7 @@
 import Foundation
 import StorageService
 
-class PostService{
+class PostService :PostServiceProtocol{
     func fetchPost(completion: @escaping (Result<Post, Error>) -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + 3, execute: { [weak self] in
             guard let self else {return}
