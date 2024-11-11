@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LogInViewController: UIViewController {
     
@@ -120,7 +121,7 @@ class LogInViewController: UIViewController {
     
     lazy var biometricAuthButton: CustomButton = {
         let button = CustomButton(title: "Авторизация по биометрии", titleColor: .white){
-            self.buttonPressed()
+            self.biometricAuthTapped()
         }
         switch localAuthorizationService.biometricType {
              case .faceID:
@@ -171,6 +172,9 @@ class LogInViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setupContentOfScrollView()
+        if Auth.auth().currentUser != nil {
+            initBiometricAuthButton()
+        }
         
     }
     
@@ -213,7 +217,6 @@ class LogInViewController: UIViewController {
         loginAndPasswordView.addSubview(passwordView)
         loginAndPasswordView.addSubview(activityIndicator)
         contentView.addSubview(loginButtonView)
-        contentView.addSubview(biometricAuthButton)
         //contentView.addSubview(findPasswordButtonView)
         contentView.addSubview(timeLabel)
         
@@ -255,10 +258,6 @@ class LogInViewController: UIViewController {
             loginButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginButtonView.heightAnchor.constraint(equalToConstant: 50),
             
-            biometricAuthButton.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
-            biometricAuthButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            biometricAuthButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            biometricAuthButton.heightAnchor.constraint(equalToConstant: 50),
             
             timeLabel.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
             timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -269,6 +268,18 @@ class LogInViewController: UIViewController {
         
         
         
+    }
+    
+    func initBiometricAuthButton(){
+        
+        contentView.addSubview(biometricAuthButton)
+        
+        NSLayoutConstraint.activate([
+            biometricAuthButton.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
+            biometricAuthButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            biometricAuthButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            biometricAuthButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     
@@ -320,7 +331,8 @@ class LogInViewController: UIViewController {
     private func biometricAuthTapped() {
         localAuthorizationService.authorizeIfPossible { [weak self] success, error in
             if success {
-                print("Авторизация успешна")
+                let profileViewController = ProfileViewController()
+                self?.navigationController?.pushViewController(profileViewController, animated: true)
             } else {
                 let errorMessage = error?.localizedDescription ?? "Неизвестная ошибка"
                 self?.showAlert(message: errorMessage)
