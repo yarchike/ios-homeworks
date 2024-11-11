@@ -16,6 +16,8 @@ class LogInViewController: UIViewController {
     
     
     var routeToProfile: ((User) -> ())?
+    
+    private let localAuthorizationService = LocalAuthorizationService()
 
     
     var userService: UserService
@@ -116,6 +118,24 @@ class LogInViewController: UIViewController {
         return button
     }()
     
+    lazy var biometricAuthButton: CustomButton = {
+        let button = CustomButton(title: "Авторизация по биометрии", titleColor: .white){
+            self.buttonPressed()
+        }
+        switch localAuthorizationService.biometricType {
+             case .faceID:
+                button.setImage(UIImage(systemName: "faceid"), for: .normal)
+             case .touchID:
+                button.setImage(UIImage(systemName: "touchid"), for: .normal)
+             default:
+                button.setImage(nil, for: .normal)
+             }
+    
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
 //    lazy var findPasswordButtonView: CustomButton = {
 //        let button = CustomButton(title: "Подобрать пароль", titleColor: .white){
 //            self.brutePassword()
@@ -193,6 +213,7 @@ class LogInViewController: UIViewController {
         loginAndPasswordView.addSubview(passwordView)
         loginAndPasswordView.addSubview(activityIndicator)
         contentView.addSubview(loginButtonView)
+        contentView.addSubview(biometricAuthButton)
         //contentView.addSubview(findPasswordButtonView)
         contentView.addSubview(timeLabel)
         
@@ -234,10 +255,10 @@ class LogInViewController: UIViewController {
             loginButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginButtonView.heightAnchor.constraint(equalToConstant: 50),
             
-//            findPasswordButtonView.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
-//            findPasswordButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-//            findPasswordButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-//            findPasswordButtonView.heightAnchor.constraint(equalToConstant: 50),
+            biometricAuthButton.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
+            biometricAuthButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            biometricAuthButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            biometricAuthButton.heightAnchor.constraint(equalToConstant: 50),
             
             timeLabel.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
             timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -296,6 +317,22 @@ class LogInViewController: UIViewController {
         
     }
     
+    private func biometricAuthTapped() {
+        localAuthorizationService.authorizeIfPossible { [weak self] success, error in
+            if success {
+                print("Авторизация успешна")
+            } else {
+                let errorMessage = error?.localizedDescription ?? "Неизвестная ошибка"
+                self?.showAlert(message: errorMessage)
+            }
+        }
+    }
+    
+    private func showAlert(message: String) {
+          let alert = UIAlertController(title: "Ошибка авторизации", message: message, preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "ОК", style: .default))
+          present(alert, animated: true)
+      }
     
     func buttonPressed() {
         if(!passwordText.isEmpty && !loginText.isEmpty){
