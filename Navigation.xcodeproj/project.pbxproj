@@ -87,6 +87,7 @@
 		BFC6D82E2BFCAF5400BB02C6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BFC6D82D2BFCAF5400BB02C6 /* FirebaseAuth */; };
 		BFC6D8302BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D82F2BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift */; };
 		BFC6D8322BFCC82C00BB02C6 /* CheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D8312BFCC82C00BB02C6 /* CheckerService.swift */; };
+		BFDFF3F82CD79906005203E3 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */; };
 		BFF1B54B2BD8F885005C5929 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BFF1B54A2BD8F885005C5929 /* iOSIntPackage */; };
 		BFFBFDF22BEBBDA1008D8847 /* ResponseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */; };
 		BFFBFDF42BEBD3DE008D8847 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF32BEBD3DE008D8847 /* Planet.swift */; };
@@ -208,6 +209,7 @@
 		BFC6D82A2BFCAAFA00BB02C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFC6D82F2BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerServiceProtocol.swift; sourceTree = "<group>"; };
 		BFC6D8312BFCC82C00BB02C6 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
+		BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUser.swift; sourceTree = "<group>"; };
 		BFFBFDF32BEBD3DE008D8847 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		BFFBFDF52BEBE1A1008D8847 /* ResidentPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentPlanet.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				BF28856A2CD29E9A00C3DE46 /* NetworkServiceProtocol.swift */,
 				BF28856E2CD2A00E00C3DE46 /* NetworkService.swift */,
 				BF2885702CD2A5D300C3DE46 /* NetworkServiceMock.swift */,
+				BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */,
 				BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */,
 				BFB461F32BDB06BB009705CE /* RecordViewController.swift in Sources */,
+				BFDFF3F82CD79906005203E3 /* LocalNotificationsService.swift in Sources */,
 				BF0E6F6A2C0DE837000A4D96 /* LikeModel.xcdatamodeld in Sources */,
 				BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */,
 				BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */,
