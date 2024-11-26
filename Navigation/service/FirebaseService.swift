@@ -2,6 +2,8 @@ import FirebaseDatabase
 
 class FirebaseService {
     
+    static let shared = FirebaseService()
+    
     private let databaseRef: DatabaseReference
 
     init() {

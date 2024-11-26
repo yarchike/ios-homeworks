@@ -16,7 +16,7 @@ class LogInViewController: UIViewController {
     var countErrors = 0
     
     
-    var routeToProfile: ((User) -> ())?
+    var routeToProfile: (() -> ()) = {}
     
     private let localAuthorizationService = LocalAuthorizationService()
 
@@ -137,17 +137,6 @@ class LogInViewController: UIViewController {
     }()
     
     
-//    lazy var findPasswordButtonView: CustomButton = {
-//        let button = CustomButton(title: "Подобрать пароль", titleColor: .white){
-//            self.brutePassword()
-//        }
-//        button.clipsToBounds = true
-//        button.layer.cornerRadius = 10
-//        button.backgroundColor = UIColor(named: "blue_pixel")
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-    
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -162,12 +151,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-#if DEBUG
-        userService = TestUserService()
-#else
         userService = CurrentUserService()
-#endif
-        
         setupView()
         addSubviews()
         setupConstraints()
@@ -283,51 +267,6 @@ class LogInViewController: UIViewController {
     }
     
     
-    func brutePassword(){
-        loginView.text = userService.user.login
-        loginText = userService.user.login
-        let bruteForceService = BruteForceService()
-        activityIndicator.startAnimating()
-        //findPasswordButtonView.isEnabled = false
-        let queue = DispatchQueue(label: "bruteForce", qos:
-        .default)
-        queue.async {
-            let password = bruteForceService.bruteForce{password in
-                var truePassword = false
-                do{
-                   try self.loginDelegate.check(login: self.userService.user.login, password: password){ result in
-                        switch result{
-                        case .success(_):
-                            break
-                         //   truePassword = result
-                        case .failure(_):
-                            truePassword  = false
-                        }
-                        
-                    }
-                }
-                catch {
-                    truePassword = false
-                }
-                return truePassword
-            }
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                //self.findPasswordButtonView.isEnabled = true
-                self.passwordView.isSecureTextEntry = false
-                self.passwordView.text = password
-                self.passwordText = password
-                DispatchQueue.global().asyncAfter(deadline: .now() + 3, execute: { [weak self] in
-                    guard let self else { return }
-                    DispatchQueue.main.async {
-                        self.buttonPressed()
-                    }
-                })
-            }
-        }
-        
-    }
-    
     private func biometricAuthTapped() {
         localAuthorizationService.authorizeIfPossible { [weak self] success, error in
             if success {
@@ -353,8 +292,7 @@ class LogInViewController: UIViewController {
                     switch result {
                     case .success(_):
                         self.countErrors = 0
-                        let profileViewController = ProfileViewController()
-                        self.navigationController?.pushViewController(profileViewController, animated: true)
+                        self.routeToProfile()
                     case .failure(let error):
                         self.handleError(with: error)
                     }

@@ -32,10 +32,6 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(profileViewController, animated: true)
     }
     
-    func routeToLogin(){
-        let loginViewConntroller = getLoginViewController()
-        navigationController.pushViewController(loginViewConntroller, animated: true)
-    }
     
     func routeToPhoto(){
         let photosViewController = PhotosViewController()
@@ -43,21 +39,10 @@ class ProfileCoordinator: Coordinator {
         
     }
     
-    func getLoginViewController() -> LogInViewController{
-        var userService: UserService = CurrentUserService()
-        
-#if DEBUG
-        userService = TestUserService()
-#endif
-        let loginViewConntroller = LogInViewController(userService: userService, delegate: MyLoginFactory.makeLoginInspector())
-        loginViewConntroller.routeToProfile = routeToProfile
-        return loginViewConntroller
-    }
     
     func getProfileViewController() -> ProfileViewController{
         let profileViewController = ProfileViewController()
         profileViewController.routeToPhoto = routeToPhoto
-        profileViewController.routeToLogin = routeToLogin
         return profileViewController
     }
     

@@ -52,6 +52,8 @@
 		BF72A3FE2BB174380051C048 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3FD2BB174380051C048 /* LoginInspector.swift */; };
 		BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A4002BB17D870051C048 /* LoginFactory.swift */; };
 		BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A4032BB17DC00051C048 /* MyLoginFactory.swift */; };
+		BF818D042CF6038E004E3890 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF818D032CF6038E004E3890 /* FirebaseStorage */; };
+		BF818D062CF603E5004E3890 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF818D052CF603E5004E3890 /* FirebaseStorageService.swift */; };
 		BF8EB6ED2BDB86FE00548656 /* Queen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6EC2BDB86FE00548656 /* Queen.mp3 */; };
 		BF8EB6F42BDB988900548656 /* Linkin Park – In the End.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F32BDB988900548656 /* Linkin Park – In the End.mp3 */; };
 		BF8EB6F62BDB989400548656 /* Linkin Park – New Divide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF8EB6F52BDB989400548656 /* Linkin Park – New Divide.mp3 */; };
@@ -177,6 +179,7 @@
 		BF72A3FD2BB174380051C048 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
 		BF72A4002BB17D870051C048 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		BF72A4032BB17DC00051C048 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
+		BF818D052CF603E5004E3890 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		BF8EB6EC2BDB86FE00548656 /* Queen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Queen.mp3; sourceTree = "<group>"; };
 		BF8EB6F32BDB988900548656 /* Linkin Park – In the End.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – In the End.mp3"; sourceTree = "<group>"; };
 		BF8EB6F52BDB989400548656 /* Linkin Park – New Divide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Linkin Park – New Divide.mp3"; sourceTree = "<group>"; };
@@ -233,6 +236,7 @@
 				BF3C528B2CF5D1FC0071F2DD /* FirebaseAuth in Frameworks */,
 				BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */,
 				BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */,
+				BF818D042CF6038E004E3890 /* FirebaseStorage in Frameworks */,
 				BFF1B54B2BD8F885005C5929 /* iOSIntPackage in Frameworks */,
 				BF3C528F2CF5D1FC0071F2DD /* FirebaseFirestore in Frameworks */,
 			);
@@ -268,6 +272,7 @@
 				BF941CB82BA347A0002AB495 /* StorageServiceTests */,
 				BF2885572CD28D8000C3DE46 /* NavigationTests */,
 				BF00E8512B5365390079B703 /* Products */,
+				BF818D022CF6038E004E3890 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -352,7 +357,6 @@
 		BF3C52812CF5BB640071F2DD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				BF3C52862CF5CA740071F2DD /* Profile */,
 				BFA3A9E82B5FD192008CC6FA /* Profile */,
 				BF3C52852CF5C5B80071F2DD /* Login */,
 			);
@@ -365,13 +369,6 @@
 				BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		BF3C52862CF5CA740071F2DD /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		BF4C22232B6FB0B500648FA3 /* UIView */ = {
@@ -412,6 +409,13 @@
 			path = factory;
 			sourceTree = "<group>";
 		};
+		BF818D022CF6038E004E3890 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF8EDCAA2BAAEB6F00BF3FFD /* service */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +438,7 @@
 				BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */,
 				BF5ECD012CE1EF8B00730C37 /* LocalAuthorizationService.swift */,
 				BF3C52872CF5D0880071F2DD /* FirebaseService.swift */,
+				BF818D052CF603E5004E3890 /* FirebaseStorageService.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -587,6 +592,7 @@
 				BF3C528A2CF5D1FC0071F2DD /* FirebaseAuth */,
 				BF3C528C2CF5D1FC0071F2DD /* FirebaseDatabase */,
 				BF3C528E2CF5D1FC0071F2DD /* FirebaseFirestore */,
+				BF818D032CF6038E004E3890 /* FirebaseStorage */,
 			);
 			productName = Navigation;
 			productReference = BF00E8502B5365390079B703 /* Navigation.app */;
@@ -772,6 +778,7 @@
 				BF060A862CD0CA810056FEE0 /* UIColor.swift in Sources */,
 				BF2885692CD2934700C3DE46 /* PostServiceMock.swift in Sources */,
 				BFBD4A352CCFE6D3007240FF /* String.swift in Sources */,
+				BF818D062CF603E5004E3890 /* FirebaseStorageService.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
 				BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */,
 				BF2885712CD2A5D300C3DE46 /* NetworkServiceMock.swift in Sources */,
@@ -1214,6 +1221,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF3C52892CF5D1FC0071F2DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		BF818D032CF6038E004E3890 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF3C52892CF5D1FC0071F2DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		BF8EDCA12BAAE67000BF3FFD /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -18,6 +18,7 @@ class AppCoordinator: Coordinator {
     func getLoginViewController() -> LogInViewController {
         let userService: UserService = CurrentUserService()
         let loginViewController = LogInViewController(userService: userService, delegate: MyLoginFactory.makeLoginInspector())
+        loginViewController.routeToProfile = switchToMainInterface
         return loginViewController
     }
     
@@ -48,5 +49,16 @@ class AppCoordinator: Coordinator {
         UITabBar.appearance().backgroundColor = .customBackgroundColor
         
         return tabBarController
+    }
+    func switchToMainInterface() {
+        // Создаем новый TabBarController
+        let newRootController = getTabBarController()
+
+        // Проверяем наличие текущего окна
+        if let window = UIApplication.shared.windows.first {
+            // Анимированная замена rootViewController
+            window.rootViewController = newRootController
+            UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromRight, animations: nil)
+        }
     }
 }
