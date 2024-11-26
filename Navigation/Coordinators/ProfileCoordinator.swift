@@ -20,12 +20,7 @@ class ProfileCoordinator: Coordinator {
     init(){
         self.navigationController = UINavigationController()
         var viewController: UIViewController?
-        if Auth.auth().currentUser != nil {
-            //viewController = getProfileViewController()
-            viewController = getLoginViewController()
-        }else{
-            viewController = getLoginViewController()
-        }
+        viewController = getProfileViewController()
         viewController?.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
         self.navigationController = UINavigationController(rootViewController: viewController!)
     }

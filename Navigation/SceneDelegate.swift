@@ -20,14 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let appCoordinator = AppCoordinator()
         
         
-        window.rootViewController = appCoordinator.tabBarController
+        window.rootViewController = appCoordinator.rootControiller
     
         window.makeKeyAndVisible()
         
         self.window = window
-        
-        let appConfig = AppConfiguration.allCases.randomElement() ?? AppConfiguration.people
-        NetworkManager.shared.request(for: appConfig)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
