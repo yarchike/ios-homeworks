@@ -41,6 +41,7 @@
 		BF58D7B82BC924F60099CAC0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B72BC924F60099CAC0 /* Coordinator.swift */; };
 		BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */; };
 		BF58D7BC2BC927A40099CAC0 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */; };
+		BF5ECD022CE1EF8B00730C37 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5ECD012CE1EF8B00730C37 /* LocalAuthorizationService.swift */; };
 		BF6CA1692CCF85E200EB971B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6CA1682CCF85E200EB971B /* MapViewController.swift */; };
 		BF72A3F92BB16ED80051C048 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3F82BB16ED80051C048 /* Checker.swift */; };
 		BF72A3FC2BB1701A0051C048 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72A3FB2BB1701A0051C048 /* LoginViewControllerDelegate.swift */; };
@@ -166,6 +167,7 @@
 		BF58D7B72BC924F60099CAC0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		BF5ECD012CE1EF8B00730C37 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		BF6CA1682CCF85E200EB971B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BF72A3F82BB16ED80051C048 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		BF72A3FB2BB1701A0051C048 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				BF28856E2CD2A00E00C3DE46 /* NetworkService.swift */,
 				BF2885702CD2A5D300C3DE46 /* NetworkServiceMock.swift */,
 				BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */,
+				BF5ECD012CE1EF8B00730C37 /* LocalAuthorizationService.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				BF0E6F6C2C0DE852000A4D96 /* LikeDataManager.swift in Sources */,
 				BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */,
 				BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */,
+				BF5ECD022CE1EF8B00730C37 /* LocalAuthorizationService.swift in Sources */,
 				BF939BC32B70F78200F54B62 /* PhotosViewController.swift in Sources */,
 				BF58D7B82BC924F60099CAC0 /* Coordinator.swift in Sources */,
 				BF939BC52B7100B900F54B62 /* PhotosCollectionViewCell.swift in Sources */,

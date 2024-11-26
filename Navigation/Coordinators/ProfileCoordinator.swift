@@ -21,7 +21,8 @@ class ProfileCoordinator: Coordinator {
         self.navigationController = UINavigationController()
         var viewController: UIViewController?
         if Auth.auth().currentUser != nil {
-            viewController = getProfileViewController()
+            //viewController = getProfileViewController()
+            viewController = getLoginViewController()
         }else{
             viewController = getLoginViewController()
         }
