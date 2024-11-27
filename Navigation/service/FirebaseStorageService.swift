@@ -16,7 +16,7 @@ class FirebaseStorageService {
     private let storage = Storage.storage(url: "gs://navigation-14b39.firebasestorage.app")
     
     
-    func uploadImage(image: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
+    func uploadImage(image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.8) else {
             print("Ошибка при конвертации изображения в данные")
             completion(.failure(NSError(domain: "ImageConversionError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Не удалось конвертировать изображение в данные"])))
@@ -42,7 +42,7 @@ class FirebaseStorageService {
                 
                 if let downloadURL = url {
                     print("Изображение успешно загружено! URL: \(downloadURL)")
-                    completion(.success(downloadURL))
+                    completion(.success(downloadURL.absoluteString))
                 }
             }
         }

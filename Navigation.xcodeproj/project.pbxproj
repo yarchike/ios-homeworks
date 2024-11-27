@@ -93,6 +93,8 @@
 		BFC6D8302BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D82F2BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift */; };
 		BFC6D8322BFCC82C00BB02C6 /* CheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D8312BFCC82C00BB02C6 /* CheckerService.swift */; };
 		BFDFF3F82CD79906005203E3 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */; };
+		BFF103C42CF7011200D819E6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF103C32CF7011200D819E6 /* RegistrationViewController.swift */; };
+		BFF103C62CF70F7400D819E6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF103C52CF70F7400D819E6 /* RegistrationViewModel.swift */; };
 		BFF1B54B2BD8F885005C5929 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BFF1B54A2BD8F885005C5929 /* iOSIntPackage */; };
 		BFFBFDF22BEBBDA1008D8847 /* ResponseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */; };
 		BFFBFDF42BEBD3DE008D8847 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBFDF32BEBD3DE008D8847 /* Planet.swift */; };
@@ -217,6 +219,8 @@
 		BFC6D82F2BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerServiceProtocol.swift; sourceTree = "<group>"; };
 		BFC6D8312BFCC82C00BB02C6 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
 		BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
+		BFF103C32CF7011200D819E6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		BFF103C52CF70F7400D819E6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		BFFBFDF12BEBBDA1008D8847 /* ResponseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUser.swift; sourceTree = "<group>"; };
 		BFFBFDF32BEBD3DE008D8847 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		BFFBFDF52BEBE1A1008D8847 /* ResidentPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentPlanet.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 		BF00E8522B5365390079B703 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BF8EDCAA2BAAEB6F00BF3FFD /* service */,
 				BF3C52812CF5BB640071F2DD /* Screens */,
 				BFBD4A332CCFE6C2007240FF /* Util */,
 				BF6CA1672CCF85BB00EB971B /* Map */,
@@ -298,8 +303,6 @@
 				BFB461EC2BDAC626009705CE /* Video */,
 				BF1E01AD2BDA86C3001D956E /* AudioPlayer */,
 				BF58D7B42BC9249B0099CAC0 /* Coordinators */,
-				BF95111F2BC425AE002D02E4 /* FeedModule */,
-				BF8EDCAA2BAAEB6F00BF3FFD /* service */,
 				BF4C22232B6FB0B500648FA3 /* UIView */,
 				BFFC6DD72B6C09920052A00E /* UITableView+Extensions.swift */,
 				BFFC6DD22B6B8FFA0052A00E /* model */,
@@ -357,6 +360,8 @@
 		BF3C52812CF5BB640071F2DD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BF95111F2BC425AE002D02E4 /* FeedModule */,
+				BFF103C22CF700E100D819E6 /* Registration */,
 				BFA3A9E82B5FD192008CC6FA /* Profile */,
 				BF3C52852CF5C5B80071F2DD /* Login */,
 			);
@@ -531,6 +536,15 @@
 				BFBDEC012B6FDF0D0076A61F /* ReusableView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		BFF103C22CF700E100D819E6 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				BFF103C32CF7011200D819E6 /* RegistrationViewController.swift */,
+				BFF103C52CF70F7400D819E6 /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		BFFBFDF72BEBE23F008D8847 /* IInfoModule */ = {
@@ -735,6 +749,7 @@
 				BF0E6F672C0DE68F000A4D96 /* LikeCoordinator.swift in Sources */,
 				BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */,
 				BF2885602CD2905100C3DE46 /* FeedModelProtocol.swift in Sources */,
+				BFF103C62CF70F7400D819E6 /* RegistrationViewModel.swift in Sources */,
 				BFBDEC022B6FDF0D0076A61F /* ReusableView.swift in Sources */,
 				BF28856F2CD2A00E00C3DE46 /* NetworkService.swift in Sources */,
 				BF58D7BC2BC927A40099CAC0 /* ProfileCoordinator.swift in Sources */,
@@ -764,6 +779,7 @@
 				BF2885652CD291AF00C3DE46 /* FeedModelMock.swift in Sources */,
 				BFBDEBF22B6FC4D30076A61F /* PhotosTableViewCell.swift in Sources */,
 				BF2885672CD2931900C3DE46 /* PostServiceProtocol.swift in Sources */,
+				BFF103C42CF7011200D819E6 /* RegistrationViewController.swift in Sources */,
 				BF58D7B62BC924D50099CAC0 /* AppCoordinator.swift in Sources */,
 				BFC6D8302BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift in Sources */,
 				BFBDEBF42B6FC6E20076A61F /* Photo.swift in Sources */,

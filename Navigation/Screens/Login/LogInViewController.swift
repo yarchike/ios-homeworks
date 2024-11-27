@@ -119,6 +119,16 @@ class LogInViewController: UIViewController {
         return button
     }()
     
+    lazy var regButtonView: UIButton = {
+        let button = UIButton()
+        button.setTitle("Зарегестрироваться", for: .normal)
+        button.addTarget(self, action: #selector(openRegistration), for: .touchUpInside)
+        button.setTitleColor(UIColor(named: "blue_pixel"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
     lazy var biometricAuthButton: CustomButton = {
         let button = CustomButton(title: "Авторизация по биометрии", titleColor: .white){
             self.biometricAuthTapped()
@@ -201,7 +211,7 @@ class LogInViewController: UIViewController {
         loginAndPasswordView.addSubview(passwordView)
         loginAndPasswordView.addSubview(activityIndicator)
         contentView.addSubview(loginButtonView)
-        //contentView.addSubview(findPasswordButtonView)
+        contentView.addSubview(regButtonView)
         contentView.addSubview(timeLabel)
         
         
@@ -242,8 +252,14 @@ class LogInViewController: UIViewController {
             loginButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginButtonView.heightAnchor.constraint(equalToConstant: 50),
             
+            regButtonView.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
+            regButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            regButtonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            regButtonView.heightAnchor.constraint(equalToConstant: 50),
+            regButtonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            timeLabel.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
+            
+            timeLabel.topAnchor.constraint(equalTo: regButtonView.bottomAnchor, constant: 16),
             timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             timeLabel.heightAnchor.constraint(equalToConstant: 50),
@@ -415,6 +431,12 @@ class LogInViewController: UIViewController {
         case .authError(let message):
             self.showErrorAlert(text: message)
         }
+    }
+    @objc private func openRegistration() {
+        let registrationVC = RegistrationViewController()
+             registrationVC.modalPresentationStyle = .formSheet
+             registrationVC.modalTransitionStyle = .coverVertical
+             present(registrationVC, animated: true)
     }
     
 }

@@ -5,63 +5,68 @@
 //  Created by Ярослав  Мартынов on 20.03.2024.
 //
 
+//
+//  User.swift
+//  Navigation
+//
+//  Created by Ярослав Мартынов on 20.03.2024.
+//
+
+//
+//  User.swift
+//  Navigation
+//
+//  Created by Ярослав Мартынов on 20.03.2024.
+//
+
 import UIKit
 
 struct User {
     let id: String
-    let login: String
+    let email: String
     let fullname: String
-    let avatar: UIImage? // изображение аватара
+    let avatarURL: String?
     let status: String
     
-    // Инициализатор структуры, где avatar преобразуется в Data
-    init(id: String, login: String, fullname: String, avatar: UIImage?, status: String) {
+
+    init(id: String, email: String, fullname: String, avatarURL: String?, status: String) {
         self.id = id
-        self.login = login
+        self.email = email
         self.fullname = fullname
-        self.avatar = avatar
+        self.avatarURL = avatarURL
         self.status = status
     }
     
     // Инициализация из словаря (например, полученного из Firebase)
     init?(dictionary: [String: Any]) {
         guard let id = dictionary["id"] as? String,
-              let login = dictionary["login"] as? String,
+              let email = dictionary["email"] as? String,
               let fullname = dictionary["fullname"] as? String,
               let status = dictionary["status"] as? String else {
             return nil
         }
         
         self.id = id
-        self.login = login
+        self.email = email
         self.fullname = fullname
         self.status = status
         
-        // Получаем ссылку на изображение (если она есть)
-        if let avatarURL = dictionary["avatar"] as? String {
-            // В реальном приложении тут будет загрузка изображения по URL
-            self.avatar = nil // В данном примере просто оставим nil
-        } else {
-            self.avatar = nil
-        }
+        // Получаем строку с URL аватара, если она есть
+        self.avatarURL = dictionary["avatarURL"] as? String
     }
     
-    // Преобразование структуры в словарь для сохранения в Firebase
+
     func toDictionary() -> [String: Any] {
         var dictionary: [String: Any] = [
             "id": id,
-            "login": login,
+            "email": email,
             "fullname": fullname,
             "status": status
         ]
         
-        // Если аватар есть, сохраняем ссылку на изображение
-        if let avatar = avatar, let avatarData = avatar.jpegData(compressionQuality: 1.0) {
-            // Преобразуем аватар в Data и загружаем его в Firebase Storage, получая URL
-            // Здесь можно добавить код для загрузки аватара в Firebase Storage и получения ссылки
-            // Например, ссылка будет сохранена в базе данных
-            // Вместо этого, как заглушку, сохраним пустую строку
-            dictionary["avatar"] = "URL_of_the_avatar_image_in_Firebase_Storage"
+
+        if let avatarURL = avatarURL {
+            dictionary["avatarURL"] = avatarURL
         }
         
         return dictionary

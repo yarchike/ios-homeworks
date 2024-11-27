@@ -12,7 +12,7 @@ protocol UserService {
 
 extension UserService {
     func getUser(login: String) throws -> User {
-        if(login == user.login){
+        if(login == user.email){
             return user
         }else{
             throw ApiError.notFound

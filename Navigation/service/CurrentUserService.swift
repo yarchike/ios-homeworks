@@ -9,6 +9,6 @@ import UIKit
 
 class CurrentUserService: UserService {
     
-    let user = User(id: "asdasd", login: "user", fullname: "Djeki Rassel", avatar: UIImage(named: "cat"), status: "Where")
+    let user = User(id: "asdasd", email: "user", fullname: "Djeki Rassel", avatarURL:  "cat", status: "Where")
     
 }

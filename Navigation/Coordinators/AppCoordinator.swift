@@ -9,9 +9,9 @@ class AppCoordinator: Coordinator {
     
     init() {
         if Auth.auth().currentUser != nil {
-            self.rootControiller = getLoginViewController()
-        }else{
             self.rootControiller = getTabBarController()
+        }else{
+            self.rootControiller = getLoginViewController()
         }
     }
     

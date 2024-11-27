@@ -218,7 +218,7 @@ class ProfileHeaderView : UIView{
     }
     
     func setupProfile(user: User){
-        avatarImageView.image = user.avatar
+        avatarImageView.image = UIImage(named: user.avatarURL ?? "")
         fullNameLabel.text = user.fullname
         statusLabel.text = user.status
     }
