@@ -39,6 +39,10 @@ final class FeedVM: FeedVMProtocol {
         }
     }
     
+    func signOut(){
+        FirebaseAutch.shared.signOut()
+    }
+    
     func check(input: String) {
             state = .loading
             feedModel.check(input: input) { [weak self] result in

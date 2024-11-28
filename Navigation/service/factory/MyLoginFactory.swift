@@ -13,7 +13,7 @@ struct MyLoginFactory: LoginFactory{
     }
     
     static func makeCheckerService() -> CheckerServiceProtocol {
-        return CheckerService()
+        return FirebaseAutch()
     }
     
     

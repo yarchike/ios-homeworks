@@ -13,6 +13,7 @@ protocol FeedVMProtocol {
     var currentState: ((State) -> Void)? { get set }
     func check(input: String)
     func fetchPost()
+    func signOut()
 }
 
 enum State:Equatable {

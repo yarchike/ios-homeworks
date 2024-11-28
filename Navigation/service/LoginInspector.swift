@@ -18,7 +18,7 @@ struct LoginInspector :LoginViewControllerDelegate {
     }
     
     func check(login: String, password: String, completion: @escaping (Result<String, ApiError>) -> Void) throws{
-        checkerService.checkCredentials(withEmail: login, password: password, completion: completion)
+        checkerService.singIn(withEmail: login, password: password, completion: completion)
     }
 }
 

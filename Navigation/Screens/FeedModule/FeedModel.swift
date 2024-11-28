@@ -17,6 +17,7 @@ class FeedModel: FeedModelProtocol {
         })
        
     }
+
     
     
 }

@@ -28,6 +28,8 @@ class FeedViewController: UIViewController {
     
     var routeToMap: () -> () = {}
     
+    var switchToLoginInterface: (() -> ())? = nil
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -49,7 +51,8 @@ class FeedViewController: UIViewController {
     
     private lazy var buttonTwo: CustomButton = {
         let button = CustomButton(title: "Open post".localized + " 2", titleColor: .systemBlue){
-            self.viewModel.fetchPost()
+            self.viewModel.signOut()
+            self.switchToLoginInterface?()
         }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

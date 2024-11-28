@@ -1,29 +1,30 @@
 //
-//  CheckerService.swift
+//  FirebaseAutch.swift
 //  Navigation
 //
-//  Created by Ярослав  Мартынов on 21.05.2024.
+//  Created by Ярослав  Мартынов on 28.11.2024.
 //
+
+import Foundation
+
 
 import Foundation
 import FirebaseAuth
 
 
-class CheckerService: CheckerServiceProtocol{
-    func checkCredentials(withEmail: String, password: String, completion: @escaping (Result<String, ApiError>) -> Void) {
+class FirebaseAutch: CheckerServiceProtocol{
+    
+    static let shared = FirebaseAutch()
+    
+    func singIn(withEmail: String, password: String, completion: @escaping (Result<String, ApiError>) -> Void) {
         Auth.auth().signIn(withEmail:withEmail, password:password){ authResult, error in
             
             if let error {
                 let err = error as NSError
-                if err.code == AuthErrorCode.invalidCredential.rawValue{
-                    self.signUp(withEmail:withEmail, password:password){ result in
-                        completion(result)
-                    }
-                }else{
-                    completion(.failure(ApiError.authError(message: err.userInfo["NSLocalizedDescription"] as? String ?? "Ошибка авторизации")))
-                }
+                completion(.failure(ApiError.authError(message: err.userInfo["NSLocalizedDescription"] as? String ?? "Ошибка авторизации")))
             }
             if let authResult{
+                print(authResult.user.uid)
                 completion(.success(authResult.user.displayName ?? ""))
             }
             
@@ -43,5 +44,15 @@ class CheckerService: CheckerServiceProtocol{
         }
     }
     
+    func signOut(){
+        do {
+            try Auth.auth().signOut()
+            print("Выход выполнен успешно")
+            // Здесь вы можете перенаправить пользователя, например, на экран входа
+        } catch let signOutError as NSError {
+            print("Ошибка выхода: %@", signOutError)
+            // Обработайте ошибку, если необходимо
+        }
+    }
     
 }

@@ -33,9 +33,12 @@ class RegistrationViewModel {
         }
         
         // Успешная регистрация
-        print("Регистрация прошла успешно!")
+    
+        //let newUser  = User(id: <#T##String#>, email: <#T##String#>, fullname: <#T##String#>, avatarURL: <#T##String?#>, status: <#T##String#>)
         onRegistrationSuccess?()
     }
+    
+    
     
     
     func changeAvatart(avatar: UIImage){
@@ -43,7 +46,6 @@ class RegistrationViewModel {
             switch result{
             case .success(let url):
                 self.urlAvatar = url
-                print(self.urlAvatar)
 
             case .failure(_):
                 self.onValidationError?("Пароли не совпадают")

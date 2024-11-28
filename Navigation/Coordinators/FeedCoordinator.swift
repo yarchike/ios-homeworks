@@ -11,13 +11,14 @@ import StorageService
 class FeedCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private var navigationController : UINavigationController
+    var switchToLoginInterface: (() -> ())? = nil
     
     func getNavigationController() -> UINavigationController{
         return self.navigationController
     }
 
     
-    init() {
+    init(switchToLoginInterface: @escaping () -> ()) {
         navigationController = UINavigationController()
         let feedModel = FeedModel()
         let postService = PostService()
@@ -28,6 +29,7 @@ class FeedCoordinator: Coordinator {
         feedViewController.routeToVideo = routeToVideoViewController
         feedViewController.routeToRecord = routeToRecordViewController
         feedViewController.routeToMap = routeToMapiewController
+        feedViewController.switchToLoginInterface = switchToLoginInterface
         feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "doc.richtext"), tag: 0)
         self.navigationController = UINavigationController(rootViewController: feedViewController)
         

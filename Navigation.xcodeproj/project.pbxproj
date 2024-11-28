@@ -32,6 +32,7 @@
 		BF28856F2CD2A00E00C3DE46 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28856E2CD2A00E00C3DE46 /* NetworkService.swift */; };
 		BF2885712CD2A5D300C3DE46 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2885702CD2A5D300C3DE46 /* NetworkServiceMock.swift */; };
 		BF2885732CD2A69500C3DE46 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2885722CD2A69500C3DE46 /* NetworkManagerTests.swift */; };
+		BF2DCE1F2CF8AB5F0078CCB8 /* FirebaseAutch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */; };
 		BF3B17812BDA423500993DE8 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B17802BDA423500993DE8 /* ApiError.swift */; };
 		BF3C52882CF5D0880071F2DD /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C52872CF5D0880071F2DD /* FirebaseService.swift */; };
 		BF3C528B2CF5D1FC0071F2DD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BF3C528A2CF5D1FC0071F2DD /* FirebaseAuth */; };
@@ -91,7 +92,6 @@
 		BFBDEC022B6FDF0D0076A61F /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEC012B6FDF0D0076A61F /* ReusableView.swift */; };
 		BFC6D82B2BFCAAFA00BB02C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFC6D82A2BFCAAFA00BB02C6 /* GoogleService-Info.plist */; };
 		BFC6D8302BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D82F2BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift */; };
-		BFC6D8322BFCC82C00BB02C6 /* CheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D8312BFCC82C00BB02C6 /* CheckerService.swift */; };
 		BFDFF3F82CD79906005203E3 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */; };
 		BFF103C42CF7011200D819E6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF103C32CF7011200D819E6 /* RegistrationViewController.swift */; };
 		BFF103C62CF70F7400D819E6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF103C52CF70F7400D819E6 /* RegistrationViewModel.swift */; };
@@ -164,6 +164,7 @@
 		BF28856E2CD2A00E00C3DE46 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BF2885702CD2A5D300C3DE46 /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
 		BF2885722CD2A69500C3DE46 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAutch.swift; sourceTree = "<group>"; };
 		BF3B17802BDA423500993DE8 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		BF3C52872CF5D0880071F2DD /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -217,7 +218,6 @@
 		BFBDEC012B6FDF0D0076A61F /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		BFC6D82A2BFCAAFA00BB02C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFC6D82F2BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerServiceProtocol.swift; sourceTree = "<group>"; };
-		BFC6D8312BFCC82C00BB02C6 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
 		BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		BFF103C32CF7011200D819E6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		BFF103C52CF70F7400D819E6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -434,7 +434,6 @@
 				BF0C03182BD93450003D1398 /* BruteForceService.swift */,
 				BF5732A32BE51AEA00E58E15 /* NetworkManager.swift */,
 				BFC6D82F2BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift */,
-				BFC6D8312BFCC82C00BB02C6 /* CheckerService.swift */,
 				BF2885662CD2931900C3DE46 /* PostServiceProtocol.swift */,
 				BF2885682CD2934700C3DE46 /* PostServiceMock.swift */,
 				BF28856A2CD29E9A00C3DE46 /* NetworkServiceProtocol.swift */,
@@ -444,6 +443,7 @@
 				BF5ECD012CE1EF8B00730C37 /* LocalAuthorizationService.swift */,
 				BF3C52872CF5D0880071F2DD /* FirebaseService.swift */,
 				BF818D052CF603E5004E3890 /* FirebaseStorageService.swift */,
+				BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -780,6 +780,7 @@
 				BFBDEBF22B6FC4D30076A61F /* PhotosTableViewCell.swift in Sources */,
 				BF2885672CD2931900C3DE46 /* PostServiceProtocol.swift in Sources */,
 				BFF103C42CF7011200D819E6 /* RegistrationViewController.swift in Sources */,
+				BF2DCE1F2CF8AB5F0078CCB8 /* FirebaseAutch.swift in Sources */,
 				BF58D7B62BC924D50099CAC0 /* AppCoordinator.swift in Sources */,
 				BFC6D8302BFCC2DB00BB02C6 /* CheckerServiceProtocol.swift in Sources */,
 				BFBDEBF42B6FC6E20076A61F /* Photo.swift in Sources */,
@@ -788,7 +789,6 @@
 				BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */,
 				BF9EA3752BC71E93004114B2 /* FeedVMProtocol.swift in Sources */,
 				BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */,
-				BFC6D8322BFCC82C00BB02C6 /* CheckerService.swift in Sources */,
 				BFFBFDF92BEBE2F2008D8847 /* InfoTableViewCell.swift in Sources */,
 				BF0E6F652C0DE672000A4D96 /* LikeTableViewController.swift in Sources */,
 				BF060A862CD0CA810056FEE0 /* UIColor.swift in Sources */,

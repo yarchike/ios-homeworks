@@ -9,7 +9,9 @@ import Foundation
 
 protocol CheckerServiceProtocol{
     
-    func checkCredentials(withEmail: String, password: String ,completion: @escaping (Result<String, ApiError>) -> Void)
+    func singIn(withEmail: String, password: String ,completion: @escaping (Result<String, ApiError>) -> Void)
     
     func signUp(withEmail: String, password: String ,completion: @escaping (Result<String, ApiError>) -> Void)
+    
+    func signOut()
 }

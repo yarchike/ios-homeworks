@@ -25,7 +25,7 @@ class AppCoordinator: Coordinator {
     func getTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         // Инициализация коордиаторов
-        let feedCoordinator = FeedCoordinator()
+        let feedCoordinator = FeedCoordinator(switchToLoginInterface: switchToLoginInterface)
         let profileCoordinator = ProfileCoordinator()
         let likeCoordinator = LikeCoordinator()
         
@@ -53,6 +53,19 @@ class AppCoordinator: Coordinator {
     func switchToMainInterface() {
         // Создаем новый TabBarController
         let newRootController = getTabBarController()
+
+        // Проверяем наличие текущего окна
+        if let window = UIApplication.shared.windows.first {
+            // Анимированная замена rootViewController
+            window.rootViewController = newRootController
+            UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromRight, animations: nil)
+        }
+    }
+    
+    func switchToLoginInterface() {
+        print("switchToLoginInterface")
+        // Создаем новый TabBarController
+        let newRootController = getLoginViewController()
 
         // Проверяем наличие текущего окна
         if let window = UIApplication.shared.windows.first {
