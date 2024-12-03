@@ -47,6 +47,29 @@ class FirebaseStorageService {
             }
         }
     }
+    func fetchImage(from urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NSError(domain: "InvalidURLError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Некорректный URL"])))
+            return
+        }
+        
+        let gsReference = storage.reference(forURL: urlString)
+        
+        gsReference.getData(maxSize: 10 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("Ошибка при загрузке данных: \(error.localizedDescription)")
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data, let image = UIImage(data: data) else {
+                completion(.failure(NSError(domain: "ImageConversionError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Не удалось преобразовать данные в изображение"])))
+                return
+            }
+            
+            completion(.success(image))
+        }
+    }
 
 
     

@@ -39,7 +39,7 @@ class FirebaseAutch: CheckerServiceProtocol{
                 completion(.failure(ApiError.authError(message: err.userInfo["NSLocalizedDescription"] as? String ?? "Ошибка авторизации")))
             }
             if let authResult{
-                completion(.success(authResult.user.displayName ?? ""))
+                completion(.success(authResult.user.uid))
             }
         }
     }

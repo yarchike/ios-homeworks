@@ -33,9 +33,23 @@ class RegistrationViewModel {
         }
         
         // Успешная регистрация
-    
-        //let newUser  = User(id: <#T##String#>, email: <#T##String#>, fullname: <#T##String#>, avatarURL: <#T##String?#>, status: <#T##String#>)
-        onRegistrationSuccess?()
+        FirebaseAutch.shared.signUp(withEmail: email, password: password){ result in
+            switch result{
+            case .success(let uid):
+                let newUser  = User(id:uid, email: self.email, fullname: "\(self.firstName) \(self.lastName)", avatarURL: self.urlAvatar, status: "")
+                FirebaseDataBaseService.shared.saveUser(user: newUser){_ in 
+                    switch result{
+                    case .failure(_):
+                        self.onValidationError?("Ошибка. Попробуйте позже")
+                    case .success(_):
+                        self.onRegistrationSuccess?()
+                    }
+                }
+
+            case .failure(_):
+                self.onValidationError?("Ошибка. Попробуйте позже")
+            }
+        }
     }
     
     

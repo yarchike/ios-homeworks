@@ -286,8 +286,7 @@ class LogInViewController: UIViewController {
     private func biometricAuthTapped() {
         localAuthorizationService.authorizeIfPossible { [weak self] success, error in
             if success {
-                let profileViewController = ProfileViewController()
-                self?.navigationController?.pushViewController(profileViewController, animated: true)
+                self?.routeToProfile()
             } else {
                 let errorMessage = error?.localizedDescription ?? "Неизвестная ошибка"
                 self?.showAlert(message: errorMessage)

@@ -40,7 +40,7 @@ class ProfileHeaderView : UIView{
     
     let fullNameLabel: UILabel = {
         let nameView = UILabel()
-        nameView.text = "Hipster Cat"
+        nameView.text = "No Name"
         nameView.font = UIFont.boldSystemFont(ofSize: 18.0)
         nameView.textColor = .customTextColor
         nameView.translatesAutoresizingMaskIntoConstraints = false
@@ -217,10 +217,14 @@ class ProfileHeaderView : UIView{
     
     }
     
-    func setupProfile(user: User){
-        avatarImageView.image = UIImage(named: user.avatarURL ?? "")
-        fullNameLabel.text = user.fullname
-        statusLabel.text = user.status
+    func setupProfile(image: UIImage?, fullname: String, status: String){
+        if let image = image {
+            avatarImageView.image = image
+        }else {
+            avatarImageView.image =  UIImage(systemName: "person.circle")
+        }
+        fullNameLabel.text = fullname
+        statusLabel.text = status
     }
     
 }

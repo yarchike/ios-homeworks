@@ -1,14 +1,15 @@
 import FirebaseDatabase
 
-class FirebaseService {
+class FirebaseDataBaseService {
     
-    static let shared = FirebaseService()
+    static let shared = FirebaseDataBaseService()
     
     private let databaseRef: DatabaseReference
 
     init() {
         // Инициализируем ссылку на корень базы данных Firebase
-        self.databaseRef = Database.database().reference()
+        self.databaseRef = Database.database(url: "https://navigation-14b39-default-rtdb.europe-west1.firebasedatabase.app").reference()
+
     }
 
     // Метод для сохранения нового пользователя
@@ -16,6 +17,7 @@ class FirebaseService {
         let userRef = databaseRef.child("users").child(user.id)
         userRef.setValue(user.toDictionary()) { error, _ in
             completion(error)
+            
         }
     }
 

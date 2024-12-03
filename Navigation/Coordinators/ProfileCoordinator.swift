@@ -41,9 +41,19 @@ class ProfileCoordinator: Coordinator {
     
     
     func getProfileViewController() -> ProfileViewController{
-        let profileViewController = ProfileViewController()
+        let profileVM = ProfileViewModel()
+        let profileViewController = ProfileViewController(viewModel: profileVM)
         profileViewController.routeToPhoto = routeToPhoto
+        profileViewController.routeToCreatePost = routToCreatePost
         return profileViewController
+    }
+    func routToCreatePost(){
+        let createPostViewModel = CreatePostViewModel()
+        let createPostVC = CreatePostViewController(viewModel: createPostViewModel)
+        
+        let navigationController = UINavigationController(rootViewController: createPostVC)
+        navigationController.modalPresentationStyle = .automatic
+        self.navigationController.present(navigationController, animated: true)
     }
     
     

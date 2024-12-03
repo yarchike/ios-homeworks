@@ -21,7 +21,10 @@
 		BF0E6F672C0DE68F000A4D96 /* LikeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */; };
 		BF0E6F6A2C0DE837000A4D96 /* LikeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F682C0DE837000A4D96 /* LikeModel.xcdatamodeld */; };
 		BF0E6F6C2C0DE852000A4D96 /* LikeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F6B2C0DE852000A4D96 /* LikeDataManager.swift */; };
+		BF180BFA2CF9B17F006DC435 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF180BF92CF9B17F006DC435 /* ProfileViewModel.swift */; };
 		BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */; };
+		BF242F6C2CFEEBCA00F2C878 /* CreatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF242F6B2CFEEBCA00F2C878 /* CreatePostViewModel.swift */; };
+		BF242F6E2CFEEBE300F2C878 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF242F6D2CFEEBE300F2C878 /* CreatePostViewController.swift */; };
 		BF2885592CD28D8000C3DE46 /* NavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2885582CD28D8000C3DE46 /* NavigationTests.swift */; };
 		BF2885602CD2905100C3DE46 /* FeedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28855F2CD2905100C3DE46 /* FeedModelProtocol.swift */; };
 		BF2885622CD290F800C3DE46 /* FeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2885612CD290F800C3DE46 /* FeedViewModelTests.swift */; };
@@ -34,7 +37,7 @@
 		BF2885732CD2A69500C3DE46 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2885722CD2A69500C3DE46 /* NetworkManagerTests.swift */; };
 		BF2DCE1F2CF8AB5F0078CCB8 /* FirebaseAutch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */; };
 		BF3B17812BDA423500993DE8 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B17802BDA423500993DE8 /* ApiError.swift */; };
-		BF3C52882CF5D0880071F2DD /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C52872CF5D0880071F2DD /* FirebaseService.swift */; };
+		BF3C52882CF5D0880071F2DD /* FirebaseDataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C52872CF5D0880071F2DD /* FirebaseDataBaseService.swift */; };
 		BF3C528B2CF5D1FC0071F2DD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BF3C528A2CF5D1FC0071F2DD /* FirebaseAuth */; };
 		BF3C528D2CF5D1FC0071F2DD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = BF3C528C2CF5D1FC0071F2DD /* FirebaseDatabase */; };
 		BF3C528F2CF5D1FC0071F2DD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BF3C528E2CF5D1FC0071F2DD /* FirebaseFirestore */; };
@@ -152,7 +155,10 @@
 		BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCoordinator.swift; sourceTree = "<group>"; };
 		BF0E6F692C0DE837000A4D96 /* LikeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeModel.xcdatamodel; sourceTree = "<group>"; };
 		BF0E6F6B2C0DE852000A4D96 /* LikeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDataManager.swift; sourceTree = "<group>"; };
+		BF180BF92CF9B17F006DC435 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BF1E01AE2BDA86DD001D956E /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
+		BF242F6B2CFEEBCA00F2C878 /* CreatePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewModel.swift; sourceTree = "<group>"; };
+		BF242F6D2CFEEBE300F2C878 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		BF2885562CD28D8000C3DE46 /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF2885582CD28D8000C3DE46 /* NavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTests.swift; sourceTree = "<group>"; };
 		BF28855F2CD2905100C3DE46 /* FeedModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelProtocol.swift; sourceTree = "<group>"; };
@@ -166,7 +172,7 @@
 		BF2885722CD2A69500C3DE46 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAutch.swift; sourceTree = "<group>"; };
 		BF3B17802BDA423500993DE8 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
-		BF3C52872CF5D0880071F2DD /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		BF3C52872CF5D0880071F2DD /* FirebaseDataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataBaseService.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BF4C22242B6FB10000648FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BF4F74542C15F33900290D09 /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
@@ -347,6 +353,15 @@
 			path = Music;
 			sourceTree = "<group>";
 		};
+		BF242F6A2CFEEBB000F2C878 /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				BF242F6B2CFEEBCA00F2C878 /* CreatePostViewModel.swift */,
+				BF242F6D2CFEEBE300F2C878 /* CreatePostViewController.swift */,
+			);
+			path = CreatePost;
+			sourceTree = "<group>";
+		};
 		BF2885572CD28D8000C3DE46 /* NavigationTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +375,7 @@
 		BF3C52812CF5BB640071F2DD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BF242F6A2CFEEBB000F2C878 /* CreatePost */,
 				BF95111F2BC425AE002D02E4 /* FeedModule */,
 				BFF103C22CF700E100D819E6 /* Registration */,
 				BFA3A9E82B5FD192008CC6FA /* Profile */,
@@ -441,7 +457,7 @@
 				BF2885702CD2A5D300C3DE46 /* NetworkServiceMock.swift */,
 				BFDFF3F72CD79906005203E3 /* LocalNotificationsService.swift */,
 				BF5ECD012CE1EF8B00730C37 /* LocalAuthorizationService.swift */,
-				BF3C52872CF5D0880071F2DD /* FirebaseService.swift */,
+				BF3C52872CF5D0880071F2DD /* FirebaseDataBaseService.swift */,
 				BF818D052CF603E5004E3890 /* FirebaseStorageService.swift */,
 				BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */,
 			);
@@ -487,6 +503,7 @@
 				BFBDEBF02B6FC4BE0076A61F /* Photos */,
 				BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */,
 				BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */,
+				BF180BF92CF9B17F006DC435 /* ProfileViewModel.swift */,
 			);
 			name = Profile;
 			path = ../Profile;
@@ -739,7 +756,7 @@
 				BF9EA3792BC720B5004114B2 /* PostService.swift in Sources */,
 				BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */,
 				BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */,
-				BF3C52882CF5D0880071F2DD /* FirebaseService.swift in Sources */,
+				BF3C52882CF5D0880071F2DD /* FirebaseDataBaseService.swift in Sources */,
 				BFB461F32BDB06BB009705CE /* RecordViewController.swift in Sources */,
 				BFDFF3F82CD79906005203E3 /* LocalNotificationsService.swift in Sources */,
 				BF0E6F6A2C0DE837000A4D96 /* LikeModel.xcdatamodeld in Sources */,
@@ -770,9 +787,12 @@
 				BF0E6F6C2C0DE852000A4D96 /* LikeDataManager.swift in Sources */,
 				BF00E8682B5367260079B703 /* FeedViewController.swift in Sources */,
 				BF00E8702B5376BA0079B703 /* InfoViewController.swift in Sources */,
+				BF242F6E2CFEEBE300F2C878 /* CreatePostViewController.swift in Sources */,
+				BF180BFA2CF9B17F006DC435 /* ProfileViewModel.swift in Sources */,
 				BF5ECD022CE1EF8B00730C37 /* LocalAuthorizationService.swift in Sources */,
 				BF939BC32B70F78200F54B62 /* PhotosViewController.swift in Sources */,
 				BF58D7B82BC924F60099CAC0 /* Coordinator.swift in Sources */,
+				BF242F6C2CFEEBCA00F2C878 /* CreatePostViewModel.swift in Sources */,
 				BF939BC52B7100B900F54B62 /* PhotosCollectionViewCell.swift in Sources */,
 				BFBDEBFF2B6FDE910076A61F /* PhotosCell.swift in Sources */,
 				BF6CA1692CCF85E200EB971B /* MapViewController.swift in Sources */,
