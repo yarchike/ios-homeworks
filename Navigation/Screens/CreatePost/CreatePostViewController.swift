@@ -33,8 +33,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         return button
     }()
     
-    private lazy var attachedImageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var attachedImageView: LoadingImageView = {
+        let imageView = LoadingImageView()
         imageView.contentMode = .center // Центрирование символа
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8.0
@@ -129,7 +129,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     private func bindViewModel() {
         viewModel.onPostCreated = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            self?.dismiss(animated: true)
         }
         
         viewModel.onErrorOccurred = { [weak self] error in
@@ -161,14 +161,14 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             present(alert, animated: true)
             return
         }
-        let attachedImage = attachedImageView.image
-        //viewModel.createPost(body: body, image: attachedImage)
+    
+        viewModel.createPost(body: body)
     }
     
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
-            viewModel.uploadImage(image: image)
+            viewModel.uploadImage(image: image, imageView: attachedImageView)
             attachedImageView.contentMode = .scaleAspectFill
             attachedImageView.image = image
             

@@ -24,7 +24,9 @@ class FirebaseStorageService {
         }
         
         // Правильный путь для загрузки
-        let storageRef = storage.reference().child("images/\(UUID().uuidString).jpg")
+        
+        let pach = "images/\(UUID().uuidString).jpg"
+        let storageRef = storage.reference().child(pach)
         
         storageRef.putData(imageData, metadata: nil) { metadata, error in
             if let error = error {
@@ -42,13 +44,13 @@ class FirebaseStorageService {
                 
                 if let downloadURL = url {
                     print("Изображение успешно загружено! URL: \(downloadURL)")
-                    completion(.success(downloadURL.absoluteString))
+                    completion(.success(pach))
                 }
             }
         }
     }
     func fetchImage(from urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        guard let url = URL(string: urlString) else {
+        guard URL(string: urlString) != nil else {
             completion(.failure(NSError(domain: "InvalidURLError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Некорректный URL"])))
             return
         }

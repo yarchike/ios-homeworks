@@ -9,6 +9,9 @@ class AppCoordinator: Coordinator {
     
     init() {
         if Auth.auth().currentUser != nil {
+            UserService.shared.getUser(byId: Auth.auth().currentUser!.uid){ user, _ in
+                CurrentUser.shared.user = user
+            }
             self.rootControiller = getTabBarController()
         }else{
             self.rootControiller = getLoginViewController()
@@ -16,8 +19,7 @@ class AppCoordinator: Coordinator {
     }
     
     func getLoginViewController() -> LogInViewController {
-        let userService: UserService = CurrentUserService()
-        let loginViewController = LogInViewController(userService: userService, delegate: MyLoginFactory.makeLoginInspector())
+        let loginViewController = LogInViewController(delegate: MyLoginFactory.makeLoginInspector())
         loginViewController.routeToProfile = switchToMainInterface
         return loginViewController
     }

@@ -217,14 +217,14 @@ class ProfileHeaderView : UIView{
     
     }
     
-    func setupProfile(image: UIImage?, fullname: String, status: String){
-        if let image = image {
-            avatarImageView.image = image
+    func setupProfile(user: User){
+        fullNameLabel.text = user.fullname
+        statusLabel.text = user.status
+        if let imageUrl = user.avatarURL {
+            avatarImageView.loadImageFromStoragePath(imageUrl, placeholder: UIImage(named: "placeholder"))
         }else {
             avatarImageView.image =  UIImage(systemName: "person.circle")
         }
-        fullNameLabel.text = fullname
-        statusLabel.text = status
     }
     
 }

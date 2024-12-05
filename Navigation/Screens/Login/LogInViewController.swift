@@ -19,13 +19,10 @@ class LogInViewController: UIViewController {
     var routeToProfile: (() -> ()) = {}
     
     private let localAuthorizationService = LocalAuthorizationService()
-
     
-    var userService: UserService
     var loginDelegate: LoginViewControllerDelegate
     
-    init(userService: UserService, delegate: LoginViewControllerDelegate) {
-        self.userService = userService
+    init(delegate: LoginViewControllerDelegate) {
         self.loginDelegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
@@ -161,7 +158,6 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userService = CurrentUserService()
         setupView()
         addSubviews()
         setupConstraints()
@@ -308,6 +304,11 @@ class LogInViewController: UIViewController {
                     case .success(_):
                         self.countErrors = 0
                         self.routeToProfile()
+                        if let uid = Auth.auth().currentUser?.uid {
+                            UserService.shared.getUser(byId: uid){user,_ in
+                                CurrentUser.shared.user = user
+                            }
+                        }
                     case .failure(let error):
                         self.handleError(with: error)
                     }

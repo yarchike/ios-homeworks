@@ -9,7 +9,7 @@ class PostTableViewCell: UITableViewCell {
     
     let labelView: UILabel = {
         let labelView = UILabel()
-        labelView.text = "Hipster Cat"
+        labelView.text = "Hipster Cats"
         labelView.font = UIFont.boldSystemFont(ofSize: 20.0)
         labelView.textColor = .customTextColor
         labelView.numberOfLines = 2
@@ -125,15 +125,10 @@ class PostTableViewCell: UITableViewCell {
     
     
     func update(_ model: Post) {
-        labelView.text = model.author
-        if let image = UIImage(named: model.image) {
-              ImageProcessor().processImage(sourceImage: image, filter: .colorInvert) {
-                  contantImageView.image = $0
-              }
-          }
+        labelView.text = model.author.name
+        contantImageView.loadImageFromStoragePath(model.urlImage)
         contantTextView.text = model.postDescription
         likesLableView.text = "\(model.likes) \(String.localizedStringWithFormat(NSLocalizedString("likes_count",tableName: "Plulars", comment: ""), model.likes))"
-        viewsLableView.text = "Views: \(model.views)"
     }
     
     func update(_ model: LikePost) {

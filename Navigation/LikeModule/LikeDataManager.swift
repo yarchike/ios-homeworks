@@ -45,10 +45,9 @@ final class LikeDataManager {
                 return
             }
             let likePost = LikePost(context: persistentContainer.viewContext)
-            likePost.author = post.author
-            likePost.image = post.image
+            likePost.author = post.author.name
+            likePost.image = post.urlImage
             likePost.likes = Int16(post.likes)
-            likePost.views = Int16(post.views)
             likePost.postDescription = post.postDescription
             try? backContext.save()
         }

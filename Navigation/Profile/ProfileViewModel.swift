@@ -26,7 +26,7 @@ class ProfileViewModel {
     
 
     init() {
-        posts = Post.make()
+        posts = []
     }
     
     // MARK: - Public Methods
@@ -37,23 +37,7 @@ class ProfileViewModel {
         if let id = Auth.auth().currentUser?.uid{
             FirebaseDataBaseService.shared.getUser(byId: id){user, error in
                 self.user = user
-                if let url = user?.avatarURL{
-                    FirebaseStorageService.shared.fetchImage(from: url){ result in
-                        switch result{
-                        case .success(let image):
-                            self.avatar = image
-                            self.onUserUpdated?()
-                        
-                        case .failure(_):
-                            self.avatar = UIImage(systemName: "person.circle")
-                            self.onUserUpdated?()
-                        }
-                    }
-                }else{
-                    self.avatar = UIImage(systemName: "person.circle")
-                    self.onUserUpdated?()
-                }
-             
+                self.onUserUpdated?()
             }
         }
 

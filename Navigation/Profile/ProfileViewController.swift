@@ -4,7 +4,7 @@
 
     class ProfileViewController: UIViewController {
         
-        fileprivate let data = Post.make()
+        fileprivate let data = [Post]()
         
         var routeToPhoto: () -> () = {}
         
@@ -178,7 +178,7 @@
                 if let user = self.viewModel.user {
                     // Обновление заголовка профиля
                     let headerView = self.tableView.tableHeaderView as? ProfileHeaderView
-                    headerView?.setupProfile(image: viewModel.avatar, fullname: user.fullname, status: user.status)
+                    headerView?.setupProfile(user: user)
                 }
             }
             viewModel.onPostsUpdated = { [weak self] in

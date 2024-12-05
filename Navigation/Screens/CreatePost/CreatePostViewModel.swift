@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import StorageService
 
 class CreatePostViewModel {
     
@@ -14,23 +15,38 @@ class CreatePostViewModel {
     var onErrorOccurred: ((Error) -> Void)?
     var imageUrl:String = ""
     
-    func createPost(title: String, body: String) {
-        // Simulate API call or data persistence
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
-            DispatchQueue.main.async {
+    func createPost(body: String) {
+        let user = CurrentUser.shared.user
+        let newPost = Post(
+            author: Author(id: user?.id ?? "0", name: user?.fullname ?? "", urlImage:user?.avatarURL ?? ""),
+            postDescription: body,
+            urlImage: imageUrl,
+            likes: 0
+        )
+        PostService.shared.saveToDataBase(post: newPost){error in
+            if let error = error {
+                self.onErrorOccurred?(error)
+                return
+            }else{
                 self.onPostCreated?()
             }
         }
+       
     }
     
-    func uploadImage(image: UIImage){
+    func uploadImage(image: UIImage, imageView: LoadingImageView){
+        imageView.showLoading()
         FirebaseStorageService.shared.uploadImage(image: image){result in
+            
+            print(result)
             switch result{
             case .success(let url):
                 self.imageUrl = url
+                imageView.hideLoading() 
 
             case .failure(let error):
                 self.onErrorOccurred?(error)
+                imageView.hideLoading()
             }
             
         }

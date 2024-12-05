@@ -8,7 +8,7 @@ class FirebaseDataBaseService {
 
     init() {
         // Инициализируем ссылку на корень базы данных Firebase
-        self.databaseRef = Database.database(url: "https://navigation-14b39-default-rtdb.europe-west1.firebasedatabase.app").reference()
+        self.databaseRef = Database.database(url: databaseURL).reference()
 
     }
 
@@ -51,4 +51,7 @@ class FirebaseDataBaseService {
             completion(error)
         }
     }
+    
+    
+    
 }

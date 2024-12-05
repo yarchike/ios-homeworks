@@ -62,7 +62,7 @@ class RegistrationViewModel {
                 self.urlAvatar = url
 
             case .failure(_):
-                self.onValidationError?("Пароли не совпадают")
+                self.onValidationError?("Ошибка загрузки")
             }
             
         }

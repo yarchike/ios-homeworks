@@ -21,15 +21,10 @@ class FeedCoordinator: Coordinator {
     init(switchToLoginInterface: @escaping () -> ()) {
         navigationController = UINavigationController()
         let feedModel = FeedModel()
-        let postService = PostService()
-        let feedViewModel = FeedVM(feedModel: feedModel, postService: postService)
+        //let feedViewModel = FeedVM(feedModel: feedModel)
+        let feedViewModel = FeedViewModel()
         let feedViewController = FeedViewController(viewModel: feedViewModel)
-        feedViewController.routeToPost = routeToPostViewController
-        feedViewController.routeToAudiu = routeToAudioViewController
-        feedViewController.routeToVideo = routeToVideoViewController
-        feedViewController.routeToRecord = routeToRecordViewController
-        feedViewController.routeToMap = routeToMapiewController
-        feedViewController.switchToLoginInterface = switchToLoginInterface
+    
         feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "doc.richtext"), tag: 0)
         self.navigationController = UINavigationController(rootViewController: feedViewController)
         
@@ -37,7 +32,7 @@ class FeedCoordinator: Coordinator {
     
     func routeToPostViewController(post: Post) {
         let postViewController = PostViewController()
-        postViewController.postTitle = post.author
+        postViewController.postTitle = post.author.name
         postViewController.routeToInfo = routeToInfoViewController
         navigationController.pushViewController(postViewController, animated: true)
     }
