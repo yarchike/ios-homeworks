@@ -127,7 +127,7 @@ extension FeedViewController: UITableViewDataSource {
         }
         
         let post = viewModel.posts[indexPath.row]
-        cell.update(post)
+        cell.update(with: post)
         
         return cell
     }

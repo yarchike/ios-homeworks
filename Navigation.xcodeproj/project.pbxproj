@@ -18,7 +18,7 @@
 		BF060A862CD0CA810056FEE0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF060A852CD0CA810056FEE0 /* UIColor.swift */; };
 		BF0C03192BD93450003D1398 /* BruteForceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C03182BD93450003D1398 /* BruteForceService.swift */; };
 		BF0E6F652C0DE672000A4D96 /* LikeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F642C0DE672000A4D96 /* LikeTableViewController.swift */; };
-		BF0E6F672C0DE68F000A4D96 /* LikeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */; };
+		BF0E6F672C0DE68F000A4D96 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F662C0DE68F000A4D96 /* SettingsCoordinator.swift */; };
 		BF0E6F6A2C0DE837000A4D96 /* LikeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F682C0DE837000A4D96 /* LikeModel.xcdatamodeld */; };
 		BF0E6F6C2C0DE852000A4D96 /* LikeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E6F6B2C0DE852000A4D96 /* LikeDataManager.swift */; };
 		BF0EA0DB2D0039BB00812BAB /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0EA0DA2D0039BB00812BAB /* UIImageView.swift */; };
@@ -44,6 +44,8 @@
 		BF3C528B2CF5D1FC0071F2DD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BF3C528A2CF5D1FC0071F2DD /* FirebaseAuth */; };
 		BF3C528D2CF5D1FC0071F2DD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = BF3C528C2CF5D1FC0071F2DD /* FirebaseDatabase */; };
 		BF3C528F2CF5D1FC0071F2DD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BF3C528E2CF5D1FC0071F2DD /* FirebaseFirestore */; };
+		BF3CC9DE2D032618008390CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CC9DD2D032618008390CD /* SettingsViewModel.swift */; };
+		BF3CC9E12D03266E008390CD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CC9E02D03266E008390CD /* SettingsViewController.swift */; };
 		BF4C22222B6FAFD600648FA3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */; };
 		BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C22242B6FB10000648FA3 /* CustomButton.swift */; };
 		BF4F74552C15F33900290D09 /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F74542C15F33900290D09 /* TextPicker.swift */; };
@@ -144,7 +146,7 @@
 		BF060A852CD0CA810056FEE0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BF0C03182BD93450003D1398 /* BruteForceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceService.swift; sourceTree = "<group>"; };
 		BF0E6F642C0DE672000A4D96 /* LikeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeTableViewController.swift; sourceTree = "<group>"; };
-		BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCoordinator.swift; sourceTree = "<group>"; };
+		BF0E6F662C0DE68F000A4D96 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		BF0E6F692C0DE837000A4D96 /* LikeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeModel.xcdatamodel; sourceTree = "<group>"; };
 		BF0E6F6B2C0DE852000A4D96 /* LikeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDataManager.swift; sourceTree = "<group>"; };
 		BF0EA0DA2D0039BB00812BAB /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,8 @@
 		BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAutch.swift; sourceTree = "<group>"; };
 		BF3B17802BDA423500993DE8 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		BF3C52872CF5D0880071F2DD /* FirebaseDataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataBaseService.swift; sourceTree = "<group>"; };
+		BF3CC9DD2D032618008390CD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		BF3CC9E02D03266E008390CD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BF4C22242B6FB10000648FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BF4F74542C15F33900290D09 /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
@@ -361,6 +365,7 @@
 		BF3C52812CF5BB640071F2DD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BF3CC9DC2D032606008390CD /* Settings */,
 				BF242F6A2CFEEBB000F2C878 /* CreatePost */,
 				BF95111F2BC425AE002D02E4 /* FeedModule */,
 				BFF103C22CF700E100D819E6 /* Registration */,
@@ -376,6 +381,15 @@
 				BF4C22212B6FAFD600648FA3 /* LogInViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		BF3CC9DC2D032606008390CD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BF3CC9DD2D032618008390CD /* SettingsViewModel.swift */,
+				BF3CC9E02D03266E008390CD /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		BF4C22232B6FB0B500648FA3 /* UIView */ = {
@@ -396,7 +410,7 @@
 				BF58D7B72BC924F60099CAC0 /* Coordinator.swift */,
 				BF58D7B92BC925170099CAC0 /* FeedCoordinator.swift */,
 				BF58D7BB2BC927A40099CAC0 /* ProfileCoordinator.swift */,
-				BF0E6F662C0DE68F000A4D96 /* LikeCoordinator.swift */,
+				BF0E6F662C0DE68F000A4D96 /* SettingsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -712,7 +726,7 @@
 				BF00E86C2B5367D00079B703 /* PostViewController.swift in Sources */,
 				BF8EDCAF2BAAEC3E00BF3FFD /* CurrentUserService.swift in Sources */,
 				BFB461EB2BDAC61F009705CE /* VideoViewController.swift in Sources */,
-				BF0E6F672C0DE68F000A4D96 /* LikeCoordinator.swift in Sources */,
+				BF0E6F672C0DE68F000A4D96 /* SettingsCoordinator.swift in Sources */,
 				BF58D7BA2BC925170099CAC0 /* FeedCoordinator.swift in Sources */,
 				BF2885602CD2905100C3DE46 /* FeedModelProtocol.swift in Sources */,
 				BFF103C62CF70F7400D819E6 /* RegistrationViewModel.swift in Sources */,
@@ -749,6 +763,7 @@
 				BF2885652CD291AF00C3DE46 /* FeedModelMock.swift in Sources */,
 				BF0EA0DD2D0045A900812BAB /* CurrentUser.swift in Sources */,
 				BFBDEBF22B6FC4D30076A61F /* PhotosTableViewCell.swift in Sources */,
+				BF3CC9DE2D032618008390CD /* SettingsViewModel.swift in Sources */,
 				BF2885672CD2931900C3DE46 /* PostServiceProtocol.swift in Sources */,
 				BFABA2102D01CD9100AB74CC /* FeedViewModel.swift in Sources */,
 				BFF103C42CF7011200D819E6 /* RegistrationViewController.swift in Sources */,
@@ -767,6 +782,7 @@
 				BF060A862CD0CA810056FEE0 /* UIColor.swift in Sources */,
 				BF2885692CD2934700C3DE46 /* PostServiceMock.swift in Sources */,
 				BFBD4A352CCFE6D3007240FF /* String.swift in Sources */,
+				BF3CC9E12D03266E008390CD /* SettingsViewController.swift in Sources */,
 				BF818D062CF603E5004E3890 /* FirebaseStorageService.swift in Sources */,
 				BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */,
 				BF1E01AF2BDA86DD001D956E /* AudioViewController.swift in Sources */,

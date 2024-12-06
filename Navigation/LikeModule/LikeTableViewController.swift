@@ -67,7 +67,7 @@ class LikeTableViewController: UITableViewController {
             fatalError("could not dequeueReusableCell")
         }
         let likesPost = fetchedResultController.object(at: indexPath)
-        cell.update(likesPost)
+        //cell.update(with: likesPost)
         
         return cell
     }

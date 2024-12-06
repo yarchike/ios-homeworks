@@ -29,18 +29,18 @@ class AppCoordinator: Coordinator {
         // Инициализация коордиаторов
         let feedCoordinator = FeedCoordinator(switchToLoginInterface: switchToLoginInterface)
         let profileCoordinator = ProfileCoordinator()
-        let likeCoordinator = LikeCoordinator()
+        let settingsCoordinator = SettingsCoordinator()
         
         // Добавление коордиаторов
         self.add(coordinator: feedCoordinator)
         self.add(coordinator: profileCoordinator)
-        self.add(coordinator: likeCoordinator)
+        self.add(coordinator: settingsCoordinator)
         
         // Настройка контроллеров для вкладок
         let controllers = [
             feedCoordinator.getNavigationController(),
             profileCoordinator.getNavigationController(),
-            likeCoordinator.getNavigationController()
+            settingsCoordinator.getNavigationController()
         ]
         
         // Присваиваем контроллеры вкладок

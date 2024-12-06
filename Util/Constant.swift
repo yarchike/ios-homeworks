@@ -9,3 +9,4 @@ import Foundation
 
 
 let databaseURL: String = "https://navigation-14b39-default-rtdb.europe-west1.firebasedatabase.app"
+let firebaseStoregeUrl: String = "gs://navigation-14b39.firebasestorage.app"

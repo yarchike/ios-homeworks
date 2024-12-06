@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class LikeCoordinator: Coordinator {
+class SettingsCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private var navigationController : UINavigationController
     
@@ -20,10 +20,11 @@ class LikeCoordinator: Coordinator {
     
     init() {
         navigationController = UINavigationController()
-        let likeViewController = LikeTableViewController()
+        let settingsViewModel = SettingsViewModel()
+        let settingViewController = SettingsViewController(viewModel: settingsViewModel)
 
-        likeViewController.tabBarItem = UITabBarItem(title: "Лайк", image: UIImage(systemName: "heart.fill"), tag: 2)
-        self.navigationController = UINavigationController(rootViewController: likeViewController)
+        settingViewController.tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gearshape"), tag: 2)
+        self.navigationController = UINavigationController(rootViewController: settingViewController)
         
     }
     

@@ -4,8 +4,6 @@
 
     class ProfileViewController: UIViewController {
         
-        fileprivate let data = [Post]()
-        
         var routeToPhoto: () -> () = {}
         
         var routeToLogin: () -> () = {}
@@ -48,6 +46,7 @@
             bindViewModel()
             viewModel.checkAuth()
             initButtonCreatePost()
+            viewModel.loadPosts()
         }
         
         override func viewWillAppear(_ animated: Bool) {
@@ -126,7 +125,7 @@
             if(section == 0){
                 return 1
             }
-            return data.count
+            return viewModel.posts.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,7 +153,7 @@
                   cell.addGestureRecognizer(tapGesture)
               }
             
-            cell.update(data[indexPath.row])
+            cell.update(with: viewModel.posts[indexPath.row])
             
             return cell
         }
@@ -168,7 +167,7 @@
         @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
             if let cell = gesture.view as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
         
-                LikeDataManager.shared.addLikePost(post: data[indexPath.row])
+               // LikeDataManager.shared.addLikePost(post: data[indexPath.row])
             }
         }
         

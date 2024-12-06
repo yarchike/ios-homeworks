@@ -23,8 +23,8 @@ class ProfileViewModel {
     
     var onUserUpdated: (() -> Void)?
     var onPostsUpdated: (() -> Void)?
+    var onError: ((String) -> Void)?
     
-
     init() {
         posts = []
     }
@@ -40,7 +40,25 @@ class ProfileViewModel {
                 self.onUserUpdated?()
             }
         }
-
+        
+    }
+    
+    func loadPosts() {
+        if let uid = CurrentUser.shared.user?.id{
+            PostService.shared.fetchPostsByAuthorId(authorId: uid){posts,error in
+                if error != nil {
+                    self.onError?("Ошибка загрузки постов")
+                }
+                if let posts = posts {
+                    self.posts  = posts
+                    self.onPostsUpdated?()
+                }
+            }
+        }else{
+            self.onError?("Ошибка авторизации")
+        }
+        
+        
     }
     
     
