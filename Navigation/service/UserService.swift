@@ -53,7 +53,16 @@ class  UserService {
                 completion(error)
             }
         }
-        
+    
+    func updatePassword(password: String,  completion: @escaping (Error?) -> Void){
+        FirebaseAutch.shared.updatePassword(newPassword: password, completion: completion)
+    }
+    
+    
+   
+    func signOut(){
+        FirebaseAutch.shared.signOut()
+    }
         
 
 

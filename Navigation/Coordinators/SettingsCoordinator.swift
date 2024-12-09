@@ -12,15 +12,17 @@ import UIKit
 class SettingsCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private var navigationController : UINavigationController
+    var switchToLoginInterface: (() -> ()) = {}
     
     
     func getNavigationController() -> UINavigationController{
         return self.navigationController
     }
     
-    init() {
+    init(switchToLoginInterface: @escaping () -> ()) {
         navigationController = UINavigationController()
         let settingsViewModel = SettingsViewModel()
+        settingsViewModel.switchToLoginInterface = switchToLoginInterface
         let settingViewController = SettingsViewController(viewModel: settingsViewModel)
 
         settingViewController.tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gearshape"), tag: 2)

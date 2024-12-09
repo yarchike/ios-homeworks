@@ -16,12 +16,17 @@ class SettingsViewController: UIViewController {
         imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectAvatarTapped)))
+        
+        // Устанавливаем заглушку по умолчанию
+        let placeholderImage = UIImage(systemName: "person.circle.fill") // Иконка человека из SF Symbols
+        imageView.image = placeholderImage
+        
         return imageView
     }()
 
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textColor = .label
         label.text = "Полное имя"
         return label
@@ -30,31 +35,49 @@ class SettingsViewController: UIViewController {
     private lazy var fullNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Введите полное имя"
-        textField.borderStyle = .roundedRect
-        textField.isHidden = true // Изначально скрыто
+        textField.borderStyle = .none
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
+        textField.isHidden = true
         return textField
     }()
 
     private lazy var editFullNameButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Изменить", for: .normal)
+        if #available(iOS 15.0, *) {
+            var config = UIButton.Configuration.plain()
+            config.title = "Изменить"
+            config.image = UIImage(systemName: "pencil")
+            config.imagePadding = 8
+            config.buttonSize = .medium
+            button.configuration = config
+        } else {
+            button.setTitle("Изменить", for: .normal)
+            button.setImage(UIImage(systemName: "pencil"), for: .normal)
+        }
         button.addTarget(self, action: #selector(editFullNameTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var updatePasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Изменить пароль", for: .normal)
+        if #available(iOS 15.0, *) {
+            var config = UIButton.Configuration.filled()
+            config.title = "Изменить пароль"
+            config.buttonSize = .large
+            button.configuration = config
+        } else {
+            button.setTitle("Изменить пароль", for: .normal)
+        }
         button.addTarget(self, action: #selector(updatePasswordTapped), for: .touchUpInside)
         return button
     }()
-
-    private lazy var saveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Сохранить", for: .normal)
-        button.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
-        return button
-    }()
+    private lazy var logoutButton: UIButton = {
+           let button = UIButton(type: .system)
+           button.setTitle("Выход", for: .normal)
+           button.addTarget(self, action: #selector(logoutTapped), for: .touchUpInside)
+           button.tintColor = .systemRed
+           return button
+       }()
 
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -67,77 +90,72 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         setupView()
         bindViewModel()
     }
 
+    private func setupNavigationBar() {
+        title = "Настройки"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Сохранить",
+            style: .done,
+            target: self,
+            action: #selector(saveTapped)
+        )
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Выход",
+            style: .plain,
+            target: self,
+            action: #selector(logoutTapped)
+        )
+    }
+
     private func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGroupedBackground
 
-        view.addSubview(avatarImageView)
-        view.addSubview(fullNameLabel)
-        view.addSubview(fullNameTextField)
-        view.addSubview(editFullNameButton)
-        view.addSubview(updatePasswordButton)
-        view.addSubview(saveButton)
+        let stackView = UIStackView(arrangedSubviews: [
+            avatarImageView,
+            createSeparator(),
+            fullNameLabel,
+            fullNameTextField,
+            editFullNameButton,
+            createSeparator(),
+            updatePasswordButton,
+            logoutButton
+        ])
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.alignment = .center
 
-        // Отключаем автолейаут для добавленных элементов
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        fullNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        editFullNameButton.translatesAutoresizingMaskIntoConstraints = false
-        updatePasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        // Констрейнты для аватарки
         NSLayoutConstraint.activate([
-            avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             avatarImageView.widthAnchor.constraint(equalToConstant: 100),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 100)
-        ])
+            avatarImageView.heightAnchor.constraint(equalToConstant: 100),
 
-        // Констрейнты для лейбла с полным именем
-        NSLayoutConstraint.activate([
-            fullNameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 20),
-            fullNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            fullNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
+    }
 
-        // Констрейнты для поля ввода полного имени
-        NSLayoutConstraint.activate([
-            fullNameTextField.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 10),
-            fullNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            fullNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            fullNameTextField.heightAnchor.constraint(equalToConstant: 44)
-        ])
-
-        // Констрейнты для кнопки "Редактировать полное имя"
-        NSLayoutConstraint.activate([
-            editFullNameButton.topAnchor.constraint(equalTo: fullNameTextField.bottomAnchor, constant: 10),
-            editFullNameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-
-        // Констрейнты для кнопки изменения пароля
-        NSLayoutConstraint.activate([
-            updatePasswordButton.topAnchor.constraint(equalTo: editFullNameButton.bottomAnchor, constant: 20),
-            updatePasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            updatePasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            updatePasswordButton.heightAnchor.constraint(equalToConstant: 44)
-        ])
-
-        // Констрейнты для кнопки сохранения
-        NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: updatePasswordButton.bottomAnchor, constant: 20),
-            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            saveButton.heightAnchor.constraint(equalToConstant: 44)
-        ])
+    private func createSeparator() -> UIView {
+        let separator = UIView()
+        separator.backgroundColor = .separator
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return separator
     }
 
     private func bindViewModel() {
         viewModel.onSettingsUpdated = { [weak self] in
-            self?.avatarImageView.image = self?.viewModel.avatar
+            if let avatarUrl = self?.viewModel.avatarUrl{
+                self?.avatarImageView.loadImageFromStoragePath(avatarUrl)
+            }else{
+                self?.avatarImageView.image = UIImage(systemName: "person.circle.fill")
+            }
             self?.fullNameLabel.text = self?.viewModel.fullName
             self?.fullNameTextField.text = self?.viewModel.fullName
         }
@@ -145,6 +163,7 @@ class SettingsViewController: UIViewController {
         viewModel.onError = { [weak self] error in
             self?.showAlert(title: "Ошибка", message: error)
         }
+        viewModel.fetchCurrentSettings()
     }
 
     @objc private func selectAvatarTapped() {
@@ -200,12 +219,22 @@ class SettingsViewController: UIViewController {
     @objc private func saveTapped() {
         viewModel.updateFullName(fullNameTextField.text ?? "")
     }
+    
+    @objc private func logoutTapped() {
+          let alert = UIAlertController(title: "Выход", message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+          alert.addAction(UIAlertAction(title: "Выход", style: .destructive) { [weak self] _ in
+              self?.viewModel.logout()
+          })
+          present(alert, animated: true)
+      }
 
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ОК", style: .default))
         present(alert, animated: true)
     }
+    
 }
 
 extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -216,3 +245,4 @@ extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationC
         }
     }
 }
+

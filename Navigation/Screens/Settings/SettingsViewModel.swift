@@ -8,47 +8,78 @@
 import UIKit
 
 class SettingsViewModel {
-    var avatar: UIImage?
+    var avatarUrl: String?
     var fullName: String?
+    var switchToLoginInterface: (() -> ()) = {}
 
     var onSettingsUpdated: (() -> Void)?
     var onError: ((String) -> Void)?
+    
+    
 
     func fetchCurrentSettings() {
-        // Загрузка данных из сети или локального хранилища
-        // Пример данных
-        self.avatar = UIImage(named: "defaultAvatar")
-        self.fullName = "Текущее Полное Имя"
-
-        // Обновляем UI
+        self.avatarUrl = CurrentUser.shared.user?.avatarURL
+        self.fullName = CurrentUser.shared.user?.fullname
         onSettingsUpdated?()
     }
 
     func updateAvatar(_ newAvatar: UIImage) {
-        // Обновить аватарку
-        self.avatar = newAvatar
-        // Сохранить аватарку где-нибудь (например, на сервере)
-        onSettingsUpdated?()
+        FirebaseStorageService.shared.uploadImage(image: newAvatar){result in
+            switch result{
+            case .success(let url):
+                if let user = CurrentUser.shared.user{
+                    let newUser = user.copyWithNewValues(avatarURL: url)
+                    UserService.shared.updateUser(user: newUser){error in
+                        if error != nil{
+                            self.onError?("Ошибка загрузки")
+                            return
+                        }
+                        CurrentUser.shared.user = newUser
+                        self.onSettingsUpdated?()
+                    }
+                    self.avatarUrl = url
+                    self.onSettingsUpdated?()
+                }
+            case .failure(_):
+                self.onError?("Ошибка загрузки")
+            }
+            
+        }
     }
 
     func updateFullName(_ newFullName: String) {
-        // Обновить полное имя
+        if let user = CurrentUser.shared.user{
+            let newUser = user.copyWithNewValues(fullname: newFullName)
+            UserService.shared.updateUser(user: newUser){error in
+                if error != nil{
+                    self.onError?("Ошибка загрузки")
+                    return
+                }
+                CurrentUser.shared.user = newUser
+                self.onSettingsUpdated?()
+            }
+            self.fullName = newFullName
+            self.onSettingsUpdated?()
+        }
         self.fullName = newFullName
-        // Сохранить полное имя
         onSettingsUpdated?()
     }
 
     func updatePassword(_ newPassword: String, confirmPassword: String, completion: @escaping (Error?) -> Void) {
-        // Проверка на совпадение паролей
         if newPassword != confirmPassword {
             completion(NSError(domain: "SettingsViewModel", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Пароли не совпадают."]))
             return
         }
+        UserService.shared.updatePassword(password: newPassword){ error in
+            if error != nil{
+                completion(error)
+            }
+            completion(nil)
+        }
 
-        // Обновить пароль
-        // Сохранить пароль (например, на сервере)
-        // В реальном приложении здесь можно будет отправить запрос на сервер или сохранить данные в локальном хранилище.
-        
-        completion(nil) // Если все прошло успешно, вызываем completion без ошибки
+    }
+    func logout(){
+        UserService.shared.signOut()
+        switchToLoginInterface()
     }
 }

@@ -47,11 +47,25 @@ class FirebaseAutch: CheckerServiceProtocol{
     func signOut(){
         do {
             try Auth.auth().signOut()
-            print("Выход выполнен успешно")
-            // Здесь вы можете перенаправить пользователя, например, на экран входа
         } catch let signOutError as NSError {
             print("Ошибка выхода: %@", signOutError)
-            // Обработайте ошибку, если необходимо
+        }
+    }
+    
+    func updatePassword(newPassword: String, completion: @escaping (Error?) -> Void) {
+  
+
+        guard let user = Auth.auth().currentUser else {
+            completion(NSError(domain: "com.example", code: 401, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
+            return
+        }
+
+        user.updatePassword(to: newPassword) { error in
+            if let error = error {
+                completion(error)
+            } else {
+                completion(nil)  // Успешное обновление пароля
+            }
         }
     }
     

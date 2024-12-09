@@ -29,7 +29,7 @@ class AppCoordinator: Coordinator {
         // Инициализация коордиаторов
         let feedCoordinator = FeedCoordinator(switchToLoginInterface: switchToLoginInterface)
         let profileCoordinator = ProfileCoordinator()
-        let settingsCoordinator = SettingsCoordinator()
+        let settingsCoordinator = SettingsCoordinator(switchToLoginInterface: switchToLoginInterface)
         
         // Добавление коордиаторов
         self.add(coordinator: feedCoordinator)

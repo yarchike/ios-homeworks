@@ -11,7 +11,7 @@ import StorageService
 class FeedCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private var navigationController : UINavigationController
-    var switchToLoginInterface: (() -> ())? = nil
+    var switchToLoginInterface: (() -> ()) = {}
     
     func getNavigationController() -> UINavigationController{
         return self.navigationController
@@ -20,8 +20,6 @@ class FeedCoordinator: Coordinator {
     
     init(switchToLoginInterface: @escaping () -> ()) {
         navigationController = UINavigationController()
-        let feedModel = FeedModel()
-        //let feedViewModel = FeedVM(feedModel: feedModel)
         let feedViewModel = FeedViewModel()
         let feedViewController = FeedViewController(viewModel: feedViewModel)
     

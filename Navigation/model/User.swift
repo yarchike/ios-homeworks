@@ -71,4 +71,13 @@ struct User {
         
         return dictionary
     }
+      func copyWithNewValues(fullname: String? = nil, email: String? = nil, avatarURL: String? = nil, status: String? = nil) -> User {
+        // Если значение передано, то изменим его, иначе оставим старое
+        let newFullname = fullname ?? self.fullname
+        let newEmail = email ?? self.email
+        let newAvatarURL = avatarURL ?? self.avatarURL
+        let newStatus = status ?? self.status
+
+        return User(id: self.id, email: newEmail, fullname: newFullname, avatarURL: newAvatarURL, status: newStatus)
+    }
 }
