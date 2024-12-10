@@ -58,7 +58,7 @@ class PhotosCell: UICollectionViewCell{
     func setup(
         photo: Photo
     ) {
-        imageView.image = UIImage(named: photo.image)
+        imageView.image = UIImage(named: photo.imageURL)
     }
     
     

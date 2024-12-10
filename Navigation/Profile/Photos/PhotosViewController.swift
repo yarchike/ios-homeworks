@@ -10,9 +10,11 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController{
     
+    private let viewModel = PhotosViewModel()
+    
     fileprivate lazy var photos: [Photo] = Photo.make()
     lazy var images: [UIImage] = photos.map({
-        UIImage(named: $0.image) ?? UIImage()
+        UIImage(named: $0.imageURL) ?? UIImage()
     })
     
     let imagePublisherFacade = ImagePublisherFacade()
@@ -34,6 +36,21 @@ class PhotosViewController: UIViewController{
         return collectionView
     }()
     
+    func initButtonAddPhoto(){
+        let rightButton = UIButton(type: .system)
+        rightButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        rightButton.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+
+        let rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    @objc private func rightButtonTapped() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
     
     
     override func viewDidLoad() {
@@ -42,39 +59,17 @@ class PhotosViewController: UIViewController{
         setupView()
         addSubviews()
         setupConstraints()
-//        subscribeProtocolObserver()
-//        addImage()
-        setupProcessImagesOnThread()
+        initButtonAddPhoto()
         
+        // Привязываем обновления данных к UI
+        viewModel.onImagesUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
         
-    }
-    
-    func setupProcessImagesOnThread(){
-        
-        let startTime = CFAbsoluteTimeGetCurrent()
-        
-        ImageProcessor().processImagesOnThread(sourceImages: photos.map({
-                  UIImage(named: $0.image) ?? UIImage()
-              }), filter: .colorInvert, qos: .background){ [weak self] cgImages in
-                  self?.images = cgImages
-                      .compactMap { $0 }
-                      .map { UIImage(cgImage: $0) }
-                  
-                  let endTime = CFAbsoluteTimeGetCurrent()
-                  print("time run: \(endTime - startTime)")
-                  
-                  DispatchQueue.main.async {
-                      self?.collectionView.reloadData()
-                  }
-              }
-        
-    }
-    
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        imagePublisherFacade.removeSubscription(for: self)
-        
+        // Загружаем фото
+        viewModel.fetchPhotos()
     }
     
     private func setupView() {
@@ -104,16 +99,6 @@ class PhotosViewController: UIViewController{
         ])
     }
     
-//    func subscribeProtocolObserver() {
-//        imagePublisherFacade.subscribe(self)
-//    }
-//    
-//    func addImage(){
-//        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 10, userImages: Photo.make().map{
-//            UIImage(named: $0.image)!
-//        })
-//    }
-    
     
     
 }
@@ -121,7 +106,7 @@ class PhotosViewController: UIViewController{
 extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return viewModel.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -129,7 +114,7 @@ extension PhotosViewController: UICollectionViewDataSource {
             withReuseIdentifier: PhotosCollectionViewCell.identifier,
             for: indexPath) as! PhotosCollectionViewCell
         
-        let image = images[indexPath.row]
+        let image = viewModel.photos[indexPath.row]
         cell.setup(image: image)
         
         return cell
@@ -182,9 +167,11 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-//extension PhotosViewController: ImageLibrarySubscriber{
-//    func receive(images: [UIImage]){
-//        self.images = images
-//        collectionView.reloadData()
-//    }
-//}
+extension PhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            viewModel.addPhoto(image: image)
+        }
+        dismiss(animated: true)
+    }
+}

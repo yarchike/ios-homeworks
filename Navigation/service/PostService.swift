@@ -91,26 +91,28 @@ class PostService {
     /// Извлекает посты по идентификатору автора
     func fetchPostsByAuthorId(authorId: String, completion: @escaping ([Post]?, Error?) -> Void) {
         let ref = Database.database(url: databaseURL).reference().child("posts")
-
-        ref.observeSingleEvent(of: .value) { snapshot in
+        
+        // Фильтрация данных на сервере
+        let query = ref.queryOrdered(byChild: "author/id").queryEqual(toValue: authorId)
+        
+        query.observeSingleEvent(of: .value) { snapshot in
             guard let value = snapshot.value as? [String: [String: Any]] else {
                 completion([], nil) // Пустой массив, если данных нет
                 return
             }
 
-            // Сначала фильтруем посты по id автора, потом маппируем их на объекты Post
+            // Маппируем данные на объекты Post
             let posts: [Post] = value.compactMap { (_, data) in
                 guard
                     let authorData = data["author"] as? [String: Any],
                     let id = authorData["id"] as? String,
-                    id == authorId, // Проверяем, совпадает ли id автора
                     let authorName = authorData["name"] as? String,
                     let authorUrlImage = authorData["urlImage"] as? String,
                     let postDescription = data["postDescription"] as? String,
                     let urlImage = data["urlImage"] as? String,
                     let likes = data["likes"] as? Int
                 else {
-                    return nil // Возвращаем nil, если данные не соответствуют условиям
+                    return nil
                 }
 
                 let author = Author(
@@ -132,5 +134,6 @@ class PostService {
             completion(nil, error)
         }
     }
+
 
 }

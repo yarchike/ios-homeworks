@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0096D62D0844F5004C5B53 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0096D52D0844F5004C5B53 /* FullScreenImageViewController.swift */; };
+		BF0096D82D084D4D004C5B53 /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0096D72D084D4D004C5B53 /* PhotosManager.swift */; };
+		BF0096DA2D085929004C5B53 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0096D92D085929004C5B53 /* PhotosViewModel.swift */; };
 		BF00E8542B5365390079B703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E8532B5365390079B703 /* AppDelegate.swift */; };
 		BF00E8562B5365390079B703 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E8552B5365390079B703 /* SceneDelegate.swift */; };
 		BF00E8582B5365390079B703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00E8572B5365390079B703 /* ViewController.swift */; };
@@ -133,6 +136,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF0096D52D0844F5004C5B53 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		BF0096D72D084D4D004C5B53 /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
+		BF0096D92D085929004C5B53 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
 		BF00E8502B5365390079B703 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF00E8532B5365390079B703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF00E8552B5365390079B703 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -260,6 +266,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF0096D42D0844CE004C5B53 /* FullScreenImage */ = {
+			isa = PBXGroup;
+			children = (
+				BF0096D52D0844F5004C5B53 /* FullScreenImageViewController.swift */,
+			);
+			path = FullScreenImage;
+			sourceTree = "<group>";
+		};
 		BF00E8472B5365390079B703 = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +379,7 @@
 		BF3C52812CF5BB640071F2DD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BF0096D42D0844CE004C5B53 /* FullScreenImage */,
 				BF3CC9DC2D032606008390CD /* Settings */,
 				BF242F6A2CFEEBB000F2C878 /* CreatePost */,
 				BF95111F2BC425AE002D02E4 /* FeedModule */,
@@ -463,6 +478,7 @@
 				BF818D052CF603E5004E3890 /* FirebaseStorageService.swift */,
 				BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */,
 				BF9EA3782BC720B5004114B2 /* PostService.swift */,
+				BF0096D72D084D4D004C5B53 /* PhotosManager.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -546,6 +562,7 @@
 				BFBDEBFE2B6FDE910076A61F /* PhotosCell.swift */,
 				BF939BC22B70F78200F54B62 /* PhotosViewController.swift */,
 				BF939BC42B7100B900F54B62 /* PhotosCollectionViewCell.swift */,
+				BF0096D92D085929004C5B53 /* PhotosViewModel.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -717,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF9EA3792BC720B5004114B2 /* PostService.swift in Sources */,
+				BF0096D82D084D4D004C5B53 /* PhotosManager.swift in Sources */,
 				BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */,
 				BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */,
 				BF3C52882CF5D0880071F2DD /* FirebaseDataBaseService.swift in Sources */,
@@ -734,6 +752,7 @@
 				BF28856F2CD2A00E00C3DE46 /* NetworkService.swift in Sources */,
 				BF58D7BC2BC927A40099CAC0 /* ProfileCoordinator.swift in Sources */,
 				BF0EA0DF2D00471B00812BAB /* Constant.swift in Sources */,
+				BF0096DA2D085929004C5B53 /* PhotosViewModel.swift in Sources */,
 				BF4C22252B6FB10000648FA3 /* CustomButton.swift in Sources */,
 				BF00E8582B5365390079B703 /* ViewController.swift in Sources */,
 				BF3B17812BDA423500993DE8 /* ApiError.swift in Sources */,
@@ -743,6 +762,7 @@
 				BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */,
 				BFB461EE2BDAC761009705CE /* VideoViewCell.swift in Sources */,
 				BF9511212BC425E5002D02E4 /* FeedModel.swift in Sources */,
+				BF0096D62D0844F5004C5B53 /* FullScreenImageViewController.swift in Sources */,
 				BFB461F02BDAC7F7009705CE /* Video.swift in Sources */,
 				BF4F74552C15F33900290D09 /* TextPicker.swift in Sources */,
 				BF28856B2CD29E9A00C3DE46 /* NetworkServiceProtocol.swift in Sources */,

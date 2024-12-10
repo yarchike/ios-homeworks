@@ -5,7 +5,7 @@ class PhotosTableViewCell: UITableViewCell{
     
     var buttonTapCallback: () -> () = {}
     
-    fileprivate lazy var photos: [Photo] = Photo.make()
+    var photos: [Photo] = []
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -67,11 +67,30 @@ class PhotosTableViewCell: UITableViewCell{
     private func addSubviews() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(arrowButton)
-        contentView.addSubview(collectionView)
-        setupCollectionView()
+        if photos.count > 0 {
+            setupCollectionView()
+        }
+       
     }
     
+    
+    
     private func setupCollectionView() {
+        contentView.addSubview(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: arrowButton.bottomAnchor, constant: 12),
+            collectionView.leadingAnchor.constraint(
+                equalTo: leadingAnchor, constant: 12
+            ),
+            collectionView.trailingAnchor.constraint(
+                equalTo: trailingAnchor, constant: -4
+            ),
+            
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            
+            collectionView.heightAnchor.constraint(equalToConstant:60)
+        ])
+        
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -87,22 +106,6 @@ class PhotosTableViewCell: UITableViewCell{
             arrowButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             arrowButton.widthAnchor.constraint(equalToConstant: 50),
             arrowButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            
-            
-            
-            
-            collectionView.topAnchor.constraint(equalTo: arrowButton.bottomAnchor, constant: 12),
-            collectionView.leadingAnchor.constraint(
-                equalTo: leadingAnchor, constant: 12
-            ),
-            collectionView.trailingAnchor.constraint(
-                equalTo: trailingAnchor, constant: -4
-            ),
-            
-            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            
-            collectionView.heightAnchor.constraint(equalToConstant:60)
         ])
     }
     
@@ -116,14 +119,13 @@ class PhotosTableViewCell: UITableViewCell{
 extension PhotosTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: PhotosCell.identifier,
             for: indexPath) as! PhotosCell
-        
         let photo = photos[indexPath.row]
         cell.setup(photo: photo)
         

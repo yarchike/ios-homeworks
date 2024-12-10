@@ -6,13 +6,23 @@
 //
 
 struct Photo {
-    let id: Int
-    let image: String
+    let id: String
+    let imageURL: String
+    let authorId: String
+    
+    
+    func toDictionary() -> [String: Any] {
+         return [
+             "id": id,
+             "imageURL": imageURL,
+             "authorId": authorId
+         ]
+     }
 }
 
 
 extension Photo {
     static func make() -> [Photo] {
-           (1...20).map { Photo(id: $0, image: String($0)) }
+            return []
        }
 }

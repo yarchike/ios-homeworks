@@ -62,9 +62,9 @@ class PhotosCollectionViewCell: UICollectionViewCell{
         ])
     }
     func setup(
-        image: UIImage
+        image: Photo
     ) {
-        imageView.image = image
+        imageView.loadImageFromStoragePath(image.imageURL)
     }
     
     

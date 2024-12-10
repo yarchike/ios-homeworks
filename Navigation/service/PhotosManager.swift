@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-class PhotosService {
+class PhotosManager {
     
-    static let shared = PhotosService()
+    static let shared = PhotosManager()
     
 
     private init() {}
