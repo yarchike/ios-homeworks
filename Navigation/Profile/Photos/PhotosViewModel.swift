@@ -20,10 +20,7 @@ class PhotosViewModel {
     // MARK: - Methods
     
     func fetchPhotos() {
-        PhotosManager.shared.fetchPhotosByAuthorId(authorId: CurrentUser.shared.user?.id ?? ""){result in
-            print("-----------------")
-            print(result)
-            print("-----------------")
+        PhotosManager.shared.fetchPhotosByAuthor{result in
             self.photos = result
             self.onImagesUpdated?()
         }
@@ -32,8 +29,12 @@ class PhotosViewModel {
     
     
     func addPhoto(image: UIImage) {
-        PhotosManager.shared.addPhoto(image: image)
-        fetchPhotos()
-        onImagesUpdated?()
+        PhotosManager.shared.addPhoto(image: image){error in
+            if error != nil{
+                return
+            }
+            self.fetchPhotos()
+        }
+        
     }
 }

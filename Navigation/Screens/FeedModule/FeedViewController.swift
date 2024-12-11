@@ -50,6 +50,18 @@ class FeedViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Показываем индикатор загрузки и скрываем таблицу перед загрузкой
+        activityIndicator.startAnimating()
+        tableView.isHidden = true
+        
+        // Загружаем данные
+        viewModel.fetchPosts()
+    }
+
+    
     
     private func setupUI() {
         view.backgroundColor = .customBackgroundColor

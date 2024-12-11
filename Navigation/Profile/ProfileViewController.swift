@@ -44,16 +44,23 @@
             setupConstraints()
             tuneTableView()
             bindViewModel()
-            viewModel.checkAuth()
             initButtonCreatePost()
+            viewModel.checkAuth()
             viewModel.loadPosts()
+            viewModel.loadPhoto()
         }
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             
+            // Проверяем авторизацию
+            viewModel.checkAuth()
             
+            // Загружаем посты и фото
+            viewModel.loadPosts()
+            viewModel.loadPhoto()
         }
+
         
         // MARK: - Private
         
@@ -137,6 +144,7 @@
                     fatalError("could not dequeueReusableCell")
                 }
                 cell.buttonTapCallback = routeToPhoto
+                cell.photos = viewModel.photos
                 cell.update()
                 
                 return cell
@@ -182,6 +190,10 @@
             }
             viewModel.onPostsUpdated = { [weak self] in
                 self?.tableView.reloadData()
+            }
+            viewModel.onPhotoUpdated = { [weak self] in
+                guard let self = self else { return }
+                self.tableView.reloadData()
             }
         }
         

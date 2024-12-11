@@ -113,7 +113,12 @@ class PhotosTableViewCell: UITableViewCell{
         buttonTapCallback()
     }
     
-    func update(){}
+    func update(){
+        if photos.count > 0 {
+            setupCollectionView()
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 extension PhotosTableViewCell: UICollectionViewDataSource {

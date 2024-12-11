@@ -1,9 +1,6 @@
 import UIKit
-import iOSIntPackage
-import StorageService
-
 class PostTableViewCell: UITableViewCell {
-    
+
     static let cellId = "PostTableViewCell"
     
     private let avatarImageView: UIImageView = {
@@ -58,12 +55,22 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
+    // Новый элемент для анимации сердечка
+    private lazy var heartImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "heart.fill"))
+        imageView.tintColor = .red
+        imageView.alpha = 0 // Скрыто по умолчанию
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
         setupConstraints()
+        addGestureRecognizers()
     }
     
     required init?(coder: NSCoder) {
@@ -82,6 +89,7 @@ class PostTableViewCell: UITableViewCell {
         contentView.addSubview(postDescriptionLabel)
         contentView.addSubview(likesLabel)
         contentView.addSubview(viewsLabel)
+        contentView.addSubview(heartImageView) // Добавление UIImageView для сердечка
     }
     
     private func setupConstraints() {
@@ -109,7 +117,12 @@ class PostTableViewCell: UITableViewCell {
             likesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             
             viewsLabel.centerYAnchor.constraint(equalTo: likesLabel.centerYAnchor),
-            viewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            viewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            heartImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            heartImageView.centerYAnchor.constraint(equalTo: contentImageView.centerYAnchor),
+            heartImageView.widthAnchor.constraint(equalToConstant: 100),
+            heartImageView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
     
@@ -121,6 +134,33 @@ class PostTableViewCell: UITableViewCell {
         contentImageView.loadImageFromStoragePath(model.urlImage)
         postDescriptionLabel.text = model.postDescription
         likesLabel.text = "Likes: \(model.likes)"
-
+    }
+    
+    // MARK: - Анимация сердечка
+    
+    func animateHeart() {
+        heartImageView.alpha = 1
+        heartImageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.heartImageView.transform = .identity
+        }) { _ in
+            UIView.animate(withDuration: 0.3, delay: 0.5, options: [], animations: {
+                self.heartImageView.alpha = 0
+            }, completion: nil)
+        }
+    }
+    
+    // MARK: - Добавление распознавателя жестов
+    
+    private func addGestureRecognizers() {
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        contentView.addGestureRecognizer(doubleTapGesture)
+    }
+    
+    @objc private func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
+        animateHeart() // Вызов анимации сердечка
+        // Здесь можно также обновить количество лайков, если нужно
     }
 }

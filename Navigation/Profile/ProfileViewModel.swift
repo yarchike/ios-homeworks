@@ -16,6 +16,7 @@ class ProfileViewModel {
     // MARK: - Properties
     var user: User?
     var avatar: UIImage?
+    var photos: [Photo] = []
     
     var posts: [Post] = []
     var routeToPhoto: (() -> Void)?
@@ -23,6 +24,7 @@ class ProfileViewModel {
     
     var onUserUpdated: (() -> Void)?
     var onPostsUpdated: (() -> Void)?
+    var onPhotoUpdated: (() -> Void)?
     var onError: ((String) -> Void)?
     
     init() {
@@ -45,7 +47,7 @@ class ProfileViewModel {
     
     func loadPosts() {
         if let uid = CurrentUser.shared.user?.id{
-            PostService.shared.fetchPostsByAuthorId(authorId: uid){posts,error in
+            PostManager.shared.fetchPostsByAuthor{posts,error in
                 if error != nil {
                     self.onError?("Ошибка загрузки постов")
                 }
@@ -61,6 +63,12 @@ class ProfileViewModel {
         
     }
     
+    func loadPhoto(){
+        PhotosManager.shared.fetchPhotosByAuthor{resutl in 
+            self.photos =  Array(resutl.prefix(4))
+            self.onPhotoUpdated?()
+        }
+    }
     
     func likePost(at index: Int) {
         guard index >= 0, index < posts.count else { return }

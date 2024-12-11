@@ -12,10 +12,6 @@ class PhotosViewController: UIViewController{
     
     private let viewModel = PhotosViewModel()
     
-    fileprivate lazy var photos: [Photo] = Photo.make()
-    lazy var images: [UIImage] = photos.map({
-        UIImage(named: $0.imageURL) ?? UIImage()
-    })
     
     let imagePublisherFacade = ImagePublisherFacade()
     
@@ -40,7 +36,7 @@ class PhotosViewController: UIViewController{
         let rightButton = UIButton(type: .system)
         rightButton.setImage(UIImage(systemName: "plus"), for: .normal)
         rightButton.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
-
+        
         let rightBarButtonItem = UIBarButtonItem(customView: rightButton)
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
@@ -61,11 +57,9 @@ class PhotosViewController: UIViewController{
         setupConstraints()
         initButtonAddPhoto()
         
-        // Привязываем обновления данных к UI
         viewModel.onImagesUpdated = { [weak self] in
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
+            self?.collectionView.reloadData()
+            
         }
         
         // Загружаем фото
@@ -163,6 +157,19 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
             bottom: LayoutConstant.spacing,
             right: LayoutConstant.spacing
         )
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = FullScreenImageViewController()
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PhotosCollectionViewCell else {
+            return
+        }
+        
+        guard let selectedImage = cell.imageView.image else {
+            print("Не удалось получить изображение из ячейки")
+            return
+        }
+        detailVC.image = selectedImage
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }

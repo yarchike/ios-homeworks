@@ -15,18 +15,22 @@ class PhotosManager {
 
     private init() {}
     
-    func fetchPhotosByAuthorId(authorId: String, completion: @escaping ([Photo]) -> Void) {
-        FirebaseDataBaseService.shared.fetchPhotosByAuthorId(authorId: authorId, completion: completion)
+    func fetchPhotosByAuthor(completion: @escaping ([Photo]) -> Void) {
+        if let user = CurrentUser.shared.user{
+            FirebaseDataBaseService.shared.fetchPhotosByAuthorId(authorId: user.id, completion: completion)
+        }
+       
     }
     
-    func addPhoto(image: UIImage){
+    func addPhoto(image: UIImage, completion: @escaping (Error?) -> Void){
         FirebaseStorageService.shared.uploadImage(image: image){result in
             switch result {
             case .success(let imagePatch):
                 let photo = Photo(id: UUID().uuidString, imageURL: imagePatch, authorId: CurrentUser.shared.user?.id ?? "")
                 FirebaseDataBaseService.shared.addPhotoToDatabase(photo: photo)
-            case .failure(_):
-                break
+                completion(nil)
+            case .failure(let error):
+                completion(error)
             }
         }
         

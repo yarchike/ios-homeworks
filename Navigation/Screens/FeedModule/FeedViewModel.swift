@@ -34,7 +34,7 @@ class FeedViewModel: FeedVMProtocol {
 //        onPostsUpdated?() // Сообщаем представлению, что данные обновились
 //    }    
     func fetchPosts() {
-        PostService.shared.fetchAll{posts,error in
+        PostManager.shared.fetchAll{posts,error in
             if let error = error {
                 self.onError?(error.localizedDescription)
             }

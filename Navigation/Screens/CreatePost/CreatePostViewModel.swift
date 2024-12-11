@@ -17,13 +17,18 @@ class CreatePostViewModel {
     
     func createPost(body: String) {
         let user = CurrentUser.shared.user
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // ISO 8601 format
+        let formattedDate = dateFormatter.string(from: currentDate)
         let newPost = Post(
+        
             author: Author(id: user?.id ?? "0", name: user?.fullname ?? "", urlImage:user?.avatarURL ?? ""),
             postDescription: body,
             urlImage: imageUrl,
             likes: 0
         )
-        PostService.shared.saveToDataBase(post: newPost){error in
+        PostManager.shared.savePost(post: newPost){error in
             if let error = error {
                 self.onErrorOccurred?(error)
                 return

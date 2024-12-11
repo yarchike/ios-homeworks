@@ -80,7 +80,7 @@
 		BF939BC52B7100B900F54B62 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939BC42B7100B900F54B62 /* PhotosCollectionViewCell.swift */; };
 		BF9511212BC425E5002D02E4 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9511202BC425E5002D02E4 /* FeedModel.swift */; };
 		BF9EA3752BC71E93004114B2 /* FeedVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EA3742BC71E93004114B2 /* FeedVMProtocol.swift */; };
-		BF9EA3792BC720B5004114B2 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EA3782BC720B5004114B2 /* PostService.swift */; };
+		BF9EA3792BC720B5004114B2 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EA3782BC720B5004114B2 /* PostManager.swift */; };
 		BFA3A9EA2B5FD27F008CC6FA /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */; };
 		BFA3A9ED2B5FD2E3008CC6FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */; };
 		BFAB03022CCFE034005C2C74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BFAB03012CCFE034005C2C74 /* Localizable.xcstrings */; };
@@ -209,7 +209,7 @@
 		BF941CB92BA347A0002AB495 /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
 		BF9511202BC425E5002D02E4 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		BF9EA3742BC71E93004114B2 /* FeedVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVMProtocol.swift; sourceTree = "<group>"; };
-		BF9EA3782BC720B5004114B2 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		BF9EA3782BC720B5004114B2 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		BFA3A9E92B5FD27F008CC6FA /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		BFA3A9EC2B5FD2E3008CC6FA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BFAB03012CCFE034005C2C74 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -477,7 +477,7 @@
 				BF3C52872CF5D0880071F2DD /* FirebaseDataBaseService.swift */,
 				BF818D052CF603E5004E3890 /* FirebaseStorageService.swift */,
 				BF2DCE1E2CF8AB5F0078CCB8 /* FirebaseAutch.swift */,
-				BF9EA3782BC720B5004114B2 /* PostService.swift */,
+				BF9EA3782BC720B5004114B2 /* PostManager.swift */,
 				BF0096D72D084D4D004C5B53 /* PhotosManager.swift */,
 			);
 			path = service;
@@ -733,7 +733,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF9EA3792BC720B5004114B2 /* PostService.swift in Sources */,
+				BF9EA3792BC720B5004114B2 /* PostManager.swift in Sources */,
 				BF0096D82D084D4D004C5B53 /* PhotosManager.swift in Sources */,
 				BF72A4012BB17D870051C048 /* LoginFactory.swift in Sources */,
 				BF72A4042BB17DC00051C048 /* MyLoginFactory.swift in Sources */,

@@ -23,7 +23,7 @@ class PhotosCollectionViewCell: UICollectionViewCell{
         static let imageHeight: CGFloat = 180.0
     }
     
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
