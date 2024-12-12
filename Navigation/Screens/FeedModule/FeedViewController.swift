@@ -139,6 +139,7 @@ extension FeedViewController: UITableViewDataSource {
         }
         
         let post = viewModel.posts[indexPath.row]
+        cell.upLike = viewModel.likePost
         cell.update(with: post)
         
         return cell

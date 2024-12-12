@@ -1,7 +1,10 @@
 import UIKit
 class PostTableViewCell: UITableViewCell {
-
+    
     static let cellId = "PostTableViewCell"
+    
+    var post: Post?
+    var upLike: (Int) -> Void = {_ in }
     
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -129,6 +132,7 @@ class PostTableViewCell: UITableViewCell {
     // MARK: - Configuration
     
     func update(with model: Post) {
+        post = model
         avatarImageView.loadImageFromStoragePath(model.author.urlImage)
         authorLabel.text = model.author.name
         contentImageView.loadImageFromStoragePath(model.urlImage)
@@ -160,7 +164,11 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @objc private func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
-        animateHeart() // Вызов анимации сердечка
-        // Здесь можно также обновить количество лайков, если нужно
+        if let tableView = superview as? UITableView,
+           let indexPath = tableView.indexPath(for: self) {
+            animateHeart()
+            upLike(indexPath.row)
+        }
+        
     }
 }

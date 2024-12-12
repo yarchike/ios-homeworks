@@ -18,12 +18,12 @@ class PostManager {
     
     
     func savePost(post: Post, completion: @escaping (Error?) -> Void) {
-        FirebaseDataBaseService.shared.savePostToDataBase(post: post, completion: completion)
+        FirebaseDataBaseService.shared.savePostToDatabase(post: post, completion: completion)
     }
    
 
     func fetchAll(completion: @escaping ([Post]?, Error?) -> Void) {
-        FirebaseDataBaseService.shared.fetchAllPost(completion: completion)
+        FirebaseDataBaseService.shared.fetchAllPosts(completion: completion)
     }
     
     func fetchPostsByAuthor(completion: @escaping ([Post]?, Error?) -> Void) {
@@ -32,7 +32,22 @@ class PostManager {
         }
     }
     
-    func upLikes(){
-        //FirebaseDataBaseService.shared.
+    func upLikes(post:Post){
+        let newLikes = post.likes + 1
+        let updatedPost = Post(
+               id: post.id,
+               author: post.author,
+               postDescription: post.postDescription,
+               urlImage: post.urlImage,
+               likes: newLikes,
+               createdAt: post.createdAt
+           )
+        FirebaseDataBaseService.shared.updatePost(post: updatedPost){error in
+            if error != nil {
+                print(error ?? "")
+            }
+        }
     }
+    
+
 }

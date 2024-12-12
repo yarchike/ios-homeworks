@@ -22,17 +22,8 @@ class PhotosManager {
        
     }
     
-    func addPhoto(image: UIImage, completion: @escaping (Error?) -> Void){
-        FirebaseStorageService.shared.uploadImage(image: image){result in
-            switch result {
-            case .success(let imagePatch):
-                let photo = Photo(id: UUID().uuidString, imageURL: imagePatch, authorId: CurrentUser.shared.user?.id ?? "")
-                FirebaseDataBaseService.shared.addPhotoToDatabase(photo: photo)
-                completion(nil)
-            case .failure(let error):
-                completion(error)
-            }
-        }
+    func addPhoto(image: UIImage, completion: @escaping (Result<String, Error>) -> Void){
+        FirebaseStorageService.shared.uploadImage(image: image,completion: completion)
         
     }
     

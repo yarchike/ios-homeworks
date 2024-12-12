@@ -29,11 +29,15 @@ class PhotosViewModel {
     
     
     func addPhoto(image: UIImage) {
-        PhotosManager.shared.addPhoto(image: image){error in
-            if error != nil{
-                return
+        PhotosManager.shared.addPhoto(image: image){result in
+            print(result)
+            switch result{
+            case .success(_):
+                self.fetchPhotos()
+
+            case .failure(_):
+                break
             }
-            self.fetchPhotos()
         }
         
     }

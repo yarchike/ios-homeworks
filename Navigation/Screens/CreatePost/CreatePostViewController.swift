@@ -167,7 +167,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
-            viewModel.uploadImage(image: image, imageView: attachedImageView)
+            viewModel.uploadImage(image: image,button: publishButton, imageView: attachedImageView)
             attachedImageView.contentMode = .scaleAspectFill
             attachedImageView.image = image
             
