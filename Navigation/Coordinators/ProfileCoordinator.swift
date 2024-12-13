@@ -20,13 +20,8 @@ class ProfileCoordinator: Coordinator {
     init(){
         self.navigationController = UINavigationController()
         var viewController: UIViewController?
-        if Auth.auth().currentUser != nil {
-            //viewController = getProfileViewController()
-            viewController = getLoginViewController()
-        }else{
-            viewController = getLoginViewController()
-        }
-        viewController?.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
+        viewController = getProfileViewController()
+        viewController?.tabBarItem = UITabBarItem(title: "Profile".localized, image: UIImage(systemName: "person.circle"), tag: 1)
         self.navigationController = UINavigationController(rootViewController: viewController!)
     }
     
@@ -37,10 +32,6 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(profileViewController, animated: true)
     }
     
-    func routeToLogin(){
-        let loginViewConntroller = getLoginViewController()
-        navigationController.pushViewController(loginViewConntroller, animated: true)
-    }
     
     func routeToPhoto(){
         let photosViewController = PhotosViewController()
@@ -48,22 +39,21 @@ class ProfileCoordinator: Coordinator {
         
     }
     
-    func getLoginViewController() -> LogInViewController{
-        var userService: UserService = CurrentUserService()
-        
-#if DEBUG
-        userService = TestUserService()
-#endif
-        let loginViewConntroller = LogInViewController(userService: userService, delegate: MyLoginFactory.makeLoginInspector())
-        loginViewConntroller.routeToProfile = routeToProfile
-        return loginViewConntroller
-    }
     
     func getProfileViewController() -> ProfileViewController{
-        let profileViewController = ProfileViewController()
+        let profileVM = ProfileViewModel()
+        let profileViewController = ProfileViewController(viewModel: profileVM)
         profileViewController.routeToPhoto = routeToPhoto
-        profileViewController.routeToLogin = routeToLogin
+        profileViewController.routeToCreatePost = routToCreatePost
         return profileViewController
+    }
+    func routToCreatePost(){
+        let createPostViewModel = CreatePostViewModel()
+        let createPostVC = CreatePostViewController(viewModel: createPostViewModel)
+        
+        let navigationController = UINavigationController(rootViewController: createPostVC)
+        navigationController.modalPresentationStyle = .automatic
+        self.navigationController.present(navigationController, animated: true)
     }
     
     

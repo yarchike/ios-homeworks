@@ -16,7 +16,7 @@ class PhotosCell: UICollectionViewCell{
         static let imageHeight: CGFloat = 180.0
     }
     
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 6
@@ -58,7 +58,7 @@ class PhotosCell: UICollectionViewCell{
     func setup(
         photo: Photo
     ) {
-        imageView.image = UIImage(named: photo.image)
+        imageView.loadImageFromStoragePath(photo.imageURL)
     }
     
     

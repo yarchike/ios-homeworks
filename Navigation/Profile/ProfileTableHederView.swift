@@ -40,7 +40,7 @@ class ProfileHeaderView : UIView{
     
     let fullNameLabel: UILabel = {
         let nameView = UILabel()
-        nameView.text = "Hipster Cat"
+        nameView.text = "No Name"
         nameView.font = UIFont.boldSystemFont(ofSize: 18.0)
         nameView.textColor = .customTextColor
         nameView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +57,7 @@ class ProfileHeaderView : UIView{
     }()
     
     lazy var setStatusButton: CustomButton = {
-        let button = CustomButton(title: "Set status", titleColor: .white){
+        let button = CustomButton(title: "Set status".localized, titleColor: .white){
             if !self.statusText.isEmpty{
                 self.statusLabel.text = self.statusText
                 self.statusTextField.text = ""
@@ -218,9 +218,13 @@ class ProfileHeaderView : UIView{
     }
     
     func setupProfile(user: User){
-        avatarImageView.image = user.avatar
         fullNameLabel.text = user.fullname
         statusLabel.text = user.status
+        if let imageUrl = user.avatarURL {
+            avatarImageView.loadImageFromStoragePath(imageUrl, placeholder: UIImage(named: "placeholder"))
+        }else {
+            avatarImageView.image =  UIImage(systemName: "person.circle")
+        }
     }
     
 }
