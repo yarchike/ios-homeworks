@@ -25,7 +25,7 @@ class SettingsCoordinator: Coordinator {
         settingsViewModel.switchToLoginInterface = switchToLoginInterface
         let settingViewController = SettingsViewController(viewModel: settingsViewModel)
 
-        settingViewController.tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gearshape"), tag: 2)
+        settingViewController.tabBarItem = UITabBarItem(title: "Settings".localized, image: UIImage(systemName: "gearshape"), tag: 2)
         self.navigationController = UINavigationController(rootViewController: settingViewController)
         
     }

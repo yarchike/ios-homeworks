@@ -11,7 +11,7 @@ import StorageService
 class FeedViewController: UIViewController {
     
     
-    private var viewModel: FeedVMProtocol
+    private var viewModel: FeedViewModel
     
     
     private lazy var tableView: UITableView = {
@@ -38,10 +38,20 @@ class FeedViewController: UIViewController {
            return control
        }()
     
+    private lazy var emptyStateLabel: UILabel = {
+          let label = UILabel()
+          label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "No posts".localized
+          label.textColor = .gray
+          label.textAlignment = .center
+          label.isHidden = true
+          return label
+      }()
+    
 
     
     
-    init(viewModel: FeedVMProtocol) {
+    init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -56,6 +66,7 @@ class FeedViewController: UIViewController {
         // Показываем индикатор загрузки и скрываем таблицу перед загрузкой
         activityIndicator.startAnimating()
         tableView.isHidden = true
+        emptyStateLabel.isHidden = true
         
         // Загружаем данные
         viewModel.fetchPosts()
@@ -68,6 +79,7 @@ class FeedViewController: UIViewController {
         
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
+        view.addSubview(emptyStateLabel)
         
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -76,7 +88,10 @@ class FeedViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            emptyStateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                       emptyStateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     override func viewDidLoad() {
@@ -93,6 +108,7 @@ class FeedViewController: UIViewController {
             self?.activityIndicator.stopAnimating()
             self?.refreshControl.endRefreshing()
             self?.tableView.isHidden = false
+            self?.emptyStateLabel.isHidden = !(self?.viewModel.posts.isEmpty ?? true)
             self?.tableView.reloadData()
         }
         
@@ -108,11 +124,11 @@ class FeedViewController: UIViewController {
         }
     
     private func showErrorAlert(message: String) {
-          let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { [weak self] _ in
+        let alert = UIAlertController(title: "Error".localized, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Repeat".localized, style: .default, handler: { [weak self] _ in
               self?.viewModel.fetchPosts()
           }))
-          alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
           present(alert, animated: true)
       }
     

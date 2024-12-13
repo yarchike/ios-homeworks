@@ -31,7 +31,7 @@ class SettingsViewModel {
                     let newUser = user.copyWithNewValues(avatarURL: url)
                     UserService.shared.updateUser(user: newUser){error in
                         if error != nil{
-                            self.onError?("Ошибка загрузки")
+                            self.onError?("Loading error".localized)
                             return
                         }
                         CurrentUser.shared.user = newUser
@@ -41,7 +41,7 @@ class SettingsViewModel {
                     self.onSettingsUpdated?()
                 }
             case .failure(_):
-                self.onError?("Ошибка загрузки")
+                self.onError?("Loading error".localized)
             }
             
         }
@@ -52,7 +52,7 @@ class SettingsViewModel {
             let newUser = user.copyWithNewValues(fullname: newFullName)
             UserService.shared.updateUser(user: newUser){error in
                 if error != nil{
-                    self.onError?("Ошибка загрузки")
+                    self.onError?("Loading error".localized)
                     return
                 }
                 CurrentUser.shared.user = newUser
@@ -67,7 +67,7 @@ class SettingsViewModel {
 
     func updatePassword(_ newPassword: String, confirmPassword: String, completion: @escaping (Error?) -> Void) {
         if newPassword != confirmPassword {
-            completion(NSError(domain: "SettingsViewModel", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Пароли не совпадают."]))
+            completion(NSError(domain: "SettingsViewModel", code: 1001, userInfo: [NSLocalizedDescriptionKey: "The passwords do not match.".localized]))
             return
         }
         UserService.shared.updatePassword(password: newPassword){ error in

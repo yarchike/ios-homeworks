@@ -15,18 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let localNotificationsService = LocalNotificationsService()
-        localNotificationsService.registeForLatestUpdatesIfPossible()
         FirebaseApp.configure()
-        testDatabase()
         return true
     }
     
-    func testDatabase(){
-        FirebaseDataBaseService.shared.saveUser(user: User(id: "1", email: "2", fullname: "3", avatarURL: "4", status: "5")){ _ in
-            
-        }
-    }
 
     // MARK: UISceneSession Lifecycle
     

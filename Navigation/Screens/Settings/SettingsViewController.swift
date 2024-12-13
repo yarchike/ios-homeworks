@@ -28,13 +28,13 @@ class SettingsViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textColor = .label
-        label.text = "Полное имя"
+        label.text = "Full name".localized
         return label
     }()
 
     private lazy var fullNameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите полное имя"
+        textField.placeholder = "Enter your full name".localized
         textField.borderStyle = .none
         textField.font = UIFont.preferredFont(forTextStyle: .body)
         textField.isHidden = true
@@ -45,13 +45,13 @@ class SettingsViewController: UIViewController {
         let button = UIButton(type: .system)
         if #available(iOS 15.0, *) {
             var config = UIButton.Configuration.plain()
-            config.title = "Изменить"
+            config.title = "Change".localized
             config.image = UIImage(systemName: "pencil")
             config.imagePadding = 8
             config.buttonSize = .medium
             button.configuration = config
         } else {
-            button.setTitle("Изменить", for: .normal)
+            button.setTitle("Change".localized, for: .normal)
             button.setImage(UIImage(systemName: "pencil"), for: .normal)
         }
         button.addTarget(self, action: #selector(editFullNameTapped), for: .touchUpInside)
@@ -62,18 +62,18 @@ class SettingsViewController: UIViewController {
         let button = UIButton(type: .system)
         if #available(iOS 15.0, *) {
             var config = UIButton.Configuration.filled()
-            config.title = "Изменить пароль"
+            config.title = "Change password".localized
             config.buttonSize = .large
             button.configuration = config
         } else {
-            button.setTitle("Изменить пароль", for: .normal)
+            button.setTitle("Change password".localized, for: .normal)
         }
         button.addTarget(self, action: #selector(updatePasswordTapped), for: .touchUpInside)
         return button
     }()
     private lazy var logoutButton: UIButton = {
            let button = UIButton(type: .system)
-           button.setTitle("Выход", for: .normal)
+            button.setTitle("Exit".localized, for: .normal)
            button.addTarget(self, action: #selector(logoutTapped), for: .touchUpInside)
            button.tintColor = .systemRed
            return button
@@ -96,15 +96,15 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
-        title = "Настройки"
+        title = "Settings".localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Сохранить",
+            title: "Save".localized,
             style: .done,
             target: self,
             action: #selector(saveTapped)
         )
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Выход",
+            title: "Exit".localized,
             style: .plain,
             target: self,
             action: #selector(logoutTapped)
@@ -161,7 +161,7 @@ class SettingsViewController: UIViewController {
         }
 
         viewModel.onError = { [weak self] error in
-            self?.showAlert(title: "Ошибка", message: error)
+            self?.showAlert(title: "Error".localized, message: error)
         }
         viewModel.fetchCurrentSettings()
     }
@@ -176,7 +176,7 @@ class SettingsViewController: UIViewController {
     @objc private func editFullNameTapped() {
         fullNameTextField.isHidden = false
         fullNameLabel.isHidden = true
-        editFullNameButton.setTitle("Отмена", for: .normal)
+        editFullNameButton.setTitle("Cancel".localized, for: .normal)
         editFullNameButton.removeTarget(self, action: #selector(editFullNameTapped), for: .touchUpInside)
         editFullNameButton.addTarget(self, action: #selector(cancelEditFullNameTapped), for: .touchUpInside)
     }
@@ -184,29 +184,29 @@ class SettingsViewController: UIViewController {
     @objc private func cancelEditFullNameTapped() {
         fullNameTextField.isHidden = true
         fullNameLabel.isHidden = false
-        editFullNameButton.setTitle("Изменить", for: .normal)
+        editFullNameButton.setTitle("Change".localized, for: .normal)
         editFullNameButton.removeTarget(self, action: #selector(cancelEditFullNameTapped), for: .touchUpInside)
         editFullNameButton.addTarget(self, action: #selector(editFullNameTapped), for: .touchUpInside)
     }
 
     @objc private func updatePasswordTapped() {
-        let alert = UIAlertController(title: "Изменить пароль", message: "Введите новый пароль", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Change password".localized, message: "Enter new password".localized, preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "Новый пароль"
+            textField.placeholder = "New Password".localized
             textField.isSecureTextEntry = true
         }
         alert.addTextField { textField in
-            textField.placeholder = "Повторите новый пароль"
+            textField.placeholder = "Repeat new password".localized
             textField.isSecureTextEntry = true
         }
 
-        let saveAction = UIAlertAction(title: "Сохранить", style: .default) { [weak self] _ in
+        let saveAction = UIAlertAction(title: "Save".localized, style: .default) { [weak self] _ in
             guard let newPassword = alert.textFields?[0].text, let confirmPassword = alert.textFields?[1].text else { return }
             self?.viewModel.updatePassword(newPassword, confirmPassword: confirmPassword) { error in
                 if let error = error {
-                    self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+                    self?.showAlert(title: "Error".localized, message: error.localizedDescription)
                 } else {
-                    self?.showAlert(title: "Успех", message: "Пароль успешно обновлён")
+                    self?.showAlert(title: "Success".localized, message: "Password successfully updated".localized)
                 }
             }
         }
@@ -221,9 +221,9 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func logoutTapped() {
-          let alert = UIAlertController(title: "Выход", message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
-          alert.addAction(UIAlertAction(title: "Выход", style: .destructive) { [weak self] _ in
+        let alert = UIAlertController(title: "Exit".localized, message: "Are you sure you want to go out?".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        alert.addAction(UIAlertAction(title: "Exit".localized, style: .destructive) { [weak self] _ in
               self?.viewModel.logout()
           })
           present(alert, animated: true)

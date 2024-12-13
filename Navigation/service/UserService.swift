@@ -37,6 +37,8 @@ class  UserService {
                 completion(nil, error)
             }
         }
+    
+    
 
         // Метод для обновления данных пользователя
         func updateUser(user: User, completion: @escaping (Error?) -> Void) {

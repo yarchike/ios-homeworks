@@ -12,7 +12,7 @@ import Foundation
 import FirebaseAuth
 
 
-class FirebaseAutch: CheckerServiceProtocol{
+class FirebaseAutch {
     
     static let shared = FirebaseAutch()
     
@@ -24,8 +24,7 @@ class FirebaseAutch: CheckerServiceProtocol{
                 completion(.failure(ApiError.authError(message: err.userInfo["NSLocalizedDescription"] as? String ?? "Ошибка авторизации")))
             }
             if let authResult{
-                print(authResult.user.uid)
-                completion(.success(authResult.user.displayName ?? ""))
+                completion(.success(authResult.user.uid))
             }
             
         }

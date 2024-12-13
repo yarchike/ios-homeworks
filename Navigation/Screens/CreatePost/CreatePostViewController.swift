@@ -24,7 +24,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     private lazy var attachPhotoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Attach Photo", for: .normal)
+        button.setTitle("Attach Photo".localized, for: .normal)
         button.backgroundColor = .systemGray6
         button.tintColor = .systemBlue
         button.layer.cornerRadius = 8.0
@@ -51,7 +51,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     private lazy var publishButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Publish", for: .normal)
+        button.setTitle("Publish".localized, for: .normal)
         button.backgroundColor = .systemBlue
         button.tintColor = .white
         button.layer.cornerRadius = 8.0
@@ -82,7 +82,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: - Private Methods
     private func setupView() {
         view.backgroundColor = .customBackgroundColor
-        navigationItem.title = "Create Post"
+        navigationItem.title = "Create Post".localized
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .close,
@@ -134,7 +134,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         
         viewModel.onErrorOccurred = { [weak self] error in
             let alert = UIAlertController(
-                title: "Error",
+                title: "Error".localized,
                 message: error.localizedDescription,
                 preferredStyle: .alert
             )
@@ -153,8 +153,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @objc private func publishButtonTapped() {
         guard let body = bodyTextView.text, !body.isEmpty else {
             let alert = UIAlertController(
-                title: "Validation Error",
-                message: "Post content cannot be empty.",
+                title: "Validation Error".localized,
+                message: "Post content cannot be empty.".localized,
                 preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

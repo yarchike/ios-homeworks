@@ -23,12 +23,12 @@ class RegistrationViewModel {
     // Метод валидации и регистрации
     func validateAndRegister() {
         if email.isEmpty || firstName.isEmpty || lastName.isEmpty || password.isEmpty || confirmPassword.isEmpty ||  urlAvatar.isEmpty {
-            onValidationError?("Заполните все поля")
+            onValidationError?("Fill in all fields".localized)
             return
         }
         
         if password != confirmPassword {
-            onValidationError?("Пароли не совпадают")
+            onValidationError?("Passwords don't match".localized)
             return
         }
         
@@ -40,14 +40,14 @@ class RegistrationViewModel {
                 FirebaseDataBaseService.shared.saveUser(user: newUser){_ in 
                     switch result{
                     case .failure(_):
-                        self.onValidationError?("Ошибка. Попробуйте позже")
+                        self.onValidationError?("Error. Try again later".localized)
                     case .success(_):
                         self.onRegistrationSuccess?()
                     }
                 }
 
             case .failure(_):
-                self.onValidationError?("Ошибка. Попробуйте позже")
+                self.onValidationError?("Error. Try again later".localized)
             }
         }
     }

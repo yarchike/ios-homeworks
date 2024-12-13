@@ -8,7 +8,7 @@
 import Foundation
 
 
-class FeedViewModel: FeedVMProtocol {
+class FeedViewModel {
     
 
     var posts: [Post] = []

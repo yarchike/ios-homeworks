@@ -21,7 +21,7 @@ class ProfileCoordinator: Coordinator {
         self.navigationController = UINavigationController()
         var viewController: UIViewController?
         viewController = getProfileViewController()
-        viewController?.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
+        viewController?.tabBarItem = UITabBarItem(title: "Profile".localized, image: UIImage(systemName: "person.circle"), tag: 1)
         self.navigationController = UINavigationController(rootViewController: viewController!)
     }
     

@@ -56,7 +56,7 @@ class PhotosViewController: UIViewController{
         addSubviews()
         setupConstraints()
         initButtonAddPhoto()
-        
+        navigationController?.navigationBar.backgroundColor = .customBackgroundColor
         viewModel.onImagesUpdated = { [weak self] in
             self?.collectionView.reloadData()
             

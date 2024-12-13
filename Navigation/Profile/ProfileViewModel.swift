@@ -49,7 +49,7 @@ class ProfileViewModel {
         if let uid = CurrentUser.shared.user?.id{
             PostManager.shared.fetchPostsByAuthor{posts,error in
                 if error != nil {
-                    self.onError?("Ошибка загрузки постов")
+                    self.onError?("Error loading posts".localized)
                 }
                 if let posts = posts {
                     self.posts  = posts
@@ -57,7 +57,7 @@ class ProfileViewModel {
                 }
             }
         }else{
-            self.onError?("Ошибка авторизации")
+            self.onError?("Authorization error".localized)
         }
         
         
@@ -70,8 +70,4 @@ class ProfileViewModel {
         }
     }
     
-    func likePost(at index: Int) {
-        guard index >= 0, index < posts.count else { return }
-        LikeDataManager.shared.addLikePost(post: posts[index])
-    }
 }

@@ -15,15 +15,14 @@ class LogInViewController: UIViewController {
 
     var countErrors = 0
     
+    let viewModel: LogInViewModel
+    
     
     var routeToProfile: (() -> ()) = {}
     
-    private let localAuthorizationService = LocalAuthorizationService()
     
-    var loginDelegate: LoginViewControllerDelegate
-    
-    init(delegate: LoginViewControllerDelegate) {
-        self.loginDelegate = delegate
+    init(viewModel: LogInViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -72,7 +71,7 @@ class LogInViewController: UIViewController {
         textField.keyboardType = UIKeyboardType.default
         textField.backgroundColor  = UIColor.systemGray6
         textField.font = UIFont.boldSystemFont(ofSize: 16.0)
-        textField.textColor = .black
+        textField.textColor = .customTextColor
         textField.keyboardType = .emailAddress
         textField.autocapitalizationType = .none
         textField.addTarget(self, action: #selector(loginTextChanged(_:)), for: .editingChanged)
@@ -95,10 +94,10 @@ class LogInViewController: UIViewController {
         textField.clipsToBounds = true
         textField.backgroundColor  = UIColor.systemGray6
         textField.font = UIFont.boldSystemFont(ofSize: 16.0)
-        textField.textColor = .black
+        textField.textColor = .customTextColor
         textField.returnKeyType = UIReturnKeyType.done
         textField.autocapitalizationType = .none
-        textField.placeholder = "Password"
+        textField.placeholder = "Password".localized
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.addTarget(self, action: #selector(passwordTextChanged(_:)), for: .editingChanged)
@@ -106,7 +105,7 @@ class LogInViewController: UIViewController {
     }()
     
     lazy var loginButtonView: CustomButton = {
-        let button = CustomButton(title: "Log In", titleColor: .white){
+        let button = CustomButton(title: "Log In".localized, titleColor: .white){
             self.buttonPressed()
         }
         button.clipsToBounds = true
@@ -125,23 +124,6 @@ class LogInViewController: UIViewController {
         return button
     }()
     
-    
-    lazy var biometricAuthButton: CustomButton = {
-        let button = CustomButton(title: "Авторизация по биометрии", titleColor: .white){
-            self.biometricAuthTapped()
-        }
-        switch localAuthorizationService.biometricType {
-             case .faceID:
-                button.setImage(UIImage(systemName: "faceid"), for: .normal)
-             case .touchID:
-                button.setImage(UIImage(systemName: "touchid"), for: .normal)
-             default:
-                button.setImage(nil, for: .normal)
-             }
-    
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
     
     private let activityIndicator: UIActivityIndicatorView = {
@@ -162,11 +144,21 @@ class LogInViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setupContentOfScrollView()
-        if Auth.auth().currentUser != nil {
-            initBiometricAuthButton()
-        }
+        bindViewModel()
         
     }
+    
+    private func bindViewModel() {
+          viewModel.onValidationError = { [weak self] message in
+              self?.showErrorAlert(text: message)
+          }
+          viewModel.onLoginSuccess = { [weak self] in
+              self?.routeToProfile()
+          }
+          viewModel.onLoginBlocked = { [weak self] message in
+              self?.timeLabel.text = message
+          }
+      }
     
     private func setupView() {
         view.backgroundColor = .customBackgroundColor
@@ -266,72 +258,16 @@ class LogInViewController: UIViewController {
         
     }
     
-    func initBiometricAuthButton(){
-        
-        contentView.addSubview(biometricAuthButton)
-        
-        NSLayoutConstraint.activate([
-            biometricAuthButton.topAnchor.constraint(equalTo: loginButtonView.bottomAnchor, constant: 16),
-            biometricAuthButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            biometricAuthButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            biometricAuthButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
     
-    
-    private func biometricAuthTapped() {
-        localAuthorizationService.authorizeIfPossible { [weak self] success, error in
-            if success {
-                self?.routeToProfile()
-            } else {
-                let errorMessage = error?.localizedDescription ?? "Неизвестная ошибка"
-                self?.showAlert(message: errorMessage)
-            }
-        }
-    }
     
     private func showAlert(message: String) {
-          let alert = UIAlertController(title: "Ошибка авторизации", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Authorization error".localized, message: message, preferredStyle: .alert)
           alert.addAction(UIAlertAction(title: "ОК", style: .default))
           present(alert, animated: true)
       }
     
     func buttonPressed() {
-        if(!passwordText.isEmpty && !loginText.isEmpty){
-            do{
-                try loginDelegate.check(login: loginText, password: passwordText){result in
-                    switch result {
-                    case .success(_):
-                        self.countErrors = 0
-                        self.routeToProfile()
-                        if let uid = Auth.auth().currentUser?.uid {
-                            UserService.shared.getUser(byId: uid){user,_ in
-                                CurrentUser.shared.user = user
-                            }
-                        }
-                    case .failure(let error):
-                        self.handleError(with: error)
-                    }
-                }
-            }
-            catch ApiError.notFound{
-                countErrors += 1
-                showErrorAlert(text: "Нету такого пользователя")
-            }
-            catch ApiError.badRequest{
-                showErrorAlert(text: "Нет доступа к серверу")
-            }
-            catch{
-                showErrorAlert(text: "Неизвестрая ошибка")
-            }
-        }else{
-            countErrors += 1
-            showErrorAlert(text: "Не введен логин или пароль")
-        }
-        if(countErrors >= 3){
-            blockLogin()
-        }
-        
+            viewModel.validateAndLogin()
     }
     
     func blockLogin(){
@@ -354,15 +290,11 @@ class LogInViewController: UIViewController {
     }
     
     @objc func loginTextChanged(_ textField: UITextField){
-        if let text = textField.text {
-            loginText =  text
-        }
+            viewModel.loginText = textField.text ?? ""
     }
     
     @objc func passwordTextChanged(_ textField: UITextField){
-        if let text = textField.text {
-            passwordText =  text
-        }
+        viewModel.passwordText = textField.text ?? ""
     }
     @objc func willShowKeyboard(_ notification: NSNotification) {
         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
@@ -408,30 +340,14 @@ class LogInViewController: UIViewController {
     }
     
     private func showErrorAlert(text: String){
-        let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error".localized, message: text, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ок", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
     }
     
-    private func handleError(with error: ApiError) {
-        switch error{
-        case .unAuth:
-            self.countErrors += 1
-            self.showErrorAlert(text: "Не верный логин или пароль")
-        case .badRequest:
-            self.showErrorAlert(text: "Ошибка сервера")
-        case .notFound:
-            self.showErrorAlert(text: "Неизвестная ошибка")
-        case .unowned:
-            self.showErrorAlert(text: "Неизвестная ошибка")
-        case .forbidden:
-            self.showErrorAlert(text: "Неизвестная ошибка")
-        case .authError(let message):
-            self.showErrorAlert(text: message)
-        }
-    }
+
     @objc private func openRegistration() {
         let registrationVC = RegistrationViewController()
              registrationVC.modalPresentationStyle = .formSheet

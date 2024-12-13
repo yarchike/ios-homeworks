@@ -26,7 +26,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
 
     private lazy var changeAvatarButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Выбрать аватар", for: .normal)
+        button.setTitle("Select an avatar".localized, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(changeAvatarTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +43,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
 
     private lazy var firstNameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Имя"
+        textField.placeholder = "Name".localized
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -51,7 +51,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
 
     private lazy var lastNameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Фамилия"
+        textField.placeholder = "Surname".localized
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -59,7 +59,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
 
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Пароль"
+        textField.placeholder = "Password".localized
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +68,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
 
     private lazy var confirmPasswordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Подтвердите пароль"
+        textField.placeholder = "Confirm your password".localized
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
 
     private lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Зарегистрироваться", for: .normal)
+        button.setTitle("Register".localized, for: .normal)
         button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 8
@@ -88,7 +88,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         setupUI()
         setupBindings()
     }
@@ -186,7 +186,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     }
 
     private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error".localized, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ОК", style: .default))
         present(alert, animated: true)
     }

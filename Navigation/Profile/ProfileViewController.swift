@@ -173,9 +173,8 @@
         }
         
         @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
-            if let cell = gesture.view as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-        
-               // LikeDataManager.shared.addLikePost(post: data[indexPath.row])
+            if let cell = gesture.view as? UITableViewCell, let _ = tableView.indexPath(for: cell) {
+    
             }
         }
         

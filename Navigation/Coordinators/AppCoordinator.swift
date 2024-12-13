@@ -19,7 +19,8 @@ class AppCoordinator: Coordinator {
     }
     
     func getLoginViewController() -> LogInViewController {
-        let loginViewController = LogInViewController(delegate: MyLoginFactory.makeLoginInspector())
+        let loginViewModel = LogInViewModel()
+        let loginViewController = LogInViewController(viewModel: loginViewModel)
         loginViewController.routeToProfile = switchToMainInterface
         return loginViewController
     }
