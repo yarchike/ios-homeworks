@@ -66,7 +66,7 @@
         
         private func setupView() {
             view.backgroundColor = .customBackgroundColor
-            navigationItem.title = "Profile"
+            navigationItem.title = "Profile".localized
             navigationController?.navigationBar.prefersLargeTitles = false
         }
         
