@@ -111,6 +111,9 @@ class FeedViewController: UIViewController {
             self?.emptyStateLabel.isHidden = !(self?.viewModel.posts.isEmpty ?? true)
             self?.tableView.reloadData()
         }
+        viewModel.onPostUpdated = {[weak self] index in
+            self?.tableView.reloadRows(at: [index] , with: .automatic)
+        }
         
         viewModel.onError = { [weak self] errorMessage in
             self?.activityIndicator.stopAnimating()
@@ -164,7 +167,7 @@ extension FeedViewController: UITableViewDataSource {
     
     @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
         if let cell = gesture.view as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-            viewModel.likePost(at: indexPath.row) // Вызываем метод из ViewModel для лайка
+            viewModel.likePost(at: indexPath) // Вызываем метод из ViewModel для лайка
         }
     }
 }

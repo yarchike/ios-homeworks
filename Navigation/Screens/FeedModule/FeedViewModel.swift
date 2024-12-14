@@ -14,6 +14,7 @@ class FeedViewModel {
     var posts: [Post] = []
     var onPostsUpdated: (() -> Void)?
     var onError: ((String) -> Void)?
+    var onPostUpdated: ((IndexPath) -> Void)?
   
     func fetchPosts() {
         PostManager.shared.fetchAll{posts,error in
@@ -28,14 +29,14 @@ class FeedViewModel {
     
     }
     
-    func likePost(at index: Int) {
-        guard index < posts.count else { return }
+    func likePost(at indexPath: IndexPath) {
+        guard indexPath.row < posts.count else { return }
         
-        var post = posts[index]
+        var post = posts[indexPath.row]
         post.likes += 1
-        posts[index] = post
+        posts[indexPath.row] = post
         PostManager.shared.upLikes(post: post)
-        onPostsUpdated?() 
+        onPostUpdated?(indexPath)
     }
 
 }

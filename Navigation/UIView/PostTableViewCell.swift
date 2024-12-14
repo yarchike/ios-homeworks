@@ -4,7 +4,7 @@ class PostTableViewCell: UITableViewCell {
     static let cellId = "PostTableViewCell"
     
     var post: Post?
-    var upLike: (Int) -> Void = {_ in }
+    var upLike: (IndexPath) -> Void = {_ in }
     
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -72,7 +72,7 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
-        setupConstraints()
+        setupConstraintsWitchImage()
         addGestureRecognizers()
     }
     
@@ -95,7 +95,9 @@ class PostTableViewCell: UITableViewCell {
         contentView.addSubview(heartImageView) // Добавление UIImageView для сердечка
     }
     
-    private func setupConstraints() {
+
+    
+    private func setupConstraintsWitchImage() {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -123,9 +125,38 @@ class PostTableViewCell: UITableViewCell {
             viewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
             heartImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            heartImageView.centerYAnchor.constraint(equalTo: contentImageView.centerYAnchor),
-            heartImageView.widthAnchor.constraint(equalToConstant: 100),
-            heartImageView.heightAnchor.constraint(equalToConstant: 100)
+            heartImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            heartImageView.widthAnchor.constraint(equalToConstant: 50),
+            heartImageView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func setupConstraintsNotImage() {
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 50),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 50),
+            
+            authorLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
+            authorLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12),
+            authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            postDescriptionLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
+            postDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            postDescriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            likesLabel.topAnchor.constraint(equalTo: postDescriptionLabel.bottomAnchor, constant: 12),
+            likesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            likesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            
+            viewsLabel.centerYAnchor.constraint(equalTo: likesLabel.centerYAnchor),
+            viewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            heartImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            heartImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            heartImageView.widthAnchor.constraint(equalToConstant: 50),
+            heartImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -133,13 +164,15 @@ class PostTableViewCell: UITableViewCell {
     
     func update(with model: Post) {
         post = model
+        contentView.removeConstraints(contentView.constraints)
+        
         if !model.urlImage.isEmpty {
             contentImageView.loadImageFromStoragePath(model.urlImage)
+            setupConstraintsWitchImage()
             contentImageView.isHidden = false
-            contentImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75).isActive = true
         }else{
+            setupConstraintsNotImage()
             contentImageView.isHidden = true
-            contentImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
         if !model.author.urlImage.isEmpty{
             avatarImageView.loadImageFromStoragePath(model.author.urlImage)
@@ -150,19 +183,21 @@ class PostTableViewCell: UITableViewCell {
         authorLabel.text = model.author.name
         postDescriptionLabel.text = model.postDescription
         likesLabel.text = "Likes: \(model.likes)"
+        
+        
     }
     
     // MARK: - Анимация сердечка
     
     func animateHeart() {
-        heartImageView.alpha = 1
-        heartImageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        
+        heartImageView.alpha = 1  // Убедитесь, что сердечко видно
+
+        // Анимация появления и исчезновения сердечка
         UIView.animate(withDuration: 0.3, animations: {
-            self.heartImageView.transform = .identity
+            self.heartImageView.alpha = 1  // Сердечко появляется
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.5, options: [], animations: {
-                self.heartImageView.alpha = 0
+                self.heartImageView.alpha = 0  // Сердечко исчезает
             }, completion: nil)
         }
     }
@@ -179,7 +214,7 @@ class PostTableViewCell: UITableViewCell {
         if let tableView = superview as? UITableView,
            let indexPath = tableView.indexPath(for: self) {
             animateHeart()
-            upLike(indexPath.row)
+            upLike(indexPath)
         }
         
     }
