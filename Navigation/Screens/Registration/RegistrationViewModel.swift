@@ -22,7 +22,7 @@ class RegistrationViewModel {
     
     // Метод валидации и регистрации
     func validateAndRegister() {
-        if email.isEmpty || firstName.isEmpty || lastName.isEmpty || password.isEmpty || confirmPassword.isEmpty ||  urlAvatar.isEmpty {
+        if email.isEmpty || firstName.isEmpty || lastName.isEmpty || password.isEmpty || confirmPassword.isEmpty {
             onValidationError?("Fill in all fields".localized)
             return
         }
@@ -37,7 +37,7 @@ class RegistrationViewModel {
             switch result{
             case .success(let uid):
                 let newUser  = User(id:uid, email: self.email, fullname: "\(self.firstName) \(self.lastName)", avatarURL: self.urlAvatar, status: "")
-                FirebaseDataBaseService.shared.saveUser(user: newUser){_ in 
+                FirebaseDataBaseService.shared.saveUser(user: newUser){_ in
                     switch result{
                     case .failure(_):
                         self.onValidationError?("Error. Try again later".localized)
@@ -45,9 +45,9 @@ class RegistrationViewModel {
                         self.onRegistrationSuccess?()
                     }
                 }
-
-            case .failure(_):
-                self.onValidationError?("Error. Try again later".localized)
+                
+            case .failure(let error):
+                self.onValidationError?(error.message)
             }
         }
     }
@@ -60,7 +60,7 @@ class RegistrationViewModel {
             switch result{
             case .success(let url):
                 self.urlAvatar = url
-
+                
             case .failure(_):
                 self.onValidationError?("Ошибка загрузки")
             }
@@ -69,5 +69,5 @@ class RegistrationViewModel {
         
     }
     
-
+    
 }

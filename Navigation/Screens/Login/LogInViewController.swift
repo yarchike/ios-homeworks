@@ -12,7 +12,7 @@ class LogInViewController: UIViewController {
     
     var loginText = ""
     var passwordText = ""
-
+    
     var countErrors = 0
     
     let viewModel: LogInViewModel
@@ -117,7 +117,7 @@ class LogInViewController: UIViewController {
     
     lazy var regButtonView: UIButton = {
         let button = UIButton()
-        button.setTitle("Зарегестрироваться", for: .normal)
+        button.setTitle("Register".localized, for: .normal)
         button.addTarget(self, action: #selector(openRegistration), for: .touchUpInside)
         button.setTitleColor(UIColor(named: "blue_pixel"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -149,16 +149,16 @@ class LogInViewController: UIViewController {
     }
     
     private func bindViewModel() {
-          viewModel.onValidationError = { [weak self] message in
-              self?.showErrorAlert(text: message)
-          }
-          viewModel.onLoginSuccess = { [weak self] in
-              self?.routeToProfile()
-          }
-          viewModel.onLoginBlocked = { [weak self] message in
-              self?.timeLabel.text = message
-          }
-      }
+        viewModel.onValidationError = { [weak self] message in
+            self?.showErrorAlert(text: message)
+        }
+        viewModel.onLoginSuccess = { [weak self] in
+            self?.routeToProfile()
+        }
+        viewModel.onLoginBlocked = { [weak self] message in
+            self?.timeLabel.text = message
+        }
+    }
     
     private func setupView() {
         view.backgroundColor = .customBackgroundColor
@@ -262,12 +262,12 @@ class LogInViewController: UIViewController {
     
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Authorization error".localized, message: message, preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "ОК", style: .default))
-          present(alert, animated: true)
-      }
+        alert.addAction(UIAlertAction(title: "ОК", style: .default))
+        present(alert, animated: true)
+    }
     
     func buttonPressed() {
-            viewModel.validateAndLogin()
+        viewModel.validateAndLogin()
     }
     
     func blockLogin(){
@@ -290,7 +290,7 @@ class LogInViewController: UIViewController {
     }
     
     @objc func loginTextChanged(_ textField: UITextField){
-            viewModel.loginText = textField.text ?? ""
+        viewModel.loginText = textField.text ?? ""
     }
     
     @objc func passwordTextChanged(_ textField: UITextField){
@@ -347,12 +347,13 @@ class LogInViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-
+    
     @objc private func openRegistration() {
         let registrationVC = RegistrationViewController()
-             registrationVC.modalPresentationStyle = .formSheet
-             registrationVC.modalTransitionStyle = .coverVertical
-             present(registrationVC, animated: true)
+        registrationVC.modalPresentationStyle = .formSheet
+        registrationVC.modalTransitionStyle = .coverVertical
+        registrationVC.routeToProfile = routeToProfile
+        present(registrationVC, animated: true)
     }
     
 }

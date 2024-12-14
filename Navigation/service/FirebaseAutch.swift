@@ -31,17 +31,32 @@ class FirebaseAutch {
     }
     
     func signUp(withEmail: String, password: String, completion: @escaping (Result<String, ApiError>) -> Void) {
-        
-        FirebaseAuth.Auth.auth().createUser(withEmail: withEmail, password: password){ authResult, error  in
+        FirebaseAuth.Auth.auth().createUser(withEmail: withEmail, password: password) { authResult, error in
             if let error {
                 let err = error as NSError
-                completion(.failure(ApiError.authError(message: err.userInfo["NSLocalizedDescription"] as? String ?? "Ошибка авторизации")))
+                if let errorCode = AuthErrorCode(rawValue: err.code) {
+                    switch errorCode {
+                    case .emailAlreadyInUse:
+                        completion(.failure(.authError(message: "The email address is already in use by another account.".localized)))
+                    case .invalidEmail:
+                        completion(.failure(.authError(message: "The email address is invalid.".localized)))
+                    case .weakPassword:
+                        completion(.failure(.authError(message: "The password is too weak.".localized)))
+                    default:
+                        completion(.failure(.authError(message: err.localizedDescription)))
+                    }
+                } else {
+                    completion(.failure(.authError(message: "Unknown error occurred.".localized)))
+                }
+                return
             }
-            if let authResult{
+
+            if let authResult {
                 completion(.success(authResult.user.uid))
             }
         }
     }
+
     
     func signOut(){
         do {

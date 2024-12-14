@@ -12,6 +12,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: - Properties
     private var viewModel: CreatePostViewModel
     
+    var onPostCreated: () -> Void = {}
+    
     private lazy var bodyTextView: UITextView = {
         let textView = UITextView()
         textView.font = .systemFont(ofSize: 16)
@@ -129,6 +131,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     private func bindViewModel() {
         viewModel.onPostCreated = { [weak self] in
+            self?.onPostCreated()
             self?.dismiss(animated: true)
         }
         

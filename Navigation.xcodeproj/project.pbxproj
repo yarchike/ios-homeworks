@@ -45,7 +45,6 @@
 		BF818D042CF6038E004E3890 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BF818D032CF6038E004E3890 /* FirebaseStorage */; };
 		BF818D062CF603E5004E3890 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF818D052CF603E5004E3890 /* FirebaseStorageService.swift */; };
 		BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA12BAAE67000BF3FFD /* SnapKit */; };
-		BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */; };
 		BF8EDCA92BAAEB0400BF3FFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCA82BAAEB0400BF3FFD /* User.swift */; };
 		BF8EDCAD2BAAEB9600BF3FFD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EDCAC2BAAEB9600BF3FFD /* UserService.swift */; };
 		BF939BC32B70F78200F54B62 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939BC22B70F78200F54B62 /* PhotosViewController.swift */; };
@@ -171,7 +170,6 @@
 				BF3C528D2CF5D1FC0071F2DD /* FirebaseDatabase in Frameworks */,
 				BF3C528B2CF5D1FC0071F2DD /* FirebaseAuth in Frameworks */,
 				BF8EDCA22BAAE67000BF3FFD /* SnapKit in Frameworks */,
-				BF8EDCA42BAAE67000BF3FFD /* SnapKit-Dynamic in Frameworks */,
 				BF818D042CF6038E004E3890 /* FirebaseStorage in Frameworks */,
 				BFF1B54B2BD8F885005C5929 /* iOSIntPackage in Frameworks */,
 				BF3C528F2CF5D1FC0071F2DD /* FirebaseFirestore in Frameworks */,
@@ -446,7 +444,6 @@
 			name = Navigation;
 			packageProductDependencies = (
 				BF8EDCA12BAAE67000BF3FFD /* SnapKit */,
-				BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */,
 				BFF1B54A2BD8F885005C5929 /* iOSIntPackage */,
 				BF3C528A2CF5D1FC0071F2DD /* FirebaseAuth */,
 				BF3C528C2CF5D1FC0071F2DD /* FirebaseDatabase */,
@@ -944,11 +941,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		BF8EDCA32BAAE67000BF3FFD /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF8EDCA02BAAE67000BF3FFD /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		BFF1B54A2BD8F885005C5929 /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;

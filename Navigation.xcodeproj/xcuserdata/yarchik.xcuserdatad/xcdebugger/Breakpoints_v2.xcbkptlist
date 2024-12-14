@@ -65,6 +65,21 @@
                   endingLineNumber = "0"
                   offsetFromSymbolStart = "8">
                </Location>
+               <Location
+                  uuid = "B3072A4D-FCFF-4A02-BE6E-5C5FB74904FA - 1d347824dcdde9de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Navigation.PhotosCollectionViewCell.__deallocating_deinit"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yarchik/ios-homeworks/Navigation/Profile/Photos/PhotosCollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

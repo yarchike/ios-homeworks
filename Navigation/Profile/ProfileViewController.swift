@@ -1,14 +1,13 @@
     import UIKit
     import FirebaseAuth
-    import StorageService
-
+ 
     class ProfileViewController: UIViewController {
         
         var routeToPhoto: () -> () = {}
         
         var routeToLogin: () -> () = {}
         
-        var routeToCreatePost: () -> () = {}
+        var routeToCreatePost: (@escaping () -> Void) -> () = {_ in }
 
         var user: User?
         
@@ -102,9 +101,12 @@
 
         // Действие на нажатие кнопки
         @objc private func rightButtonTapped() {
-            routeToCreatePost()
+            routeToCreatePost(onPostCreated)
         }
-    
+        
+        func onPostCreated(){
+            viewModel.loadPosts()
+        }
         
         private func tuneTableView() {
             let headerView = ProfileHeaderView()

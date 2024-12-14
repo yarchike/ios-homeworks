@@ -1,6 +1,28 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Access forbidden. You don't have permission." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступ запрещен. У вас нет разрешения."
+          }
+        }
+      }
+    },
+    "An unknown error occurred." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошла неизвестная ошибка."
+          }
+        }
+      }
+    },
     "Attach Photo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -19,6 +41,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ошибка авторизации"
+          }
+        }
+      }
+    },
+    "Bad request. Please check your input." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Плохой запрос. Пожалуйста, проверьте ваш ввод."
           }
         }
       }
@@ -559,6 +592,17 @@
         }
       }
     },
+    "Requested resource not found." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрошенный ресурс не найден."
+          }
+        }
+      }
+    },
     "Satellite" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -647,6 +691,39 @@
         }
       }
     },
+    "The email address is already in use by another account." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Адрес электронной почты уже используется другой учетной записью."
+          }
+        }
+      }
+    },
+    "The email address is invalid." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Адрес электронной почты недействителен."
+          }
+        }
+      }
+    },
+    "The password is too weak." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пароль слишком слабый."
+          }
+        }
+      }
+    },
     "The passwords do not match." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -654,6 +731,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пароли не совпадают."
+          }
+        }
+      }
+    },
+    "Unauthorized access. Please log in." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Несанкционированный доступ. Пожалуйста, войдите в систему."
+          }
+        }
+      }
+    },
+    "Unknown error occurred." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошла неизвестная ошибка."
           }
         }
       }

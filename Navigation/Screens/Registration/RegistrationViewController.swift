@@ -10,6 +10,8 @@ import UIKit
 class RegistrationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     private let viewModel = RegistrationViewModel()
+    
+    var routeToProfile: (() -> ()) = {}
 
     // UI-элементы
     private lazy var avatarImageView: UIImageView = {
@@ -150,7 +152,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         }
 
         viewModel.onRegistrationSuccess = { [weak self] in
-            self?.dismiss(animated: true)
+            self?.routeToProfile()
         }
     }
 

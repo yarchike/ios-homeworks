@@ -133,9 +133,21 @@ class PostTableViewCell: UITableViewCell {
     
     func update(with model: Post) {
         post = model
-        avatarImageView.loadImageFromStoragePath(model.author.urlImage)
+        if !model.urlImage.isEmpty {
+            contentImageView.loadImageFromStoragePath(model.urlImage)
+            contentImageView.isHidden = false
+            contentImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75).isActive = true
+        }else{
+            contentImageView.isHidden = true
+            contentImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
+        if !model.author.urlImage.isEmpty{
+            avatarImageView.loadImageFromStoragePath(model.author.urlImage)
+        }else{
+            avatarImageView.image = UIImage(systemName: "person.circle.fill")
+        }
+      
         authorLabel.text = model.author.name
-        contentImageView.loadImageFromStoragePath(model.urlImage)
         postDescriptionLabel.text = model.postDescription
         likesLabel.text = "Likes: \(model.likes)"
     }

@@ -47,10 +47,10 @@ class ProfileCoordinator: Coordinator {
         profileViewController.routeToCreatePost = routToCreatePost
         return profileViewController
     }
-    func routToCreatePost(){
+    func routToCreatePost(onPostCreated: @escaping () -> Void){
         let createPostViewModel = CreatePostViewModel()
         let createPostVC = CreatePostViewController(viewModel: createPostViewModel)
-        
+        createPostVC.onPostCreated = onPostCreated
         let navigationController = UINavigationController(rootViewController: createPostVC)
         navigationController.modalPresentationStyle = .automatic
         self.navigationController.present(navigationController, animated: true)
