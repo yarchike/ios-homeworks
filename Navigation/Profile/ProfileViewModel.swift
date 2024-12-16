@@ -25,6 +25,7 @@ class ProfileViewModel {
     var onPostsUpdated: (() -> Void)?
     var onPhotoUpdated: (() -> Void)?
     var onError: ((String) -> Void)?
+    var onPostUpdated: ((IndexPath) -> Void)?
     
     init() {
         posts = []
@@ -45,7 +46,7 @@ class ProfileViewModel {
     }
     
     func loadPosts() {
-        if let uid = CurrentUser.shared.user?.id{
+        if (CurrentUser.shared.user?.id) != nil{
             PostManager.shared.fetchPostsByAuthor{posts,error in
                 if error != nil {
                     self.onError?("Error loading posts".localized)
@@ -67,6 +68,16 @@ class ProfileViewModel {
             self.photos =  Array(resutl.prefix(4))
             self.onPhotoUpdated?()
         }
+    }
+    
+    func likePost(at indexPath: IndexPath) {
+        guard indexPath.row < posts.count else { return }
+        
+        var post = posts[indexPath.row]
+        post.likes += 1
+        posts[indexPath.row] = post
+        PostManager.shared.upLikes(post: post)
+        onPostUpdated?(indexPath)
     }
     
 }

@@ -164,7 +164,7 @@
               }
             
             cell.update(with: viewModel.posts[indexPath.row])
-            
+            cell.upLike = viewModel.likePost
             return cell
         }
         
@@ -191,6 +191,9 @@
             }
             viewModel.onPostsUpdated = { [weak self] in
                 self?.tableView.reloadData()
+            }
+            viewModel.onPostUpdated = {[weak self] index in
+                self?.tableView.reloadRows(at: [index] , with: .automatic)
             }
             viewModel.onPhotoUpdated = { [weak self] in
                 guard let self = self else { return }

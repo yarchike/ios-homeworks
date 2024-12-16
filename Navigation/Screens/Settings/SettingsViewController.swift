@@ -152,7 +152,11 @@ class SettingsViewController: UIViewController {
     private func bindViewModel() {
         viewModel.onSettingsUpdated = { [weak self] in
             if let avatarUrl = self?.viewModel.avatarUrl{
-                self?.avatarImageView.loadImageFromStoragePath(avatarUrl)
+                if !avatarUrl.isEmpty{
+                    self?.avatarImageView.loadImageFromStoragePath(avatarUrl)
+                }else{
+                    self?.avatarImageView.image = UIImage(systemName: "person.circle.fill")
+                }
             }else{
                 self?.avatarImageView.image = UIImage(systemName: "person.circle.fill")
             }

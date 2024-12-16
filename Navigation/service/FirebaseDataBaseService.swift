@@ -35,6 +35,27 @@ class FirebaseDataBaseService {
             completion(nil, error)
         }
     }
+    
+    func getAllUsers(completion: @escaping ([User]?, Error?) -> Void) {
+        let usersRef = databaseRef.child("users")
+        usersRef.observeSingleEvent(of: .value) { snapshot in
+            var users: [User] = []
+            
+            if let usersDict = snapshot.value as? [String: [String: Any]] {
+                for (_, userDict) in usersDict {
+                    if let user = User(dictionary: userDict) {
+                        users.append(user)
+                    }
+                }
+                completion(users, nil)
+            } else {
+                completion(nil, NSError(domain: "FirebaseService", code: 404, userInfo: [NSLocalizedDescriptionKey: "No users found"]))
+            }
+        } withCancel: { error in
+            completion(nil, error)
+        }
+    }
+
 
     // Метод для обновления данных пользователя
     func updateUser(user: User, completion: @escaping (Error?) -> Void) {
@@ -114,23 +135,41 @@ class FirebaseDataBaseService {
     }
 
     func fetchAllPosts(completion: @escaping ([Post]?, Error?) -> Void) {
-        let ref = databaseRef.child("posts")
-
-        ref.observeSingleEvent(of: .value) { snapshot in
-            var posts: [Post] = []
-
-            for child in snapshot.children {
-                if let childSnapshot = child as? DataSnapshot,
-                   let postDict = childSnapshot.value as? [String: Any],
-                   let post = Post(dictionary: postDict) {
-                    posts.append(post)
-                }
+        getAllUsers{users ,error in
+            if error != nil{
+                completion(nil, error)
+                return
             }
+            
+            let ref = self.databaseRef.child("posts")
 
-            completion(posts, nil)
-        } withCancel: { error in
-            completion(nil, error)
+            ref.observeSingleEvent(of: .value) { snapshot in
+                var posts: [Post] = []
+
+                for child in snapshot.children {
+                    if let childSnapshot = child as? DataSnapshot,
+                       let postDict = childSnapshot.value as? [String: Any],
+                       let post = Post(dictionary: postDict) {
+                        posts.append(post)
+                    }
+                }
+                var postsUpdateAuthor:[Post] = []
+                posts.forEach{post in
+                    var updateUset = users?.first{$0.id == post.author.id}
+                    let updateAutchor = if let updateUset = updateUset {
+                        Author(id: updateUset.id, name: updateUset.fullname, urlImage: updateUset.avatarURL)
+                    }else{
+                        post.author
+                    }
+                    let postUpdate = Post(id: post.id, author: updateAutchor, postDescription: post.postDescription, urlImage: post.urlImage, likes: post.likes, createdAt: post.createdAt)
+                    postsUpdateAuthor.append(postUpdate)
+                }
+                completion(postsUpdateAuthor, nil)
+            } withCancel: { error in
+                completion(nil, error)
+            }
         }
+
     }
 
 
@@ -149,8 +188,18 @@ class FirebaseDataBaseService {
                     posts.append(post)
                 }
             }
-
-            completion(posts, nil)
+            var postsUpdateAuthor:[Post] = []
+            posts.forEach{post in
+                let updateUset = CurrentUser.shared.user
+                let updateAutchor = if let updateUset = updateUset {
+                    Author(id: updateUset.id, name: updateUset.fullname, urlImage: updateUset.avatarURL)
+                }else{
+                    post.author
+                }
+                let postUpdate = Post(id: post.id, author: updateAutchor, postDescription: post.postDescription, urlImage: post.urlImage, likes: post.likes, createdAt: post.createdAt)
+                postsUpdateAuthor.append(postUpdate)
+            }
+            completion(postsUpdateAuthor, nil)
         } withCancel: { error in
             completion(nil, error)
         }
